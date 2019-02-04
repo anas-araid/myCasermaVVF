@@ -45,7 +45,7 @@ function getFiremanData($ID, $phone, $db_conn){
       $sql = "SELECT * FROM t_gradi";
       $grado = array();
     }else{
-      $sql = "SELECT * FROM t_gradi WHERE (ID='$ID')";
+      $sql = "SELECT * FROM t_gradi WHERE (ID=$ID)";
       $grado = '';
     }
     $risultato = mysqli_query($db_conn, $sql);

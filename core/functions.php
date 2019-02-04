@@ -27,4 +27,8 @@
     fwrite($log, '$line');
     fclose($log);
   }
+  function tempFunction($botToken, $chatID){
+    $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Ultimi corsi"], ["Webcam"], ["/start"]';
+    sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
+  }
 ?>

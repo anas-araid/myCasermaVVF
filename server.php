@@ -25,7 +25,10 @@
     $phoneNumber = substr($phoneNumber, 2);
     $firemanData = getFiremanData(null, $phoneNumber, $db_conn);
     if($firemanData['ID'] != null){
-      sendMsg($botToken,$chatID, "Ciao ".$firemanData['Nome']." ".$firemanData['Cognome']."\n");
+      sendMsg($botToken,$chatID, "Autenticazione completata");
+      $vigile = getGrado($firemanData['FK_Grado'], $db_conn).": ".$firemanData['Nome']." ".$firemanData['Cognome']."\n";
+      $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Ultimi corsi"], ["Webcam"], ["/start"]';
+      sendMsg($botToken,$chatID, $vigile, $menu);
     }else{
       $btn = array('text' => "Riprova", 'request_contact'=>true);
       $btn = "[".json_encode($btn)."]";
@@ -39,13 +42,16 @@
       sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", il servizio è ancora in fase di test, per qualsiasi problema contatta @asdf1899");
       $btn = array('text' => "Autenticazione", 'request_contact'=>true);
       $btn = "[".json_encode($btn)."]";
-      sendMsg($botToken,$chatID, "Per utilizzare @myCasermaVVF bisogna autenticarsi tramite numero di cellulare", $btn);
+      sendMsg($botToken,$chatID, "Per utilizzare @myCasermaVVF_bot bisogna autenticarsi tramite numero di cellulare", $btn);
       break;
     /*case strpos($text, "/caserma"):
       $corpoVVF = str_replace('/caserma ', '', $text);
       $corpoVVF = getCaserma(null, $corpoVVF, $db_conn);
       sendMsg($botToken,$chatID, "Ora inserisci la password del corpo ".$corpoVVF['Descrizione']);
       break;*/
+    case 'Mostra squadra':
+      tempFunction($botToken, $chatID);
+      break;
     default:
       exit;
       break;
