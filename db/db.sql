@@ -13,6 +13,7 @@ CREATE TABLE t_vigili (
   Nome	 			     VARCHAR(50),
   Cognome			     VARCHAR(50),
   Matricola		     VARCHAR(5)	UNIQUE NOT NULL,
+  Cellulare		     VARCHAR(20)	UNIQUE,
   FK_Grado 			   BIGINT,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_Grado)    REFERENCES t_gradi(ID)
