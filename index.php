@@ -21,26 +21,29 @@
   //logger($messageObj);
   $text = $messageObj['text'];
   if ($messageObj['contact'] != null){
-    $phoneNumber = $messageObj['phone_number'];
+    $phoneNumber = $messageObj['contact']['phone_number'];
+    $phoneNumber = substr($phoneNumber, 2);
     $firemanData = getFiremanData(null, $phoneNumber, $db_conn);
     if($firemanData['ID'] != null){
-
+      sendMsg($botToken,$chatID, "Ciao ".$firemanData['Nome']." ".$firemanData['Cognome']);
     }else{
-      sendMsg($botToken,$chatID, "Vigile non trovato, per essere aggiunto contatta @asdf1899");
+      $btn = array('text' => "Riprova", 'request_contact'=>true);
+      sendMsg($botToken,$chatID, "Vigile non trovato.", $btn);
       exit();
     }
   }
+  
   switch ($text) {
     case '/start':
       sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", se hai qualche problema con il servizio, contatta @asdf1899");
       $btn = array('text' => "Autenticazione", 'request_contact'=>true);
-      sendMsg($botToken,$chatID, "Per utilizzare @myCasermaVVF bisogna autenticarsi tramite numero di telefono", "[".json_encode($btn)."]");
+      sendMsg($botToken,$chatID, "Per utilizzare @myCasermaVVF bisogna autenticarsi tramite numero di cellulare", "[".json_encode($btn)."]");
       break;
-    case strpos($text, "/caserma"):
+    /*case strpos($text, "/caserma"):
       $corpoVVF = str_replace('/caserma ', '', $text);
       $corpoVVF = getCaserma(null, $corpoVVF, $db_conn);
       sendMsg($botToken,$chatID, "Ora inserisci la password del corpo ".$corpoVVF['Descrizione']);
-      break;
+      break;*/
     default:
       exit;
       break;
