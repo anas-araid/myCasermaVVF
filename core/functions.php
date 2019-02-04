@@ -3,6 +3,8 @@
     $keyboard = "";
     if($button != null) {
       $keyboard = '&reply_markup={"keyboard":['.$button.'],"resize_keyboard":true}';
+    }else {
+      $keyboard = '&reply_markup={"remove_keyboard":true}';
     }
     $TelegramUrlSendMessage = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard;
     return file_get_contents($TelegramUrlSendMessage);

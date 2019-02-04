@@ -1,8 +1,13 @@
 <?php
+  include 'core/dbConnection.php';
+  include 'core/getData.php';
   include 'core/functions.php';
   $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
+  $ciao = getCaserma(null, 'Pergine Valsugana', $db_conn);
+  print_r($ciao);
+
   if(!$update)
   {
     exit;
@@ -16,10 +21,29 @@
 
   logger($messageObj);
   $text = $messageObj['text'];
-  if ($text == '/start'){
-    sendMsg($botToken,$chatID, "Benvenuto ".$sendName." se hai qualche problema con il servizio, contatta @asdf1899");
-    $buttonsCaserme = '["Btn 1" , "Btn 2"],["Test"],["Inviami"]';
-    sendMsg($botToken,$chatID, "Seleziona la tua caserma", $buttonsCaserme);
+  switch ($text) {
+    case '/start':
+      sendMsg($botToken,$chatID, "Benvenuto ".$sendName." se hai qualche problema con il servizio, contatta @asdf1899");
+      $buttonCaserme = getCaserma(null, null, $db_conn);
+
+      //$btn= '["'.$buttonCaserme[0][1].'"]';
+      $btn = '';
+      for ($i=0;$i< count($buttonCaserme); $i++){
+        $btn .= '[" /caserma '.$buttonCaserme[$i][1].'"]';
+      }
+      sendMsg($botToken,$chatID, "Seleziona corpo di appartenenza:", $btn);
+      break;
+    case strpos($text, "/caserma"):
+      $corpoVVF = str_replace('/caserma ', '', $text);
+      $corpoVVF = getCaserma(null, $corpoVVF, $db_conn);
+      sendMsg($botToken,$chatID, "Ora inserisci la password del corpo ".$corpoVVF['Descrizione']);
+    case strpos($text, "/password"):
+      break;
+    default:
+      # code...
+      break;
   }
+
+  //$buttonsCaserme = '["Btn 1" , "Btn 2"],["Test"],["Inviami"]';
 
 ?>
