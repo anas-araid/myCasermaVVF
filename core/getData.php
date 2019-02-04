@@ -1,11 +1,14 @@
 <?php
 
-function getFiremanData($ID, $db_conn){
+function getFiremanData($ID, $phone, $db_conn){
     $fireman = array();
     if ($ID == null){
       $sql = "SELECT * FROM t_vigili";
     }else{
       $sql = "SELECT * FROM t_vigili WHERE (ID='$ID')";
+    }
+    if ($phone != null){
+      $sql = "SELECT * FROM t_vigili WHERE (Cellulare='$phone')";
     }
     $risultato = mysqli_query($db_conn, $sql);
     if ($risultato == false){
@@ -13,14 +16,24 @@ function getFiremanData($ID, $db_conn){
     }
     $i=0;
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($phone != null){
+        $fireman['ID'] = $ris['ID'];
+        $fireman['Nome'] = $ris['Nome'];
+        $fireman['Cognome'] = $ris['Cognome'];
+        $fireman['Matricola'] = $ris['Matricola'];
+        $fireman['Cellulare'] = $ris['Cellulare'];
+        $fireman['FK_Grado'] = $ris['FK_Grado'];
+        return $fireman;
+      }
       if($ID == null){
-        $fireman["$i"] = array($ris['ID'], $ris['Cognome']." ".$ris['Nome'], $ris['Matricola'], $ris['FK_Grado']);
+        $fireman["$i"] = array($ris['ID'], $ris['Cognome']." ".$ris['Nome'], $ris['Matricola'], $ris['Cellulare'], $ris['FK_Grado']);
         $i++;
       }else{
         $fireman['ID'] = $ris['ID'];
         $fireman['Nome'] = $ris['Nome'];
         $fireman['Cognome'] = $ris['Cognome'];
         $fireman['Matricola'] = $ris['Matricola'];
+        $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
       }
     }

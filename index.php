@@ -5,9 +5,8 @@
   $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
-  $ciao = getCaserma(null, 'Pergine Valsugana', $db_conn);
-  print_r($ciao);
-
+  $test = getFiremanData(null, '3485588835', $db_conn);
+  print_r($test);
   if(!$update)
   {
     exit;
@@ -19,31 +18,43 @@
   $sendName = $messageObj['from']['first_name'];
   $sendSurname = $messageObj['from']['last_name'];
 
-  logger($messageObj);
+  //logger($messageObj);
   $text = $messageObj['text'];
+  if ($messageObj['contact'] != null){
+    $phoneNumber = $messageObj['phone_number'];
+    $firemanData = getFiremanData(null, $phoneNumber, $db_conn);
+    if($firemanData['ID'] != null){
+
+    }else{
+      sendMsg($botToken,$chatID, "Vigile non trovato, per essere aggiunto contatta @asdf1899");
+      exit();
+    }
+  }
   switch ($text) {
     case '/start':
-      sendMsg($botToken,$chatID, "Benvenuto ".$sendName." se hai qualche problema con il servizio, contatta @asdf1899");
-      $buttonCaserme = getCaserma(null, null, $db_conn);
-
-      //$btn= '["'.$buttonCaserme[0][1].'"]';
-      $btn = '';
-      for ($i=0;$i< count($buttonCaserme); $i++){
-        $btn .= '[" /caserma '.$buttonCaserme[$i][1].'"]';
-      }
-      sendMsg($botToken,$chatID, "Seleziona corpo di appartenenza:", $btn);
+      sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", se hai qualche problema con il servizio, contatta @asdf1899");
+      $btn = array('text' => "Autenticazione", 'request_contact'=>true);
+      sendMsg($botToken,$chatID, "Per utilizzare @myCasermaVVF bisogna autenticarsi tramite numero di telefono", "[".json_encode($btn)."]");
       break;
     case strpos($text, "/caserma"):
       $corpoVVF = str_replace('/caserma ', '', $text);
       $corpoVVF = getCaserma(null, $corpoVVF, $db_conn);
       sendMsg($botToken,$chatID, "Ora inserisci la password del corpo ".$corpoVVF['Descrizione']);
-    case strpos($text, "/password"):
       break;
     default:
-      # code...
+      exit;
       break;
   }
 
   //$buttonsCaserme = '["Btn 1" , "Btn 2"],["Test"],["Inviami"]';
+  /*$buttonCaserme = getCaserma(null, null, $db_conn);
+
+
+  //$btn= '["'.$buttonCaserme[0][1].'"]';
+  $btn = '';
+  for ($i=0;$i< count($buttonCaserme); $i++){
+    $btn .= '[" /caserma '.$buttonCaserme[$i][1].'"]';
+  }
+  sendMsg($botToken,$chatID, "Seleziona corpo di appartenenza:", $btn);*/
 
 ?>

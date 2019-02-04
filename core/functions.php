@@ -2,7 +2,7 @@
   function sendMsg($token, $chatID, $msgTxt, $button=null){
     $keyboard = "";
     if($button != null) {
-      $keyboard = '&reply_markup={"keyboard":['.$button.'],"resize_keyboard":true}';
+      $keyboard = '&reply_markup={"keyboard":['.$button.'],"resize_keyboard":true}'; //, "one_time_keyboard":true
     }else {
       $keyboard = '&reply_markup={"remove_keyboard":true}';
     }
