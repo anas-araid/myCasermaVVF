@@ -1,12 +1,11 @@
 <?php
-  include 'core/dbConnection.php';
-  include 'core/getData.php';
-  include 'core/functions.php';
+  include 'app/dbConnection.php';
+  include 'app/getData.php';
+  include 'bot/controller.php';
   $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
-  $test = getFiremanData(null, '3485588835', $db_conn);
-  print_r($test);
+  echo "Server online";
   if(!$update)
   {
     exit;
