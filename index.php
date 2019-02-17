@@ -111,6 +111,21 @@
             <div class="mdl-cell mdl-cell--2-col"></div>
           </div>
         </section>
+        <section id="section-4">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone">
+              <img src="img/config.png" style="width:90%"></img>
+            </div>
+            <div class="mdl-cell mdl-cell--7-col" style="text-align:center" >
+              <h3 class="style-text-red">Il tuo corpo di appartenenza non è abilitato alla piattaforma? </h3>
+              <h5 class="style-text-darkGrey" style="text-align:left;padding:30px">
+                Se sei il responsabile, configura subito il sistema!
+              </h5>
+              <button class="style-button-red">CONFIGURAZIONE</button>
+            </div>
+          </div>
+        </section>
+
       </main>
     </div>
   </body>
