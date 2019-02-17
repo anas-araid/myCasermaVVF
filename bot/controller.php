@@ -28,7 +28,11 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID){
-    $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Ultimi corsi"], ["Webcam"], ["/start"]';
+    $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["/start"]';
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
+  }
+  function menu ($botToken, $chatID){
+    $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["/start"]';
+    sendMsg($botToken, $chatID, 'Menu iniziale:', $menu);
   }
 ?>
