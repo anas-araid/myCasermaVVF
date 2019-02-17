@@ -56,7 +56,8 @@
               <h5 class="style-text-darkGrey" style="text-align:left;padding:30px">
                 Una volta configurato il sistema da un tuo responsabile, non ti serve installare nulla,
                 basta avere solo un account <b>telegram</b> ed utilizzare subito il bot!
-              </h5>
+              </h5><br>
+              <h5>Non hai Telegram? Scaricalo da <a href="https://telegram.org" target="_blank">qua</a></h5>
             </div>
           </div>
         </section>
@@ -125,21 +126,10 @@
             </div>
           </div>
         </section>
-
+        <div id="footer" style="margin:0;bottom:0;background-color:#c0392b;height:max-content;padding:20px">
+          <h6 style="color:white">Anas Araid &copy 2019 myCasermaVVF. <i>Creato dai soccorritori per i soccorritori.</i></h6>
+        </div>
       </main>
     </div>
   </body>
 </html>
-
-
-<!--
-
-<body style="text-align:center;">
- <h2>myCasermaVVF in costruzione</h2>
- <div class="animated bounce" style="text-align:center;width:100%">
-   <img style="height:50%" src="img/progress.png"/>
- </div>
-</body>
-
-
--->
