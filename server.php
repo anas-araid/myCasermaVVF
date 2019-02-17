@@ -1,4 +1,5 @@
 <?php
+  include 'bot/_layout.php';
   include 'app/dbConnection.php';
   include 'app/getData.php';
   include 'app/updateData.php';
@@ -6,7 +7,6 @@
   $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
-  echo "Server online";
   if(!$update)
   {
     exit;
