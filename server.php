@@ -24,7 +24,7 @@
   if ($text == '/start'){
     $firemanData = getFiremanData(null, null, $chatID, $db_conn);
     if (!empty($firemanData)){
-      $firemanID = $firemanData[0][0];
+      $firemanID = $firemanData['ID'];
       updateChatID($firemanID, null, $db_conn);
     }
     sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", il servizio è ancora in fase di test, per qualsiasi problema contatta @asdf1899");
