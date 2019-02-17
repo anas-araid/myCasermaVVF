@@ -35,7 +35,7 @@
               <h2 class="style-text-red">La tua <b>caserma</b> a portata di mano...</h2>
               <br><br>
               <button class="style-button-red">INIZIA SUBITO!</button>
-              <button class="style-button-white">SCOPRI DI PIÙ</button>
+              <button class="style-button-white" onclick="location.href='#section-3'">SCOPRI DI PIÙ</button>
             </div>
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
               <img src="img/screen.png" class="style-bounce" style="width:90%"></img>
@@ -56,8 +56,10 @@
               <h5 class="style-text-darkGrey" style="text-align:left;padding:30px">
                 Una volta configurato il sistema da un tuo responsabile, non ti serve installare nulla,
                 basta avere solo un account <b>telegram</b> ed utilizzare subito il bot!
-              </h5><br>
+              </h5>
               <h5>Non hai Telegram? Scaricalo da <a href="https://telegram.org" target="_blank">qua</a></h5>
+              <p>oppure</p>
+              <button class="style-button-red" onclick="window.open('https://t.me/myCasermaVVF_bot', '_blank')">APRI IL BOT</button>
             </div>
           </div>
         </section>
