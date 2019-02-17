@@ -48,7 +48,7 @@
         <br><br>
         <section id="section-2">
           <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--5-col  mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
+            <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone">
               <img src="img/server.png" class="style-bounce" style="width:90%"></img>
             </div>
             <div class="mdl-cell mdl-cell--7-col" style="text-align:center" >
@@ -61,9 +61,55 @@
           </div>
         </section>
         <br><br>
-        <section id="section-3" style="text-align:center">
-
-
+        <section id="section-3" style="text-align:center;background-color:#ecf5fe;">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col"></div>
+            <div class="mdl-cell mdl-cell--8-col" style="text-align:left">
+              <h4 class="style-text-darkred">Telegram ti avvisa:</h4>
+              <ul class="mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">calendar_today</i>
+                    Dei turni festivi
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">chat</i>
+                    Delle comunicazioni di servizio
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">access_time</i>
+                    Delle scadenze dei corsi
+                  </span>
+                </li>
+              </ul>
+              <h4 class="style-text-darkred">Inoltre di aiuta a gestire:</h4>
+              <ul class="mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">directions_car</i>
+                    La checklist dei mezzi
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">date_range</i>
+                    La distribuzione dei calendari
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">videocam</i>
+                    E visualizzare le webcam del territorio
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col"></div>
+          </div>
         </section>
       </main>
     </div>
