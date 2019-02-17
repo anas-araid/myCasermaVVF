@@ -19,6 +19,16 @@ function getFiremanData($ID, $phone, $chatId, $db_conn){
     }
     $i=0;
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($chatId != null){
+        $fireman['ID'] = $ris['ID'];
+        $fireman['Nome'] = $ris['Nome'];
+        $fireman['Cognome'] = $ris['Cognome'];
+        $fireman['Matricola'] = $ris['Matricola'];
+        $fireman['Cellulare'] = $ris['Cellulare'];
+        $fireman['Chat_ID'] = $ris['Chat_ID'];
+        $fireman['FK_Grado'] = $ris['FK_Grado'];
+        return $fireman;
+      }
       if ($phone != null){
         $fireman['ID'] = $ris['ID'];
         $fireman['Nome'] = $ris['Nome'];
@@ -30,7 +40,7 @@ function getFiremanData($ID, $phone, $chatId, $db_conn){
         return $fireman;
       }
       if($ID == null){
-        $fireman["$i"] = array($ris['ID'], $ris['Cognome']." ".$ris['Nome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado']);
+        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado']);
         $i++;
       }else{
         $fireman['ID'] = $ris['ID'];

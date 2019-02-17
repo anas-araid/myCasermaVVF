@@ -40,7 +40,7 @@
       sendMsg($botToken,$chatID, "Autenticazione completata");
       updateChatID($firemanData['ID'], $chatID, $db_conn);      
       $vigile = getGrado($firemanData['FK_Grado'], $db_conn).": ".$firemanData['Nome']." ".$firemanData['Cognome']."\n";
-      $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["/start"]';
+      $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
       sendMsg($botToken,$chatID, $vigile, $menu);
     }else{
       $btn = array('text' => "Riprova", 'request_contact'=>true);
@@ -68,7 +68,13 @@
         break; 
       case 'Webcam':
         tempFunction($botToken, $chatID);
-        break;       
+        break; 
+      case 'I miei dati':
+        $grado = getGrado($firemanData['FK_Grado'], $db_conn);
+        $dati = "Nome: ".$firemanData['Nome']."\nCognome: ".$firemanData['Cognome']."\nMatricola: ".$firemanData['Matricola']."\nGrado: ".$grado;
+        sendMsg($botToken,$chatID, $dati, null);      
+        menu($botToken, $chatID);
+        break;      
       default:
         exit;
         break;
