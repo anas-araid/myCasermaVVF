@@ -26,6 +26,8 @@
         </nav>
       </div>
       <main class="mdl-layout__content">
+        <div id="particles-js" width="100%" height="100%" style="width:100%;height:100%">
+        </div>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--7-col">
             <br><br><br><br>
