@@ -13,7 +13,7 @@
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link style-text-red" href="#">Home</a>
             <a class="mdl-navigation__link style-text-red">Accedi</a>
-            <a class="mdl-navigation__link style-text-red">Scopri di più</a>
+            <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
           </nav>
         </div>
       </header>
@@ -22,7 +22,7 @@
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link style-text-red" href="#">Home</a>
           <a class="mdl-navigation__link style-text-red">Accedi</a>
-          <a class="mdl-navigation__link style-text-red">Scopri di più</a>
+          <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
