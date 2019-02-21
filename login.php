@@ -12,6 +12,7 @@
         //error_reporting(0);
         // inclusione del file per la connessione al database
         include "app/dbConnection.php";
+        include "app/functions.php";
         include "app/getData.php";
       }catch(Exception $e){
       }
@@ -48,7 +49,14 @@
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <!-- Inserisco nel select tutte le caserme dal db -->
                 <select class="mdl-textfield__input" id="caserma" name="caserma" required="" style="outline:none">
-                  
+                  <?php
+                    // $caserme contiene un array con le info degli operatori
+                    $caserme = getCaserma(null, null, $db_conn);
+                    print_r($caserme);
+                    for ($i=0; $i < count($caserme); $i++){
+                      echo "<option value='".$caserme[$i][0]."'>".$caserme[$i][1]."</option>";
+                    }
+                  ?>
                 </select>
                 <label class="mdl-textfield__label" for="caserma">Caserma</label>
               </div>
@@ -73,3 +81,25 @@
     </div>
   </body>
 </html>
+<?php
+  if(isset($_POST['password'])){
+    // text_filter dell'input
+    $id = text_filter($_POST["caserma"]);
+    // md5 della password
+    $password = text_filter_encrypt($_POST["password"]);
+    // controlla la password
+    $caserma = checkPassword($id, $password, $db_conn);
+    if (empty($caserma)){
+      echo "
+      <script>
+      flatAlert('Password errata', '', 'error', 'login.php');
+      </script>";
+    }else{
+      echo "
+      <script>
+      flatAlert('Accesso eseguito con successo', '', 'success', 'app/log.php');
+      </script>";
+    }
+  }
+
+ ?>

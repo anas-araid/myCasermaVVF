@@ -136,4 +136,19 @@ function getFiremanData($ID, $phone, $chatId, $db_conn){
     }
     return $mezzi;
   }
+  function checkPassword($id, $password, $db_conn){
+    $selectQuery = "SELECT * FROM t_caserme WHERE ID='$id' AND Password='$password'";
+    $select = mysqli_query($db_conn, $selectQuery);
+    if ($select==null){
+      die('error');
+        //throw new exception ("Impossibile aggiornare l'utente");
+    }
+    while($ris = mysqli_fetch_array ($select, MYSQLI_ASSOC)){
+      //$_SESSION['include'] = ' ';
+      $caserma = getCaserma($id, null, $db_conn);
+      $_SESSION['ID'] = $caserma['ID'];
+      $_SESSION['Descrizione'] = $caserma['Descrizione'];
+    }
+    return $caserma;
+  }
 ?>
