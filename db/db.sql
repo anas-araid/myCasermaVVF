@@ -8,6 +8,13 @@ CREATE TABLE t_gradi (
   PRIMARY KEY(ID)
 ) ENGINE = InnoDB;
 
+CREATE TABLE t_caserme (
+  ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
+  Descrizione      VARCHAR(50),
+  Password         VARCHAR(50),
+  PRIMARY KEY(ID)
+) ENGINE = InnoDB;
+
 CREATE TABLE t_vigili (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
   Nome	 			     VARCHAR(50),
@@ -16,8 +23,12 @@ CREATE TABLE t_vigili (
   Cellulare		     VARCHAR(20)	UNIQUE,
   Chat_ID 		     VARCHAR(20)	UNIQUE,
   FK_Grado 			   BIGINT,
+  FK_CorpoVVF		   BIGINT,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_Grado)    REFERENCES t_gradi(ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY(FK_CorpoVVF)    REFERENCES t_caserme(ID)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
@@ -29,16 +40,9 @@ CREATE TABLE t_mezzi (
 ) ENGINE = InnoDB;
 
 
-CREATE TABLE t_caserme (
-  ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
-  Descrizione      VARCHAR(50),
-  Password         VARCHAR(50),
-  PRIMARY KEY(ID)
-) ENGINE = InnoDB;
-
 CREATE TABLE t_numeroSquadre (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
-  Numero           VARCHAR(50),
+  Numero           VARCHAR(50) UNIQUE,
   FK_CorpoVVF      BIGINT,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_CorpoVVF)    REFERENCES t_caserme(ID)

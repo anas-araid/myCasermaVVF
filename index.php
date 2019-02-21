@@ -20,7 +20,7 @@
       <div class="mdl-layout__drawer">
         <p class="mdl-layout-title style-text-darkred">myCasermaVVF</p>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link style-text-red" href="#">Home</a>
+          <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
           <a class="mdl-navigation__link style-text-red">Accedi</a>
           <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
         </nav>
