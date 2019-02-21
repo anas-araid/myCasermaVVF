@@ -4,7 +4,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
 }
 #particles-js{
   position: absolute;
-  z-index: 0;
+  z-index: -1;
 }
 .style-text-red{
   color:#e74c3c!important;

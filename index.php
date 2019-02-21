@@ -11,8 +11,8 @@
           <span class="mdl-layout-title style-text-red" style="font-weight:100">my</span><span class="mdl-layout-title style-text-red" style="font-weight:500">Caserma</span><span class="mdl-layout-title style-text-red" style="font-weight:600">VVF</span>
           <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link style-text-red" href="#">Home</a>
-            <a class="mdl-navigation__link style-text-red">Accedi</a>
+            <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
+            <a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>
             <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
           </nav>
         </div>
@@ -21,7 +21,7 @@
         <p class="mdl-layout-title style-text-darkred">myCasermaVVF</p>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
-          <a class="mdl-navigation__link style-text-red">Accedi</a>
+          <a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>
           <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
         </nav>
       </div>
@@ -34,7 +34,7 @@
               <br><br><br><br>
               <h2 class="style-text-red">La tua <b>caserma</b> a portata di mano...</h2>
               <br><br>
-              <button class="style-button-red">INIZIA SUBITO!</button>
+              <button class="style-button-red" onclick="location.href='login.php'">INIZIA SUBITO!</button>
               <button class="style-button-white" onclick="location.href='#section-3'">SCOPRI DI PIÙ</button>
             </div>
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
