@@ -6,7 +6,7 @@
   $ipaddress = $_SERVER['REMOTE_ADDR'];
   $timestamp = date('d/m/Y H:i:s');
   $browser = $_SERVER['HTTP_USER_AGENT'];
-  $line = "Connessione: [".$timestamp."] - ".$_SESSION['Descrizione']." - ".$ipaddress." - ".$browser."\n";
+  $line = "Connessione: [".$timestamp."] - ".$_SESSION['Corpo']." - ".$ipaddress." - ".$browser."\n";
   $filename = "log.txt";
   $filedir = "../logs/$filename";
   chmod('../logs', 0777);

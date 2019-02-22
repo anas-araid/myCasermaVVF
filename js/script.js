@@ -24,11 +24,11 @@ function flatAlertClose(titolo, testo, icona){
     }
   });
 }
-function alertDeleteReport(id){
+function alertDeleteFireman(id){
   swal(
     {
       title: "Vuoi continuare?",
-      text: "I dati del controllo verranno eliminati",
+      text: "I dati del vigile verranno eliminati",
       icon: "error",
       buttons: {
         cancel: {
@@ -44,7 +44,7 @@ function alertDeleteReport(id){
   ).then(Elimina => {
     if (Elimina){
       swal(" ", "Eliminato con successo", "success").then(Elimina => {
-        location.href='core/deleteReport.php?id='+id;
+        location.href='app/delete.php?id='+id;
       });
     }else{
       swal.close();

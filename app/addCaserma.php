@@ -22,6 +22,9 @@
           $telefono = text_filter($_POST["telefono"]);
           $password = text_filter_encrypt(text_filter($_POST["password"]));
           $addCaserma = addCaserma($caserma, $email, $telefono, $password, $db_conn);
+          $id = getCaserma($null, $caserma, $db_conn)['ID'];
+          $_SESSION['ID'] = $id;
+          $_SESSION['Descrizione'] = $caserma;
           if ($addCaserma){
            echo "
            <script>

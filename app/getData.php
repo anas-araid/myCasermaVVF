@@ -1,6 +1,6 @@
 <?php
 
-function getFiremanData($ID, $phone, $chatId, $db_conn){
+function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     $fireman = array();
     if ($ID == null){
       $sql = "SELECT * FROM t_vigili";
@@ -12,6 +12,9 @@ function getFiremanData($ID, $phone, $chatId, $db_conn){
     }
     if ($chatId != null){
       $sql = "SELECT * FROM t_vigili WHERE (Chat_ID='$chatId')";
+    }
+    if ($idCaserma != null){
+      $sql = "SELECT * FROM t_vigili WHERE (FK_CorpoVVF='$idCaserma')";
     }
     $risultato = mysqli_query($db_conn, $sql);
     if ($risultato == false){

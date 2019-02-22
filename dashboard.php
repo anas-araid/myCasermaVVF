@@ -26,7 +26,6 @@
           return;
         }
         if (!$_SESSION['_dashboardLayout']){
-          $_SESSION = array();
           $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
         }
         if (isset($_GET['redirect'])){
@@ -101,7 +100,6 @@
           // integra il file salvato nella session
           include $_SESSION['_dashboardLayout'];
         ?>
-
       </main>
     </div>
   </body>

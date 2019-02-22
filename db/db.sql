@@ -10,7 +10,7 @@ CREATE TABLE t_gradi (
 
 CREATE TABLE t_caserme (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
-  Descrizione      VARCHAR(50),
+  Descrizione      VARCHAR(50) UNIQUE,
   Telefono         VARCHAR(50),
   Email            VARCHAR(50),
   Password         VARCHAR(50),
