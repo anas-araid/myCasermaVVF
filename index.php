@@ -13,7 +13,8 @@
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
             <a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>
-            <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
+            <a class="mdl-navigation__link style-text-red" href="config.php">Configura</a>
+            <a class="mdl-navigation__link style-text-red" href="#scopri">Scopri di più</a>
           </nav>
         </div>
       </header>
@@ -22,7 +23,8 @@
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
           <a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>
-          <a class="mdl-navigation__link style-text-red" href="#section-3">Scopri di più</a>
+          <a class="mdl-navigation__link style-text-red" href="config.php">Configura</a>
+          <a class="mdl-navigation__link style-text-red" href="#scopri">Scopri di più</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
@@ -35,7 +37,7 @@
               <h2 class="style-text-red">La tua <b>caserma</b> a portata di mano...</h2>
               <br><br>
               <button class="style-button-red" onclick="location.href='login.php'">INIZIA SUBITO!</button>
-              <button class="style-button-white" onclick="location.href='#section-3'">SCOPRI DI PIÙ</button>
+              <button class="style-button-white" onclick="location.href='#scopri'">SCOPRI DI PIÙ</button>
             </div>
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
               <img src="img/screen.png" class="style-bounce" style="width:90%"></img>
@@ -64,7 +66,7 @@
           </div>
         </section>
         <br><br>
-        <section id="section-3" style="text-align:center;background-color:#ecf5fe;">
+        <section id="scopri" style="text-align:center;background-color:#ecf5fe;">
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--2-col"></div>
             <div class="mdl-cell mdl-cell--8-col" style="text-align:left">
