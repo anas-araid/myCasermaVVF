@@ -18,10 +18,42 @@
           $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
           // se l'id non esiste allora fa il logout
           if ($caserma['ID'] == null){
-            header('location:app/logout.php');
+            redirect('app/logout.php');
+            return;
           }
         }else{
-          header('location:app/logout.php');
+          redirect('app/logout.php');
+          return;
+        }
+        if (!$_SESSION['_dashboardLayout']){
+          $_SESSION = array();
+          $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
+        }
+        if (isset($_GET['redirect'])){
+          $redirect = $_GET['redirect'];
+          switch ($redirect) {
+            case 'vigili':
+              $_SESSION['_dashboardLayout'] = 'app/views/_vigili.php';
+              break;
+            case 'mezzi':
+              $_SESSION['_dashboardLayout'] = 'app/views/_mezzi.php';
+              break;
+            case 'turni':
+              $_SESSION['_dashboardLayout'] = 'app/views/_turni.php';
+              break;
+            case 'corsi':
+              $_SESSION['_dashboardLayout'] = 'app/views/_corsi.php';
+              break;
+            case 'comunicazioni':
+              $_SESSION['_dashboardLayout'] = 'app/views/_comunicazioni.php';
+              break;
+            case 'calendari':
+              $_SESSION['_dashboardLayout'] = 'app/views/_calendari.php';
+              break;
+            default:
+              $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
+              break;
+          }
         }
       }catch(Exception $e){
       }
@@ -43,21 +75,32 @@
       <div class="mdl-layout__drawer style-bg-darkblue" style="border:none">
         <p class="mdl-layout-title mdl-color-text--white"><?php echo $caserma['Descrizione'] ?></p>
         <nav class="mdl-navigation">
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="index.php#home">Home</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Aiuto</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="app/logout.php">Esci</a>
           <hr style="width:80%">
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Vigili</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Mezzi</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Turni</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Corsi</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Comunicazioni</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Calendari</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=vigili">Vigili</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=mezzi">Mezzi</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=turni">Turni</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=corsi">Corsi</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=comunicazioni">Comunicazioni</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=calendari">Calendari</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
-
-
-
+        <?php
+          // variabile $error_message situata in dbConnection.php
+          if ($error_message) {
+            echo "
+              <script>
+                window.onload = function(){
+                  flatAlert('Accesso', 'Impossibile connettersi al database', 'error', 'index.php');
+                }
+              </script>";
+          }
+          // integra il file salvato nella session
+          include $_SESSION['_dashboardLayout'];
+        ?>
 
       </main>
     </div>
