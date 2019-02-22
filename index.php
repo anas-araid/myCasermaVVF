@@ -124,7 +124,7 @@
               <h5 class="style-text-darkGrey" style="text-align:left;padding:30px">
                 Se sei il responsabile, configura subito il sistema!
               </h5>
-              <button class="style-button-red">CONFIGURAZIONE</button>
+              <button class="style-button-red" onclick="location.href='config.php'">CONFIGURAZIONE</button>
             </div>
           </div>
         </section>

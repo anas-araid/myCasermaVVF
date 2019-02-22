@@ -11,6 +11,8 @@ CREATE TABLE t_gradi (
 CREATE TABLE t_caserme (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
   Descrizione      VARCHAR(50),
+  Telefono         VARCHAR(50),
+  Email            VARCHAR(50),
   Password         VARCHAR(50),
   PRIMARY KEY(ID)
 ) ENGINE = InnoDB;
@@ -77,7 +79,7 @@ CREATE TABLE t_turniFestivi (
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
-INSERT INTO t_caserme (Descrizione, Password) VALUES ('Pergine Valsugana', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO t_caserme (Descrizione, Telefono, Password) VALUES ('Pergine Valsugana','0461531054', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 INSERT INTO t_gradi (Grado) VALUES ('Ispettore'); /* 1 */
 INSERT INTO t_gradi (Grado) VALUES ('Vice ispettore'); /* 2 */
