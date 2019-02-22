@@ -47,7 +47,7 @@
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--7-col" style="text-align:center">
             <h2 class="style-text-red">Configurazione</h2>
-            <form action="" method="POST" style="text-align:center">
+            <form action="app/addCaserma.php" method="POST" style="text-align:center">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="caserma" name="caserma" required="">
                 <label class="mdl-textfield__label" for="caserma">Corpo di appartenenza</label>
@@ -74,16 +74,29 @@
               </div>
               <p>Il tuo corpo VVF è già stato configurato? <a href="login.php" style="cursor:pointer">Clicca qui</a></p>
               <div>
-                <button class="style-button-red" onclick="location.href='login.php'">CONTINUA</button><br>
-                <button class="style-button-white" onclick="location.href='index.php'">INDIETRO</button>
+                <button class="style-button-red" type="submit" name="conferma">CONTINUA</button><br>
+                <button class="style-button-white" onclick="location.href='index.php'" type="reset">INDIETRO</button>
               </div>
             </form>
-
           </div>
           <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
             <img src="img/screen.png" class="style-bounce" style="width:90%"></img>
           </div>
         </div>
+        <script>
+           var password          = document.getElementById("password");
+           var conferma_password = document.getElementById("confermaPassword");
+           //var registrati        = document.getElementById("signup");
+           function validaPassword() {
+             if (password.value != conferma_password.value){
+               conferma_password.setCustomValidity("Le password non corrispondono o la lunghezza è insufficiente");
+             }else{
+               conferma_password.setCustomValidity("");
+             }
+           }
+           password.onchange         = validaPassword;
+           conferma_password.onkeyup = validaPassword;
+        </script>
       </main>
     </div>
   </body>
