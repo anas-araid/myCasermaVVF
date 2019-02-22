@@ -14,6 +14,15 @@
         include "app/dbConnection.php";
         include "app/functions.php";
         include "app/getData.php";
+        if ($_SESSION['ID'] != null){
+          $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
+          // se l'id non esiste allora fa il logout
+          if ($caserma['ID'] == null){
+            header('location:app/logout.php');
+          }else{
+            header('location:dashboard.php');
+          }
+        }
       }catch(Exception $e){
       }
     ?>

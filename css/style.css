@@ -18,6 +18,18 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
 .style-text-green{
   color:#2ecc71!important;
 }
+.style-text-darkblue{
+  color:#2E4154!important;
+}
+.style-bg-darkblue{
+  background-color: #2E4154!important;
+}
+.style-nav-dashboard{
+
+}
+.style-nav-dashboard:hover{
+  color:#2E4154!important;
+}
 .mdl-layout__drawer-button{
   color: #c0392b!important;
   outline: none;

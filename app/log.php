@@ -17,5 +17,5 @@
   }
   fwrite($log, $line);
   fclose($log);
-  //redirect("../login.php");
+  redirect("../dashboard.php");
 ?>

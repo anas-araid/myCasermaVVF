@@ -14,6 +14,15 @@
         include "app/dbConnection.php";
         include "app/functions.php";
         include "app/getData.php";
+        if ($_SESSION['ID'] != null){
+          $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
+          // se l'id non esiste allora fa il logout
+          if ($caserma['ID'] == null){
+            header('location:app/logout.php');
+          }else{
+            header('location:dashboard.php');
+          }
+        }
       }catch(Exception $e){
       }
     ?>
@@ -25,20 +34,20 @@
           <span class="mdl-layout-title style-text-red" style="font-weight:100">my</span><span class="mdl-layout-title style-text-red" style="font-weight:500">Caserma</span><span class="mdl-layout-title style-text-red" style="font-weight:600">VVF</span>
           <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
-            <a class="mdl-navigation__link style-text-red">Accedi</a>
+            <a class="mdl-navigation__link style-text-red" href="index.php#home">Home</a>
+            <a class="mdl-navigation__link style-text-red" href="">Accedi</a>
             <a class="mdl-navigation__link style-text-red" href="config.php">Configura</a>
-            <a class="mdl-navigation__link style-text-red" href="#scopri">Scopri di più</a>
+            <a class="mdl-navigation__link style-text-red" href="index.php#scopri">Scopri di più</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <p class="mdl-layout-title style-text-darkred">myCasermaVVF</p>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
-          <a class="mdl-navigation__link style-text-red">Accedi</a>
+          <a class="mdl-navigation__link style-text-red" href="index.php#home">Home</a>
+          <a class="mdl-navigation__link style-text-red" href="">Accedi</a>
           <a class="mdl-navigation__link style-text-red" href="config.php">Configura</a>
-          <a class="mdl-navigation__link style-text-red" href="#scopri">Scopri di più</a>
+          <a class="mdl-navigation__link style-text-red" href="index.php#scopri">Scopri di più</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
@@ -69,8 +78,8 @@
               </div>
               <p>Non c'è il tuo corpo VVF? <a href="config.php" style="cursor:pointer">Clicca qui</a></p>
               <div>
-                <button class="style-button-red" onclick="location.href='login.php'">ENTRA</button><br>
-                <button class="style-button-white" onclick="location.href='index.php'">INDIETRO</button>
+                <button class="style-button-red" type="submit">ENTRA</button><br>
+                <button class="style-button-white" onclick="location.href='index.php'" type="reset">INDIETRO</button>
               </div>
             </form>
 
@@ -97,6 +106,8 @@
       flatAlert('Password errata', '', 'error', 'login.php');
       </script>";
     }else{
+      $_SESSION['ID'] = $caserma['ID'];
+      $_SESSION['Corpo'] = $caserma['Descrizione'];
       echo "
       <script>
       flatAlert('Accesso eseguito con successo', '', 'success', 'app/log.php');

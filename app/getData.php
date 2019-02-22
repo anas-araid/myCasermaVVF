@@ -146,8 +146,6 @@ function getFiremanData($ID, $phone, $chatId, $db_conn){
     while($ris = mysqli_fetch_array ($select, MYSQLI_ASSOC)){
       //$_SESSION['include'] = ' ';
       $caserma = getCaserma($id, null, $db_conn);
-      $_SESSION['ID'] = $caserma['ID'];
-      $_SESSION['Descrizione'] = $caserma['Descrizione'];
     }
     return $caserma;
   }

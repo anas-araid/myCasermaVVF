@@ -1,7 +1,28 @@
+<?php
+  @ob_start();
+  session_start();
+?>
 <html>
   <head>
      <?php
       include 'app/_header.html';
+      try{
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // error_reporting per togliere il notice quando non trova
+        //error_reporting(0);
+        // inclusione del file per la connessione al database
+        include "app/dbConnection.php";
+        include "app/functions.php";
+        include "app/getData.php";
+        if ($_SESSION['ID'] != null){
+          $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
+          // se l'id non esiste allora fa il logout
+          if ($caserma['ID'] == null){
+            header('location:app/logout.php');
+          }
+        }
+      }catch(Exception $e){
+      }
      ?>
   </head>
   <body style="margin:0">
@@ -12,7 +33,13 @@
           <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
-            <a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>
+            <?php
+              if (isset($_SESSION['ID'])){
+                echo '<a class="mdl-navigation__link style-text-red" href="login.php">Entra</a>';
+              }else{
+                echo '<a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>';
+              }
+             ?>
             <a class="mdl-navigation__link style-text-red" href="config.php">Configura</a>
             <a class="mdl-navigation__link style-text-red" href="#scopri">Scopri di più</a>
           </nav>
@@ -22,7 +49,13 @@
         <p class="mdl-layout-title style-text-darkred">myCasermaVVF</p>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
-          <a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>
+          <?php
+            if (isset($_SESSION['ID'])){
+              echo '<a class="mdl-navigation__link style-text-red" href="login.php">Entra</a>';
+            }else{
+              echo '<a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>';
+            }
+           ?>
           <a class="mdl-navigation__link style-text-red" href="config.php">Configura</a>
           <a class="mdl-navigation__link style-text-red" href="#scopri">Scopri di più</a>
         </nav>
