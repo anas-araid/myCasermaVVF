@@ -8,6 +8,7 @@ CREATE TABLE t_gradi (
   PRIMARY KEY(ID)
 ) ENGINE = InnoDB;
 
+
 CREATE TABLE t_caserme (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
   Descrizione      VARCHAR(50) UNIQUE,
@@ -41,6 +42,16 @@ CREATE TABLE t_mezzi (
   PRIMARY KEY(ID)
 ) ENGINE = InnoDB;
 
+CREATE TABLE t_certificazioni (
+  ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
+  Corso            VARCHAR(200),
+  File             VARCHAR(200),
+  FK_Vigile        BIGINT,
+  PRIMARY KEY(ID),
+  FOREIGN KEY(FK_Vigile)    REFERENCES t_vigili(ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 CREATE TABLE t_numeroSquadre (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,

@@ -10,6 +10,7 @@
         <th class="style-td">Cellulare</th>
         <th class="style-td">Grado</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
