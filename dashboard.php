@@ -5,7 +5,7 @@
 <html>
   <head>
     <?php
-      include "app/_header.html";
+      include "app/views/_header.html";
       try{
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         // error_reporting per togliere il notice quando non trova
@@ -49,6 +49,9 @@
             case 'calendari':
               $_SESSION['_dashboardLayout'] = 'app/views/_calendari.php';
               break;
+            case 'certificazioni':
+                $_SESSION['_dashboardLayout'] = 'app/views/_certificazioni.php';
+                break;
             default:
               $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
               break;

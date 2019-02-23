@@ -3,6 +3,9 @@
     $sql = "INSERT INTO t_caserme (Descrizione, Telefono, Email, Password) VALUES ('$caserma', '$telefono', '$email', '$password')";
     try {
       $addCaserma = mysqli_query($db_conn, $sql);
+      if (!$addCaserma){
+        return false;
+      }
     } catch (Exception $e) {
       return false;
     }

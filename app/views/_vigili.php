@@ -1,4 +1,10 @@
 <div style="overflow:auto">
+  <script>
+    function openCertificazioni(id){
+      location.href ="?redirect=certificazioni&id=" + id;
+    }
+
+  </script>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
       <div style="text-align:center">
@@ -9,6 +15,7 @@
         <th class="style-td">Nome</th>
         <th class="style-td">Cellulare</th>
         <th class="style-td">Grado</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -28,6 +35,7 @@
               <td class="style-td">'.$nome.'</td>
               <td class="style-td">'.$cellulare.'</td>
               <td class="style-td">'.$grado.'</td>
+              <td class="style-td"><a onclick="openCertificazioni('.$id.')" style="cursor:pointer;text-decoration:underline">Certificazioni</a></td>
               <td class="style-td"><a href="">Modifica</a></td>
               <td class="style-td"><a href="#" onclick="alertDeleteFireman('.$id.')" style="color:red">Elimina</a></td>
             </tr>';
@@ -39,7 +47,7 @@
 <div style="text-align:center">
   <?php
   if(!$checkingExists){
-    echo "<h5 class='style-gradient-text'>Nessun vigile</h5>";
+    echo "<h5 class='style-text-darkblue'>Nessun vigile</h5>";
   }
   ?>
 </div>

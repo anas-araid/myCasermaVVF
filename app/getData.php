@@ -152,4 +152,29 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     }
     return $caserma;
   }
+  function getCorsi($ID, $db_conn){
+    if ($ID == null){
+      $sql = "SELECT * FROM t_certificazioni";
+      $corso = array();
+    }else{
+      $sql = "SELECT * FROM t_certificazioni WHERE (ID='$ID')";
+      $corso = '';
+    }
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getCorsi");
+    }
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if($ID == null){
+        $corso["$i"] = array($ris['ID'], $ris['Corso'], $ris['File']);
+        $i++;
+      }else{
+        $corso['ID'] = $ris['ID'];
+        $corso['Corso'] = $ris['Corso'];
+        $corso['File'] = $ris['File'];
+      }
+    }
+    return $corso;
+  }
 ?>
