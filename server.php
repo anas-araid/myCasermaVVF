@@ -22,7 +22,7 @@
   $text = $messageObj['text'];
   
   if ($text == '/start'){
-    $firemanData = getFiremanData(null, null, $chatID, $db_conn);
+    $firemanData = getFiremanData(null, null, null, $chatID, $db_conn);
     if (!empty($firemanData)){
       $firemanID = $firemanData['ID'];
       updateChatID($firemanID, null, $db_conn);
@@ -35,7 +35,7 @@
   if ($messageObj['contact'] != null){
     $phoneNumber = $messageObj['contact']['phone_number'];
     $phoneNumber = substr($phoneNumber, 2);
-    $firemanData = getFiremanData(null, $phoneNumber, null, $db_conn);
+    $firemanData = getFiremanData(null, $phoneNumber, null, null, $db_conn);
     if($firemanData['ID'] != null){
       sendMsg($botToken,$chatID, "Autenticazione completata");
       updateChatID($firemanData['ID'], $chatID, $db_conn);      

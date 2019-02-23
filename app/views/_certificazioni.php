@@ -10,7 +10,7 @@
         }
        ?>
       <h3>Tutti i corsi di <?php echo $fireman['Nome'].' '.$fireman['Cognome'] ?></h3>
-      <button class="style-button-red">AGGIUNGI CERTIFICATO</button>
+      <button class="style-button-red" onclick="newCertificato(<?php echo $fireman['ID'] ?>)">AGGIUNGI CERTIFICATO</button>
       <button class="style-button-white" onclick="location.href='?redirect=vigili'">INDIETRO</button>
     </div>
     <tr style="text-align:left">
@@ -36,8 +36,8 @@
             <td class="style-td">'.$corso.'</td>
             <td class="style-td">'.$file.'</td>
             <td class="style-td"><a href="">Mostra</a></td>
-            <td class="style-td"><a href="">Modifica</a></td>
-            <td class="style-td"><a href="#" onclick="('.$id.')" style="color:red">Elimina</a></td>
+            <td class="style-td"><a href="editCertificato('.$id.')">Modifica</a></td>
+            <td class="style-td"><a onclick="deleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
           </tr>';
       }
       ?>
@@ -51,3 +51,43 @@
   ?>
 </div>
 </div>
+
+<script>
+  var newCorso = '';
+  function newCertificato(id){
+    this.newCorso =
+    '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
+    '<h3>Nuovo certificato</h3>'+
+    '<br>'+
+    '<form method="post" action="" enctype="multipart/form-data">' +
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-800">Corso</p>'+
+    '<input class="mdl-textfield__input" type="text" id="corso" name="corso" style="outline:none" required="">'+
+    '</div><br>'+
+    '<input hidden name="documento" id="documento" type="file" accept=""></input>'+
+    '<input type="button" class="style-button-white" style="width:50%;" value="CARICA DOCUMENTO" onclick="document.getElementById('+"'documento'"+').click();"></input>'+
+    '<br>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit" value="'+id+'">SALVA</button>'+
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newCertificatoModal.close()>ANNULLA</button>';
+
+    newCertificatoModal.open();
+  }
+  var newCertificatoModal = new tingle.modal({
+        closeMethods: ['overlay', 'button', 'escape'],
+        closeLabel: "Chiudi",
+        cssClass: ['custom-class-1', 'custom-class-2'],
+        onOpen: function() {
+            newCertificatoModal.setContent(
+              newCorso
+            );
+        },
+        onClose: function() {
+            console.log('modal closed');
+        },
+        beforeClose: function() {
+            return true; // close the modal
+            return false; // nothing happens
+        }
+    });
+
+</script>
