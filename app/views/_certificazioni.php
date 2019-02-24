@@ -25,7 +25,7 @@
   <tbody>
     <?php
       $checkingExists = false;
-      $corsi = getCorsi(null, $db_conn);
+      $corsi = getCorsi(null, $fireman['ID'], $db_conn);
       for ($i=0; $i < count($corsi); $i++){
         $checkingExists = true;
         $id = $corsi[$i][0];

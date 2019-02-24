@@ -61,6 +61,15 @@
                 <!-- Inserisco nel select tutte le caserme dal db -->
                 <select class="mdl-textfield__input" id="caserma" name="caserma" required="" style="outline:none">
                   <?php
+                    // variabile $error_message situata in dbConnection.php
+                    if ($error_message) {
+                      echo "
+                        <script>
+                          window.onload = function(){
+                            flatAlert('Accesso', 'Impossibile connettersi al database', 'error', 'index.php');
+                          }
+                        </script>";
+                    }
                     // $caserme contiene un array con le info degli operatori
                     $caserme = getCaserma(null, null, $db_conn);
                     print_r($caserme);

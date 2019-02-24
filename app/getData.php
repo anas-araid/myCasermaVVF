@@ -152,7 +152,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     }
     return $caserma;
   }
-  function getCorsi($ID, $db_conn){
+  function getCorsi($ID, $FK_Vigile, $db_conn){
     if ($ID == null){
       $sql = "SELECT * FROM t_certificazioni";
       $corso = array();
@@ -160,12 +160,20 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
       $sql = "SELECT * FROM t_certificazioni WHERE (ID='$ID')";
       $corso = '';
     }
+    if ($FK_Vigile != null){
+      $sql = "SELECT * FROM t_certificazioni WHERE (FK_Vigile='$FK_Vigile')";
+      $corso = array();
+    }
     $risultato = mysqli_query($db_conn, $sql);
     if ($risultato == false){
       die("error getCorsi");
     }
     $i=0;
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($FK_Vigile != null){
+        $corso["$i"] = array($ris['ID'], $ris['Corso'], $ris['File']);
+        return $corso;
+      }
       if($ID == null){
         $corso["$i"] = array($ris['ID'], $ris['Corso'], $ris['File']);
         $i++;

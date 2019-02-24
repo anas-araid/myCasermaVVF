@@ -106,6 +106,17 @@
            password.onchange         = validaPassword;
            conferma_password.onkeyup = validaPassword;
         </script>
+        <?php
+          // variabile $error_message situata in dbConnection.php
+          if ($error_message) {
+            echo "
+              <script>
+                window.onload = function(){
+                  flatAlert('Accesso', 'Impossibile connettersi al database', 'error', 'index.php');
+                }
+              </script>";
+          }
+        ?>
       </main>
     </div>
   </body>
