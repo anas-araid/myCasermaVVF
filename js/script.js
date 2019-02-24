@@ -51,3 +51,29 @@ function alertDeleteFireman(id){
     }
   });
 }
+function alertDeleteCertificato(id){
+  swal(
+    {
+      title: "Vuoi continuare?",
+      text: "Il certificato verrà eliminato",
+      icon: "error",
+      buttons: {
+        cancel: {
+          text: "Annulla",
+          visible: true,
+        },
+        button: {
+          text: "Continua",
+          visible: true,
+        }
+      }
+    }
+  ).then(Elimina => {
+    if (Elimina){
+      swal.close();
+      location.href='app/deleteData.php?data=certificato&id='+id;
+    }else{
+      swal.close();
+    }
+  });
+}

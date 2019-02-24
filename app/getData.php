@@ -182,6 +182,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $corso['ID'] = $ris['ID'];
         $corso['Corso'] = $ris['Corso'];
         $corso['File'] = $ris['File'];
+        $corso['FK_Vigile'] = $ris['FK_Vigile'];
       }
     }
     return $corso;

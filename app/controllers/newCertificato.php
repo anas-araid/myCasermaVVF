@@ -5,6 +5,7 @@
   include '../functions.php';
   include '../getData.php';
   include '../addData.php';
+  include '../updateData.php';
  ?>
 <html>
   <head>
@@ -20,8 +21,18 @@
           $firemanID = $_POST['salva'];
           $corso = text_filter($_POST["corso"]);
           $documento = $_FILES["documento"];
-          $filename='';
-          if (isset($documento)){
+          $filename=null;
+          $addCorso = addCorso($corso, $filename, $firemanID, $db_conn);
+          if ($addCorso){
+
+          }else{
+            echo "
+            <script>
+              flatAlert('Errore nell\'aggiunta del certificato', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=certificazioni&id=$firemanID');
+            </script>";
+            return;
+          }
+          if ($documento["size"] > 0){
             // dimensione massima 20mb
             if ($documento["size"] > 20000000){
               echo "
@@ -30,10 +41,12 @@
                   </script>";
               return;
             }
+
             $userCorsi = getCorsi(null, $firemanID, $db_conn);
             if (!empty($userCorsi)){
+              //$lastID = mysqli_insert_id($db_conn);
               $lastID = $userCorsi[count($userCorsi) -1][0];
-              $lastID++;
+              //$lastID++;
             }else{
               $lastID = 1;
             }
@@ -42,27 +55,18 @@
             if (!move_uploaded_file($documento["tmp_name"], $dir)){
               echo "
                   <script>
-                    flatAlert('Certificato', 'Impossibile caricare il documento', 'error', '../../dashboard.php');
+                    flatAlert('Certificato', 'Impossibile caricare il documento', 'error', '../../dashboard.php?redirect=certificazioni&id=$firemanID');
                   </script>";
               return;
             }
+            updateCorso($lastID, $filename, $db_conn);
           }else{
             $filename = null;
           }
-          $addCorso = addCorso($corso, $filename, $firemanID, $db_conn);
-          if ($addCorso){
-           echo "
-           <script>
-             flatAlert('', 'Certificato aggiunto con successo', 'success', '../../dashboard.php');
-           </script>";
-           return;
-          }else{
-            echo "
-            <script>
-              flatAlert('Errore nell\'aggiunta del certificato', 'Controlla bene i dati immessi', 'error', '../../dashboard.php');
-            </script>";
-            return;
-          }
+          echo "
+          <script>
+            flatAlert('', 'Certificato aggiunto con successo', 'success', '../../dashboard.php?redirect=certificazioni&id=$firemanID');
+          </script>";
         }
       }
     ?>

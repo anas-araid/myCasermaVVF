@@ -35,13 +35,19 @@
         $corso = $corsi[$i][1];
         $file = $corsi[$i][2];
         $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega
+        $show='';
+        if ($file == ''){
+          $show = '<td class="style-td"></td>';
+        }else{
+          $show = '<td class="style-td"><a onclick="window.open('."'uploads/".$file."'".')" style="cursor:pointer;text-decoration:underline">Mostra</a></td>';
+        }
         echo '<tr>
             <td class="style-td">'.$id.'</td>
             <td class="style-td">'.$corso.'</td>
             <td class="style-td">'.$filename.'</td>
-            <td class="style-td"><a href="">Mostra</a></td>
+            '.$show.'
             <td class="style-td"><a onclick="editCertificato('.$id.')" style="cursor:pointer;text-decoration:underline">Modifica</a></td>
-            <td class="style-td"><a onclick="deleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
+            <td class="style-td"><a onclick="alertDeleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
           </tr>';
       }
       ?>
@@ -94,5 +100,4 @@
             return false; // nothing happens
         }
     });
-
 </script>
