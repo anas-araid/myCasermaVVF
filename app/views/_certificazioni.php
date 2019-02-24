@@ -22,7 +22,6 @@
       <th class="style-td">Dimensioni file</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -46,7 +45,6 @@
             <td class="style-td">'.$corso.'</td>
             <td class="style-td">'.$filename.'</td>
             '.$show.'
-            <td class="style-td"><a onclick="editCertificato('.$id.')" style="cursor:pointer;text-decoration:underline">Modifica</a></td>
             <td class="style-td"><a onclick="alertDeleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
           </tr>';
       }
