@@ -5,6 +5,9 @@
         if (isset($_GET['id'])){
           $idFireman = text_filter($_GET['id']);
           $fireman = getFiremanData($idFireman, null, null, null, $db_conn);
+          if (empty($fireman)){
+            redirect('?redirect=vigili');
+          }
         }else{
           redirect('?redirect=vigili');
         }
@@ -16,7 +19,7 @@
     <tr style="text-align:left">
       <th class="style-td">ID</th>
       <th class="style-td">Corso</th>
-      <th class="style-td">File</th>
+      <th class="style-td">Dimensioni file</th>
       <th></th>
       <th></th>
       <th></th>
@@ -31,12 +34,13 @@
         $id = $corsi[$i][0];
         $corso = $corsi[$i][1];
         $file = $corsi[$i][2];
+        $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega
         echo '<tr>
             <td class="style-td">'.$id.'</td>
             <td class="style-td">'.$corso.'</td>
-            <td class="style-td">'.$file.'</td>
+            <td class="style-td">'.$filename.'</td>
             <td class="style-td"><a href="">Mostra</a></td>
-            <td class="style-td"><a href="editCertificato('.$id.')">Modifica</a></td>
+            <td class="style-td"><a onclick="editCertificato('.$id.')" style="cursor:pointer;text-decoration:underline">Modifica</a></td>
             <td class="style-td"><a onclick="deleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
           </tr>';
       }
@@ -59,13 +63,14 @@
     '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
     '<h3>Nuovo certificato</h3>'+
     '<br>'+
-    '<form method="post" action="" enctype="multipart/form-data">' +
+    '<form method="post" action="app/controllers/newCertificato.php" enctype="multipart/form-data">' +
     '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
     '<p class="mdl-color-text--grey-800">Corso</p>'+
     '<input class="mdl-textfield__input" type="text" id="corso" name="corso" style="outline:none" required="">'+
     '</div><br>'+
-    '<input hidden name="documento" id="documento" type="file" accept=""></input>'+
-    '<input type="button" class="style-button-white" style="width:50%;" value="CARICA DOCUMENTO" onclick="document.getElementById('+"'documento'"+').click();"></input>'+
+    '<input hidden name="documento" id="documento" type="file" accept="application/pdf"></input>'+
+    '<input type="button" class="style-button-white" style="width:50%;" name="documento" value="CARICA DOCUMENTO" onclick="document.getElementById('+"'documento'"+').click();"></input>'+
+    '<p>* dimensione massima 20mb</p>'+
     '<br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value="'+id+'">SALVA</button>'+
     '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newCertificatoModal.close()>ANNULLA</button>';

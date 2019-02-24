@@ -172,12 +172,13 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
       if ($FK_Vigile != null){
         $corso["$i"] = array($ris['ID'], $ris['Corso'], $ris['File']);
-        return $corso;
+        $i++;
       }
-      if($ID == null){
+      else if($ID == null){
         $corso["$i"] = array($ris['ID'], $ris['Corso'], $ris['File']);
         $i++;
-      }else{
+      }
+      else{
         $corso['ID'] = $ris['ID'];
         $corso['Corso'] = $ris['Corso'];
         $corso['File'] = $ris['File'];
