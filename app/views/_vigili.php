@@ -79,8 +79,13 @@
     '<select class="mdl-textfield__input" id="grado" name="grado" required="" style="outline:none">'+
     <?php
       $gradi = getGrado(null, $db_conn);
+      $selected = '';
       for ($i=0;$i<count($gradi);$i++){
-        echo "'".'<option value="'.$gradi[$i][0].'">'.$gradi[$i][1]."</option>'+";
+        if ($i == 0){
+          $selected = 'selected';
+        }
+        echo "'".'<option value="'.$gradi[$i][0].'" '.$selected.'>'.$gradi[$i][1]."</option>'+";
+        $selected = '';
       }
      ?>
     '</select>'+

@@ -49,8 +49,8 @@ CREATE TABLE t_certificazioni (
   FK_Vigile        BIGINT,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_Vigile)    REFERENCES t_vigili(ID)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE t_numeroSquadre (
@@ -59,8 +59,8 @@ CREATE TABLE t_numeroSquadre (
   FK_CorpoVVF      BIGINT,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_CorpoVVF)    REFERENCES t_caserme(ID)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE t_squadre (

@@ -36,7 +36,7 @@
     $sql = "DELETE FROM t_vigili WHERE ID='$id'";
     $deleteQuery = mysqli_query($db_conn, $sql);
     if ($deleteQuery == null){
-      die("error");
+      die("Errore nella cancellazione del vigile: contattare l'amministratore");
     }
     redirect('../dashboard.php?redirect=vigili');
   }
