@@ -23,4 +23,17 @@
     }
     return true;
   }
+  function addFireman($nome, $cognome, $cellulare, $matricola, $idGrado, $idCorpo, $db_conn){
+    $sql = "INSERT INTO t_vigili (Nome, Cognome, Matricola, Cellulare, Chat_ID, FK_Grado, FK_CorpoVVF)
+            VALUES ('$nome', '$cognome', '$matricola', '$cellulare', null, '$idGrado', '$idCorpo')";
+    try {
+      $addVigile = mysqli_query($db_conn, $sql);
+      if (!$addVigile){
+        return false;
+      }
+    } catch (Exception $e) {
+      return false;
+    }
+    return true;
+  }
 ?>

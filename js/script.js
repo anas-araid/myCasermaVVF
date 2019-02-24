@@ -43,9 +43,8 @@ function alertDeleteFireman(id){
     }
   ).then(Elimina => {
     if (Elimina){
-      swal(" ", "Eliminato con successo", "success").then(Elimina => {
-        location.href='app/delete.php?id='+id;
-      });
+        swal.close();
+        location.href='app/deleteData.php?data=vigile&id='+id;
     }else{
       swal.close();
     }

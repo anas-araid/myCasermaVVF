@@ -12,6 +12,8 @@
         case 'certificato':
           deleteCertificato($id, $db_conn);
           break;
+        case 'vigile':
+          deleteFireman($id, $db_conn);
         default:
           break;
       }
@@ -30,7 +32,14 @@
     }
     redirect('../dashboard.php?redirect=certificazioni&id='.$corso['FK_Vigile']);
   }
-
+  function deleteFireman($id, $db_conn){
+    $sql = "DELETE FROM t_vigili WHERE ID='$id'";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("error");
+    }
+    redirect('../dashboard.php?redirect=vigili');
+  }
 
 
  ?>

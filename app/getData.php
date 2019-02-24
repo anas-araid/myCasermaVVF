@@ -16,6 +16,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     if ($idCaserma != null){
       $sql = "SELECT * FROM t_vigili WHERE (FK_CorpoVVF='$idCaserma')";
     }
+    $sql .= ' ORDER BY Cognome';
     $risultato = mysqli_query($db_conn, $sql);
     if ($risultato == false){
       die("error");
