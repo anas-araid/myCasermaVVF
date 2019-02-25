@@ -39,7 +39,11 @@ CREATE TABLE t_vigili (
 CREATE TABLE t_mezzi (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
   Descrizione      VARCHAR(50),
-  PRIMARY KEY(ID)
+  FK_CorpoVVF      BIGINT,
+  PRIMARY KEY(ID),
+  FOREIGN KEY(FK_CorpoVVF)    REFERENCES t_caserme(ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE t_certificazioni (
@@ -113,28 +117,28 @@ INSERT INTO t_numeroSquadre (Numero, FK_CorpoVVF) VALUES ('9', 1);
 INSERT INTO t_numeroSquadre (Numero, FK_CorpoVVF) VALUES ('10', 1);
 INSERT INTO t_numeroSquadre (Numero, FK_CorpoVVF) VALUES ('11', 1);
 
-INSERT INTO t_mezzi (Descrizione) VALUES ('VW Interventi Tecnici');
-INSERT INTO t_mezzi (Descrizione) VALUES ('VW Pinze');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Daily Interventi Tecnici');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Autobotte Volvo');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Autobotte 180');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Minibotte');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Autoscala');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Snorkel');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Autogru MAN');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Nissan Terrano');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Land Rover TD5');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Land Rover TD4');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Mitsubishi Pickup');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Gommone');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Fiat Punto');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Daily Trasporto');
-INSERT INTO t_mezzi (Descrizione) VALUES ('VW trasp. persone');
-INSERT INTO t_mezzi (Descrizione) VALUES ('VW trasp. unione');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Carrello trasporto mezzi');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Pompa Ziegler');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Carrello Ziegler');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Carrello incendi boschivi');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Pompa Rosenbauer');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Carrello gruppo elettrogeno');
-INSERT INTO t_mezzi (Descrizione) VALUES ('Idrovora');
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('VW Interventi Tecnici', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('VW Pinze', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Daily Interventi Tecnici', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Autobotte Volvo', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Autobotte 180', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Minibotte', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Autoscala', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Snorkel', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Autogru MAN', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Nissan Terrano', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Land Rover TD5', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Land Rover TD4', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Mitsubishi Pickup', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Gommone', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Fiat Punto', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Daily Trasporto', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('VW trasp. persone', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('VW trasp. unione', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Carrello trasporto mezzi', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Pompa Ziegler', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Carrello Ziegler', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Carrello incendi boschivi', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Pompa Rosenbauer', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Carrello gruppo elettrogeno', 1);
+INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF) VALUES ('Idrovora', 1);
