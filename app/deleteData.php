@@ -40,6 +40,13 @@
     }
     redirect('../dashboard.php?redirect=vigili');
   }
-
+  function deleteMezzo($id, $db_conn){
+    $sql = "DELETE FROM t_mezzi WHERE ID='$id'";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("Errore nella cancellazione del mezzo: contattare l'amministratore");
+    }
+    redirect('../dashboard.php?redirect=mezzi');
+  }
 
  ?>
