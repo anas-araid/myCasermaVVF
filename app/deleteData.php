@@ -14,6 +14,8 @@
           break;
         case 'vigile':
           deleteFireman($id, $db_conn);
+        case 'mezzo':
+          deleteMezzo($id, $db_conn);
         default:
           break;
       }

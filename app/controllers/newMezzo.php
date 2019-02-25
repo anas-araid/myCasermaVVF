@@ -19,17 +19,17 @@
       if (!$error_message) {
         if (isset($_POST['salva'])){
           $mezzo = text_filter($_POST["mezzo"]);
-          $addMezzo = addMezzo($nome, $db_conn);
-          if ($addVigile){
+          $addMezzo = addMezzo($mezzo, $_SESSION['ID'], $db_conn);
+          if ($addMezzo){
             echo "
             <script>
-              flatAlert('', 'Vigile aggiunto con successo', 'success', '../../dashboard.php?redirect=vigili');
+              flatAlert('', 'Mezzo aggiunto con successo', 'success', '../../dashboard.php?redirect=mezzi');
             </script>";
             return;
           }else{
             echo "
             <script>
-              flatAlert('Errore nell\'aggiunta del vigile', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=vigili');
+              flatAlert('Errore nell\'aggiunta del mezzo', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=mezzo');
             </script>";
             return;
           }

@@ -36,4 +36,17 @@
     }
     return true;
   }
+  function addMezzo($mezzo, $idCorpo, $db_conn){
+    $sql = "INSERT INTO t_mezzi (Descrizione, FK_CorpoVVF)
+            VALUES ('$mezzo', '$idCorpo')";
+    try {
+      $addMezzo = mysqli_query($db_conn, $sql);
+      if (!$addMezzo){
+        return false;
+      }
+    } catch (Exception $e) {
+      return false;
+    }
+    return true;
+  }
 ?>

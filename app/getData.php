@@ -119,7 +119,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
   }
   function getMezzi($ID, $db_conn){
     if ($ID == null){
-      $sql = "SELECT * FROM t_mezzi";
+      $sql = "SELECT * FROM t_mezzi ORDER BY Descrizione";
       $mezzi = array();
     }else{
       $sql = "SELECT * FROM t_mezzi WHERE (ID='$ID')";
