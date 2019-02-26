@@ -117,7 +117,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     }
     return $caserme;
   }
-  function getMezzi($ID, $db_conn){
+  function getMezzi($ID, $FK_CorpoVVF, $db_conn){
     if ($ID == null){
       $sql = "SELECT * FROM t_mezzi ORDER BY Descrizione";
       $mezzi = array();
@@ -125,13 +125,20 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
       $sql = "SELECT * FROM t_mezzi WHERE (ID='$ID')";
       $mezzi = '';
     }
+    if ($FK_CorpoVVF == null){
+      $sql = "SELECT * FROM t_mezzi WHERE (FK_CorpoVVF='$FK_CorpoVVF') ORDER BY Descrizione";
+      $mezzi = array();
+    }
     $risultato = mysqli_query($db_conn, $sql);
     if ($risultato == false){
       die("error getMezzi");
     }
     $i=0;
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
-      if($ID == null){
+      if ($FK_CorpoVVF != null){
+        $mezzi["$i"] = array($ris['ID'], $ris['Descrizione']);
+        $i++;
+      }else if($ID == null){
         $mezzi["$i"] = array($ris['ID'], $ris['Descrizione']);
         $i++;
       }else{

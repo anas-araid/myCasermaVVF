@@ -36,7 +36,7 @@
               <td class="style-td">'.$cellulare.'</td>
               <td class="style-td">'.$grado.'</td>
               <td class="style-td"><a onclick="openCertificazioni('.$id.')" style="cursor:pointer;text-decoration:underline">Certificazioni</a></td>
-              <td class="style-td"><a href="?redirect=vigili&edit='.$id.'" style="cursor:pointer;text-decoration:underline">Modifica</a></td>
+              <td class="style-td"><a href="dashboard.php?redirect=vigili&edit='.$id.'" style="cursor:pointer;text-decoration:underline">Modifica</a></td>
               <td class="style-td"><a onclick="alertDeleteFireman('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
             </tr>';
         }
@@ -46,11 +46,30 @@
 </div>
 <script>
   var editVigile = '';
-  function editFireman(){
-    alert(<?php echo($_SESSION['editFiremanData']['Nome']) ?>);
+  function editFireman(data){
+    alert(data['Nome']);
   }
+</script>
 
 
+<div style="text-align:center">
+  <?php
+  if(!$checkingExists){
+    echo "<h5 class='style-text-darkblue'>Nessun vigile</h5>";
+  }
+  if (isset($_GET['edit'])){
+    $editID = text_filter($_GET['edit']);
+    $editFireman = getFiremanData($editID, null, null, null, $db_conn);
+    $data = json_encode($editFireman);
+    echo "<script>editFireman($data)</script>";
+  }
+  ?>
+</div>
+
+<!-- ##################################################################################-->
+<!-- NUOVO VIGILE-->
+
+<script>
   var newVigile = '';
   function newFireman(){
     this.newVigile =
@@ -111,16 +130,3 @@
         }
     });
 </script>
-<div style="text-align:center">
-  <?php
-  if(!$checkingExists){
-    echo "<h5 class='style-text-darkblue'>Nessun vigile</h5>";
-  }
-  if (isset($_GET['edit'])){
-    $editID = text_filter($_GET['edit']);
-    $editFireman = getFiremanData($editID, null, null, null, $db_conn);
-    $_SESSION['editFiremanData'] = $editFireman;
-    echo "<script>editFireman()<script>";
-  }
-  ?>
-</div>

@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <?php
-        $mezzi = getMezzi(null, $db_conn);
+        $mezzi = getMezzi(null, $_SESSION['ID'], $db_conn);
         for ($i=0; $i < count($mezzi); $i++){
           $checkingExists = true;
           $id = $mezzi[$i][0];
