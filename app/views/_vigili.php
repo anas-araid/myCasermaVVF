@@ -47,8 +47,71 @@
 <script>
   var editVigile = '';
   function editFireman(data){
-    alert(data['Nome']);
+    //alert(data['ID']);
+    var id = data['ID'];
+    var nome = data['Nome'];
+    var cognome = data['Cognome'];
+    var cellulare = data['Cellulare'];
+    var matricola = data['Matricola'];
+    var grado = data['FK_Grado'];
+    this.editVigile =
+    '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
+    '<h3>Nuovo vigile</h3>'+
+    '<br>'+
+    '<form method="post" action="app/controllers/editVigile.php" enctype="multipart/form-data">' +
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Nome</p>'+
+    '<input class="mdl-textfield__input" type="text" id="nome" name="nome" value="'+nome+'" style="outline:none" required="">'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Cognome</p>'+
+    '<input class="mdl-textfield__input" type="text" id="cognome" name="cognome" value="'+cognome+'" style="outline:none" required="">'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Cellulare</p>'+
+    '<input class="mdl-textfield__input" type="number" id="cellulare" name="cellulare" value="'+cellulare+'" style="outline:none" required="">'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Matricola</p>'+
+    '<input class="mdl-textfield__input" type="text" id="matricola" name="matricola" value="'+matricola+'" style="outline:none">'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<select class="mdl-textfield__input" id="grado" name="grado" required="" style="outline:none">'+
+    <?php
+      $gradi = getGrado(null, $db_conn);
+      $selected = '';
+      for ($i=0;$i<count($gradi);$i++){
+        if ($i == 0){
+          $selected = 'selected';
+        }
+        echo "'".'<option value="'.$gradi[$i][0].'" '.$selected.'>'.$gradi[$i][1]."</option>'+";
+        $selected = '';
+      }
+     ?>
+    '</select>'+
+    '</div><br>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editFiremanModal.close()>ANNULLA</button>';
+    editFiremanModal.open();
   }
+  var editFiremanModal = new tingle.modal({
+        closeMethods: ['overlay', 'button', 'escape'],
+        closeLabel: "Chiudi",
+        cssClass: ['custom-class-1', 'custom-class-2'],
+        onOpen: function() {
+            editFiremanModal.setContent(
+              editVigile
+            );
+        },
+        onClose: function() {
+            location.href="dashboard.php?redirect=vigili";
+            console.log('modal closed');
+        },
+        beforeClose: function() {
+            return true; // close the modal
+            return false; // nothing happens
+        }
+    });
 </script>
 
 
