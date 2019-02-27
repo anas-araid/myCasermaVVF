@@ -45,9 +45,9 @@
   </table>
 </div>
 <script>
+  // #################### EDIT VIGILE #######################################
   var editVigile = '';
   function editFireman(data){
-    //alert(data['ID']);
     var id = data['ID'];
     var nome = data['Nome'];
     var cognome = data['Cognome'];
@@ -90,7 +90,7 @@
      ?>
     '</select>'+
     '</div><br>'+
-    '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
     '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editFiremanModal.close()>ANNULLA</button>';
     editFiremanModal.open();
   }

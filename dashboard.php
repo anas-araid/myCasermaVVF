@@ -62,7 +62,7 @@
     ?>
   </head>
   <body style="margin:0">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header tingle-content-wrapper">
       <header class="mdl-layout__header mdl-color--white">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title style-text-red" style="font-weight:100">my</span><span class="mdl-layout-title style-text-red" style="font-weight:500">Caserma</span><span class="mdl-layout-title style-text-red" style="font-weight:600">VVF</span>
