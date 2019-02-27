@@ -27,6 +27,13 @@
     </tbody>
   </table>
 </div>
+<div style="text-align:center">
+  <?php
+  if(!$checkingExists){
+    echo "<h5 class='style-text-darkblue'>Nessun mezzo</h5>";
+  }
+  ?>
+</div>
 <script>
   var mezzo = '';
   function newMezzo(){

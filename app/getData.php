@@ -125,7 +125,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
       $sql = "SELECT * FROM t_mezzi WHERE (ID='$ID')";
       $mezzi = '';
     }
-    if ($FK_CorpoVVF == null){
+    if ($FK_CorpoVVF != null){
       $sql = "SELECT * FROM t_mezzi WHERE (FK_CorpoVVF='$FK_CorpoVVF') ORDER BY Descrizione";
       $mezzi = array();
     }
