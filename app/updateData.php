@@ -11,7 +11,7 @@
       }
     }
   }
-  function updateCorso($ID, $filename, $db_conn){
+  function updateCertificazione($ID, $filename, $db_conn){
     if (!is_numeric($ID)){
       return;
     }else{
@@ -20,8 +20,8 @@
         $set = "SET File='".$filename."'";
       }
       $sql = "UPDATE t_certificazioni $set WHERE (ID='$ID')";
-      $updateCorso = mysqli_query($db_conn, $sql);
-      if ($updateCorso==null){
+      $updateCertificazione = mysqli_query($db_conn, $sql);
+      if ($updateCertificazione==null){
         echo "Errore nell'aggiornamento del corso: contattare l'amministratore";
         return false;
       }

@@ -29,7 +29,7 @@
           $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
         }
         if (isset($_GET['redirect'])){
-          $redirect = $_GET['redirect'];
+          $redirect = text_filter($_GET['redirect']);
           switch ($redirect) {
             case 'vigili':
               $_SESSION['_dashboardLayout'] = 'app/views/_vigili.php';
@@ -37,8 +37,8 @@
             case 'mezzi':
               $_SESSION['_dashboardLayout'] = 'app/views/_mezzi.php';
               break;
-            case 'turni':
-              $_SESSION['_dashboardLayout'] = 'app/views/_turni.php';
+            case 'squadre':
+              $_SESSION['_dashboardLayout'] = 'app/views/_squadre.php';
               break;
             case 'corsi':
               $_SESSION['_dashboardLayout'] = 'app/views/_corsi.php';
@@ -83,7 +83,7 @@
           <hr style="width:80%">
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=vigili">Vigili</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=mezzi">Mezzi</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=turni">Turni</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=squadre">Squadre</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=corsi">Corsi</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=comunicazioni">Comunicazioni</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=calendari">Calendari</a>

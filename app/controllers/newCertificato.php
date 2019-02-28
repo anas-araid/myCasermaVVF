@@ -59,7 +59,7 @@
                   </script>";
               return;
             }
-            updateCorso($lastID, $filename, $db_conn);
+            updateCertificazione($lastID, $filename, $db_conn);
           }else{
             $filename = null;
           }
