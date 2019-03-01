@@ -232,4 +232,32 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     }
     return $nSquadre;
   }
+  function getVigiliBySquadra($ID, $FK_NumeroSquadra, $db_conn){
+    if ($ID == null){
+      $sql = "SELECT * FROM t_squadre";
+      $squadra = array();
+    }else{
+      $sql = "SELECT * FROM t_squadre WHERE (ID='$ID')";
+      $squadra = '';
+    }
+    if ($FK_NumeroSquadra != null){
+      $sql = "SELECT * FROM t_squadre WHERE (FK_NumeroSquadra='$FK_NumeroSquadra')";
+      $squadra = array();
+    }
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getVigiliBySquadra");
+    }
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($FK_NumeroSquadra != null){
+        $squadra["$i"] = $ris['FK_Vigile'];
+        $i++;
+      }else if($ID == null){
+        $squadra["$i"] = $ris['FK_Vigile'];
+        $i++;
+      }
+    }
+    return $squadra;
+  }
 ?>

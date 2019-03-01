@@ -3,32 +3,57 @@
     function openSquadra(id){
       location.href ="?redirect=mostraSquadra&id=" + id;
     }
-
   </script>
+  <?php
+    if (isset($_GET['id'])){
+      $idSquadra = text_filter($_GET['id']);
+      $squadraByID = getSquadre($idSquadra, null, $db_conn);
+      if (empty($idSquadra)){
+        redirect('?redirect=squadre');
+      }else if (empty($squadraByID)){
+        redirect('?redirect=squadre');
+      }else if($squadraByID['FK_CorpoVVF'] != $_SESSION['ID']){
+        redirect('?redirect=squadre');
+      }
+    }
+    else{
+      redirect('?redirect=squadre');
+    }
+
+
+   ?>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
       <div style="text-align:center">
-        <button class="style-button-red"  onclick="newSquadra()">AGGIUNGI SQUADRA</button>
+        <button class="style-button-red"  onclick="addFirefighters()">AGGIUNGI VIGILI</button>
       </div>
       <tr style="text-align:left">
-        <th class="style-td">Squadra</th>
-        <th></th>
+        <th class="style-td">Grado</th>
+        <th class="style-td">Cognome</th>
+        <th class="style-td">Nome</th>
+        <th class="style-td">Cellulare</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <?php
-        $nSquadre = getSquadre(null, $_SESSION['ID'], $db_conn);
-        for ($i=0; $i < count($nSquadre); $i++){
+        $listaVigili = getVigiliBySquadra(null, $idSquadra, $db_conn);
+        for ($i=0; $i < count($listaVigili); $i++){
           $checkingExists = true;
-          $id = $nSquadre[$i][0];
-          $squadra = $nSquadre[$i][1];
+          $vigili = getFiremanData($listaVigili[$i], null, null, null, $db_conn);
+          $id = $vigili['ID'];
+          $nome = $vigili['Nome'];
+          $cognome = $vigili['Cognome'];
+          $cellulare = $vigili['Cellulare'];
+          $grado = getGrado($vigili['FK_Grado'], $db_conn);
           echo '<tr>
-              <td class="style-td">'.$squadra.'</td>
-              <td class="style-td"><a class="style-link" onclick="openSquadra('.$id.')">Mostra</a></td>
-              <td class="style-td"><a class="style-link" href="dashboard.php?redirect=squadre&edit='.$id.'">Modifica nome</a></td>
-              <td class="style-td"><a class="style-link" onclick="alertDeleteSquadra('.$id.')" style="color:red">Elimina</a></td>
+              <td class="style-td">'.$grado.'</td>
+              <td class="style-td">'.$cognome.'</td>
+              <td class="style-td">'.$nome.'</td>
+              <td class="style-td">'.$cellulare.'</td>
+              <td class="style-td"><a class="style-link" href="dashboard.php?redirect=certificazioni&id='.$id.'">Certificazioni</a></td>
+              <td class="style-td"><a class="style-link" onclick="" style="color:red">Rimuovi</a></td>
             </tr>';
         }
        ?>
@@ -78,7 +103,7 @@
 <div style="text-align:center">
   <?php
   if(!$checkingExists){
-    echo "<h5 class='style-text-darkblue'>Nessuna squadra</h5>";
+    echo "<h5 class='style-text-darkblue'>Nessun vigile</h5>";
   }
   if (isset($_GET['edit'])){
     $editID = text_filter($_GET['edit']);
