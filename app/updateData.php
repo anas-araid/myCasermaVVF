@@ -43,4 +43,18 @@
     }
     return true;
   }
+  function updateSquadra($ID, $nome, $idCorpo, $db_conn){
+    if (!is_numeric($ID)){
+      return;
+    }else{
+      $sql = "UPDATE t_numeroSquadre SET Numero='$nome'
+              WHERE ID='$ID'";
+      $updateFireman = mysqli_query($db_conn, $sql);
+      if ($updateFireman==null){
+        echo "Errore nell'aggiornamento della squadra: contattare l'amministratore";
+        return false;
+      }
+    }
+    return true;
+  }
 ?>
