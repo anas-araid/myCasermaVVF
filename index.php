@@ -84,7 +84,7 @@
         <section id="section-2">
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone">
-              <img src="img/server.png" class="style-bounce" style="width:90%"></img>
+              <img src="img/desktop.png" class="style-bounce" style="width:90%"></img>
             </div>
             <div class="mdl-cell mdl-cell--7-col" style="text-align:center" >
               <h3 class="style-text-red">Consulta e gestisci le attività in caserma in modo facile e <i>veloce.</i></h3>
