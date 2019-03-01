@@ -35,9 +35,9 @@
               <td class="style-td">'.$nome.'</td>
               <td class="style-td">'.$cellulare.'</td>
               <td class="style-td">'.$grado.'</td>
-              <td class="style-td"><a onclick="openCertificazioni('.$id.')" style="cursor:pointer;text-decoration:underline">Certificazioni</a></td>
-              <td class="style-td"><a href="dashboard.php?redirect=vigili&edit='.$id.'" style="cursor:pointer;text-decoration:underline">Modifica</a></td>
-              <td class="style-td"><a onclick="alertDeleteFireman('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
+              <td class="style-td"><a class="style-link" onclick="openCertificazioni('.$id.')">Certificazioni</a></td>
+              <td class="style-td"><a class="style-link" href="dashboard.php?redirect=vigili&edit='.$id.'">Modifica</a></td>
+              <td class="style-td"><a class="style-link" onclick="alertDeleteFireman('.$id.')" style="color:red;">Elimina</a></td>
             </tr>';
         }
        ?>

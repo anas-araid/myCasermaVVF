@@ -6,6 +6,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
   position: absolute;
   z-index: -1;
 }
+.style-link{
+  cursor:pointer!important;
+  text-decoration:underline!important;
+}
 .style-text-red{
   color:#e74c3c!important;
 }

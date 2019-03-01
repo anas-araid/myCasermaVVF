@@ -40,6 +40,9 @@
             case 'squadre':
               $_SESSION['_dashboardLayout'] = 'app/views/_squadre.php';
               break;
+            case 'turni':
+              $_SESSION['_dashboardLayout'] = 'app/views/_turni.php';
+              break;
             case 'corsi':
               $_SESSION['_dashboardLayout'] = 'app/views/_corsi.php';
               break;

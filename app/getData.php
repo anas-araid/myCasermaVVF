@@ -195,4 +195,38 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     }
     return $corso;
   }
+  function getSquadre($ID, $FK_CorpoVVF, $db_conn){
+    if ($ID == null){
+      $sql = "SELECT * FROM t_numeroSquadre";
+      $nSquadre = array();
+    }else{
+      $sql = "SELECT * FROM t_numeroSquadre WHERE (ID='$ID')";
+      $nSquadre = '';
+    }
+    if ($FK_CorpoVVF != null){
+      $sql = "SELECT * FROM t_numeroSquadre WHERE (FK_CorpoVVF='$FK_CorpoVVF')";
+      $nSquadre = array();
+    }
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getSquadre");
+    }
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($FK_CorpoVVF != null){
+        $nSquadre["$i"] = array($ris['ID'], $ris['Numero'], $ris['FK_CorpoVVF']);
+        $i++;
+      }
+      else if($ID == null){
+        $nSquadre["$i"] = array($ris['ID'], $ris['Numero'], $ris['FK_CorpoVVF']);
+        $i++;
+      }
+      else{
+        $nSquadre['ID'] = $ris['ID'];
+        $nSquadre['Numero'] = $ris['Numero'];
+        $nSquadre['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
+      }
+    }
+    return $nSquadre;
+  }
 ?>
