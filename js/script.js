@@ -102,3 +102,29 @@ function alertDeleteMezzo(id){
     }
   });
 }
+function alertDeleteSquadra(id){
+  swal(
+    {
+      title: "Vuoi continuare?",
+      text: "La squadra verrà eliminata",
+      icon: "error",
+      buttons: {
+        cancel: {
+          text: "Annulla",
+          visible: true,
+        },
+        button: {
+          text: "Continua",
+          visible: true,
+        }
+      }
+    }
+  ).then(Elimina => {
+    if (Elimina){
+      swal.close();
+      location.href='app/deleteData.php?data=squadra&id='+id;
+    }else{
+      swal.close();
+    }
+  });
+}

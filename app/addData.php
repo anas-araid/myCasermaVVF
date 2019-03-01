@@ -49,4 +49,17 @@
     }
     return true;
   }
+  function addSquadra($nome, $idCorpo, $db_conn){
+    $sql = "INSERT INTO t_numeroSquadre (Numero, FK_CorpoVVF)
+            VALUES ('$nome', '$idCorpo')";
+    try {
+      $addSquadra = mysqli_query($db_conn, $sql);
+      if (!$addSquadra){
+        return false;
+      }
+    } catch (Exception $e) {
+      return false;
+    }
+    return true;
+  }
 ?>

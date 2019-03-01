@@ -5,7 +5,6 @@
         <button class="style-button-red" onclick="newMezzo()">AGGIUNGI MEZZO</button>
       </div>
       <tr style="text-align:left">
-        <th class="style-td">ID</th>
         <th class="style-td">Mezzo</th>
         <th></th>
       </tr>
@@ -18,7 +17,6 @@
           $id = $mezzi[$i][0];
           $mezzo = $mezzi[$i][1];
           echo '<tr>
-              <td class="style-td">'.$id.'</td>
               <td class="style-td">'.$mezzo.'</td>
               <td class="style-td"><a onclick="alertDeleteMezzo('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
             </tr>';

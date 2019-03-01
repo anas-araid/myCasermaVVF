@@ -22,7 +22,7 @@ CREATE TABLE t_vigili (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
   Nome	 			     VARCHAR(50),
   Cognome			     VARCHAR(50),
-  Matricola		     VARCHAR(5)	UNIQUE NOT NULL,
+  Matricola		     VARCHAR(5),
   Cellulare		     VARCHAR(20)	UNIQUE,
   Chat_ID 		     VARCHAR(20)	UNIQUE,
   FK_Grado 			   BIGINT,

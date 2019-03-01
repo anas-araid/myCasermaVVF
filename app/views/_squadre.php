@@ -25,7 +25,7 @@
           $id = $nSquadre[$i][0];
           $squadra = $nSquadre[$i][1];
           echo '<tr>
-              <td class="style-td">Squadra '.$squadra.'</td>
+              <td class="style-td">'.$squadra.'</td>
               <td class="style-td"><a class="style-link" onclick="openSquadra('.$id.')">Mostra</a></td>
               <td class="style-td"><a class="style-link" href="dashboard.php?redirect=squadre&edit='.$id.'">Modifica nome</a></td>
               <td class="style-td"><a class="style-link" onclick="alertDeleteSquadra('.$id.')" style="color:red">Elimina</a></td>
@@ -78,7 +78,7 @@
 <div style="text-align:center">
   <?php
   if(!$checkingExists){
-    echo "<h5 class='style-text-darkblue'>Nessun vigile</h5>";
+    echo "<h5 class='style-text-darkblue'>Nessuna squadra</h5>";
   }
   if (isset($_GET['edit'])){
     $editID = text_filter($_GET['edit']);
@@ -88,3 +88,40 @@
   }
   ?>
 </div>
+
+<script>
+  // #################### NUOVA SQUADRA #######################################
+  var newSquad = '';
+  function newSquadra(){
+    this.newSquad =
+    '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
+    '<h3>Nuova squadra</h3>'+
+    '<br>'+
+    '<form method="post" action="app/controllers/newSquadra.php" enctype="multipart/form-data">' +
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Nome</p>'+
+    '<input class="mdl-textfield__input" type="text" id="nome" name="nome" style="outline:none" required="">'+
+    '</div><br>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newSquadModal.close()>ANNULLA</button>';
+    newSquadModal.open();
+  }
+  var newSquadModal = new tingle.modal({
+        closeMethods: ['overlay', 'button', 'escape'],
+        closeLabel: "Chiudi",
+        cssClass: ['custom-class-1', 'custom-class-2'],
+        onOpen: function() {
+            newSquadModal.setContent(
+              newSquad
+            );
+        },
+        onClose: function() {
+            location.href="dashboard.php?redirect=squadre";
+            console.log('modal closed');
+        },
+        beforeClose: function() {
+            return true; // close the modal
+            return false; // nothing happens
+        }
+    });
+</script>
