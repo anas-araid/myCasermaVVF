@@ -16,6 +16,8 @@
           deleteFireman($id, $db_conn);
         case 'mezzo':
           deleteMezzo($id, $db_conn);
+        case 'squadra':
+          deleteSquadra($id, $db_conn);
         default:
           break;
       }
@@ -49,6 +51,14 @@
       die("Errore nella cancellazione del mezzo: contattare l'amministratore");
     }
     redirect('../dashboard.php?redirect=mezzi');
+  }
+  function deleteSquadra($id, $db_conn){
+    $sql = "DELETE FROM t_numeroSquadre WHERE ID='$id'";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("Errore nella cancellazione della squadra: contattare l'amministratore");
+    }
+    redirect('../dashboard.php?redirect=squadre');
   }
 
  ?>
