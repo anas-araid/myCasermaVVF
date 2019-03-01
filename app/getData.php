@@ -31,6 +31,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
+        $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
         return $fireman;
       }
       if ($phone != null){
@@ -41,10 +42,11 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
+        $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
         return $fireman;
       }
       if($ID == null){
-        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado']);
+        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado'], $ris['FK_CorpoVVF']);
         $i++;
       }else{
         $fireman['ID'] = $ris['ID'];
@@ -54,6 +56,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
+        $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
       }
     }
     return $fireman;

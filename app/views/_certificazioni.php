@@ -7,6 +7,8 @@
           $fireman = getFiremanData($idFireman, null, null, null, $db_conn);
           if (empty($fireman)){
             redirect('?redirect=vigili');
+          }else if ($fireman['FK_CorpoVVF'] != $_SESSION['ID']){
+            redirect('?redirect=vigili');
           }
         }else{
           redirect('?redirect=vigili');
