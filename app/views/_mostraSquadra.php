@@ -26,6 +26,7 @@
     <thead>
       <div style="text-align:center">
         <button class="style-button-red"  onclick="addFirefighters()">AGGIUNGI VIGILI</button>
+        <button class="style-button-white"  onclick="location.href='?redirect=squadre'">INDIETRO</button>
       </div>
       <tr style="text-align:left">
         <th class="style-td">Grado</th>

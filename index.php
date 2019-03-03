@@ -14,11 +14,14 @@
         include "app/dbConnection.php";
         include "app/functions.php";
         include "app/getData.php";
+        $logged = false;
         if ($_SESSION['ID'] != null){
           $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
           // se l'id non esiste allora fa il logout
           if ($caserma['ID'] == null){
             header('location:app/logout.php');
+          }else {
+            $logged = true;
           }
         }
       }catch(Exception $e){
@@ -34,7 +37,7 @@
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
             <?php
-              if (isset($_SESSION['ID'])){
+              if ($logged){
                 echo '<a class="mdl-navigation__link style-text-red" href="login.php">Entra</a>';
               }else{
                 echo '<a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>';
@@ -50,7 +53,7 @@
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link style-text-red" href="#home">Home</a>
           <?php
-            if (isset($_SESSION['ID'])){
+            if ($logged){
               echo '<a class="mdl-navigation__link style-text-red" href="login.php">Entra</a>';
             }else{
               echo '<a class="mdl-navigation__link style-text-red" href="login.php">Accedi</a>';
@@ -69,7 +72,13 @@
               <br><br><br><br>
               <h2 class="style-text-red">La tua <b>caserma</b> a portata di mano...</h2>
               <br><br>
-              <button class="style-button-red" onclick="location.href='login.php'">INIZIA SUBITO!</button>
+              <?php
+                if($logged){
+                  echo '<button class="style-button-red" onclick="location.href='."'login.php'".'">ENTRA</button>';
+                }else {
+                  echo '<button class="style-button-red" onclick="location.href='.'"login.php"'.'">INIZIA SUBITO!</button>';
+                }
+               ?>
               <button class="style-button-white" onclick="location.href='#scopri'">SCOPRI DI PIÙ</button>
             </div>
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
