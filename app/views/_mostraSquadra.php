@@ -53,7 +53,7 @@
               <td class="style-td">'.$cognome.'</td>
               <td class="style-td">'.$nome.'</td>
               <td class="style-td">'.$cellulare.'</td>
-              <td class="style-td"><a class="style-link" href="dashboard.php?redirect=certificazioni&id='.$id.'">Certificazioni</a></td>
+              <td class="style-td"><a class="style-link" href="dashboard.php?redirect=certificazioni&id='.$id.'&ref='."squadra".'">Certificazioni</a></td>
               <td class="style-td"><a class="style-link" onclick="" style="color:red">Rimuovi</a></td>
             </tr>';
         }

@@ -16,7 +16,20 @@
        ?>
       <h3>Tutti i corsi di <?php echo $fireman['Nome'].' '.$fireman['Cognome'] ?></h3>
       <button class="style-button-red" onclick="newCertificato(<?php echo $fireman['ID'] ?>)">AGGIUNGI CERTIFICATO</button>
-      <button class="style-button-white" onclick="location.href='?redirect=vigili'">INDIETRO</button>
+      <?php
+        if (isset($_GET['ref'])){
+          $ref = $_GET['ref'];
+          if ($ref == 'squadra'){
+            echo '<button class="style-button-white" onclick="location.href='."'?redirect=squadre'".'">INDIETRO</button>';
+          }else{
+            echo '<button class="style-button-white" onclick="location.href='."'?redirect=vigili'".'">INDIETRO</button>';
+          }
+        }else{
+
+        }
+
+       ?>
+
     </div>
     <tr style="text-align:left">
       <th class="style-td">ID</th>

@@ -1,7 +1,7 @@
 <div style="overflow:auto">
   <script>
     function openCertificazioni(id){
-      location.href ="?redirect=certificazioni&id=" + id;
+      location.href ="?redirect=certificazioni&ref=vigili&id=" + id;
     }
 
   </script>
