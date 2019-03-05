@@ -51,7 +51,8 @@
     '<input class="mdl-textfield__input" type="text" id="nome" name="nome" value="'+nomeSquadra+'" style="outline:none" required="">'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
-    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editSquadModal.close()>ANNULLA</button>';
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editSquadModal.close()>ANNULLA</button>'+
+    '</form>';
     editSquadModal.open();
   }
   var editSquadModal = new tingle.modal({
@@ -103,7 +104,8 @@
     '<input class="mdl-textfield__input" type="text" id="nome" name="nome" style="outline:none" required="">'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
-    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newSquadModal.close()>ANNULLA</button>';
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newSquadModal.close()>ANNULLA</button>'+
+    '</form>';
     newSquadModal.open();
   }
   var newSquadModal = new tingle.modal({

@@ -91,7 +91,8 @@
     '</select>'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
-    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editFiremanModal.close()>ANNULLA</button>';
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editFiremanModal.close()>ANNULLA</button>'+
+    '</form>';
     editFiremanModal.open();
   }
   var editFiremanModal = new tingle.modal({
@@ -172,7 +173,8 @@
     '</select>'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
-    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newFiremanModal.close()>ANNULLA</button>';
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newFiremanModal.close()>ANNULLA</button>'+
+    '</form>';
     newFiremanModal.open();
   }
   var newFiremanModal = new tingle.modal({

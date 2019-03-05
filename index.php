@@ -76,7 +76,7 @@
                 if($logged){
                   echo '<button class="style-button-red" onclick="location.href='."'login.php'".'">ENTRA</button>';
                 }else {
-                  echo '<button class="style-button-red" onclick="location.href='.'"login.php"'.'">INIZIA SUBITO!</button>';
+                  echo '<button class="style-button-red" onclick="location.href='."'login.php'".'">INIZIA SUBITO!</button>';
                 }
                ?>
               <button class="style-button-white" onclick="location.href='#scopri'">SCOPRI DI PIÙ</button>
