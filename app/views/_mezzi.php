@@ -1,9 +1,9 @@
+<div style="text-align:center">
+  <button class="style-button-red" onclick="newMezzo()">AGGIUNGI MEZZO</button>
+</div>
 <div style="overflow:auto">
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
-      <div style="text-align:center">
-        <button class="style-button-red" onclick="newMezzo()">AGGIUNGI MEZZO</button>
-      </div>
       <tr style="text-align:left">
         <th class="style-td">Mezzo</th>
         <th></th>

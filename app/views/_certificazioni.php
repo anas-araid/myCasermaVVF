@@ -1,36 +1,36 @@
+<div style="text-align:center">
+  <?php
+    if (isset($_GET['id'])){
+      $idFireman = text_filter($_GET['id']);
+      $fireman = getFiremanData($idFireman, null, null, null, $db_conn);
+      if (empty($fireman)){
+        redirect('?redirect=vigili');
+      }else if ($fireman['FK_CorpoVVF'] != $_SESSION['ID']){
+        redirect('?redirect=vigili');
+      }
+    }else{
+      redirect('?redirect=vigili');
+    }
+   ?>
+  <h3>Tutti i corsi di <?php echo $fireman['Nome'].' '.$fireman['Cognome'] ?></h3>
+  <button class="style-button-red" onclick="newCertificato(<?php echo $fireman['ID'] ?>)">AGGIUNGI CERTIFICATO</button>
+  <?php
+    if (isset($_GET['ref'])){
+      $ref = $_GET['ref'];
+      if ($ref == 'squadra'){
+        echo '<button class="style-button-white" onclick="location.href='."'?redirect=squadre'".'">INDIETRO</button>';
+      }else{
+        echo '<button class="style-button-white" onclick="location.href='."'?redirect=vigili'".'">INDIETRO</button>';
+      }
+    }else{
+
+    }
+
+   ?>
+
+</div>
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
   <thead>
-    <div style="text-align:center">
-      <?php
-        if (isset($_GET['id'])){
-          $idFireman = text_filter($_GET['id']);
-          $fireman = getFiremanData($idFireman, null, null, null, $db_conn);
-          if (empty($fireman)){
-            redirect('?redirect=vigili');
-          }else if ($fireman['FK_CorpoVVF'] != $_SESSION['ID']){
-            redirect('?redirect=vigili');
-          }
-        }else{
-          redirect('?redirect=vigili');
-        }
-       ?>
-      <h3>Tutti i corsi di <?php echo $fireman['Nome'].' '.$fireman['Cognome'] ?></h3>
-      <button class="style-button-red" onclick="newCertificato(<?php echo $fireman['ID'] ?>)">AGGIUNGI CERTIFICATO</button>
-      <?php
-        if (isset($_GET['ref'])){
-          $ref = $_GET['ref'];
-          if ($ref == 'squadra'){
-            echo '<button class="style-button-white" onclick="location.href='."'?redirect=squadre'".'">INDIETRO</button>';
-          }else{
-            echo '<button class="style-button-white" onclick="location.href='."'?redirect=vigili'".'">INDIETRO</button>';
-          }
-        }else{
-
-        }
-
-       ?>
-
-    </div>
     <tr style="text-align:left">
       <th class="style-td">ID</th>
       <th class="style-td">Corso</th>

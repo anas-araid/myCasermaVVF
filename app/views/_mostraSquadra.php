@@ -1,3 +1,8 @@
+<div style="text-align:center">
+  <button class="style-button-red"  onclick="addFirefighters()">AGGIUNGI VIGILI</button>
+  <button class="style-button-red"  onclick="location.href='?redirect=turni'">MOSTRA TURNI</button>
+  <button class="style-button-white"  onclick="location.href='?redirect=squadre'">INDIETRO</button>
+</div>
 <div style="overflow:auto">
   <script>
     function openSquadra(id){
@@ -24,10 +29,6 @@
    ?>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
-      <div style="text-align:center">
-        <button class="style-button-red"  onclick="addFirefighters()">AGGIUNGI VIGILI</button>
-        <button class="style-button-white"  onclick="location.href='?redirect=squadre'">INDIETRO</button>
-      </div>
       <tr style="text-align:left">
         <th class="style-td">Grado</th>
         <th class="style-td">Cognome</th>

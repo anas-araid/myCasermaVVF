@@ -1,3 +1,6 @@
+<div style="text-align:center">
+  <button class="style-button-red"  onclick="newFireman()">AGGIUNGI VIGILE</button>
+</div>
 <div style="overflow:auto">
   <script>
     function openCertificazioni(id){
@@ -7,9 +10,6 @@
   </script>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
-      <div style="text-align:center">
-        <button class="style-button-red"  onclick="newFireman()">AGGIUNGI VIGILE</button>
-      </div>
       <tr style="text-align:left">
         <th class="style-td">Cognome</th>
         <th class="style-td">Nome</th>
