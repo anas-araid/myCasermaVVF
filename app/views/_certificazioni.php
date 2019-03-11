@@ -17,13 +17,24 @@
   <?php
     if (isset($_GET['ref'])){
       $ref = $_GET['ref'];
-      if ($ref == 'squadra'){
-        echo '<button class="style-button-white" onclick="location.href='."'?redirect=squadre'".'">INDIETRO</button>';
+      if ($ref == 'mostraSquadra'){
+        if (isset($_GET['refID'])){
+          $idSquadra=$_GET['refID'];
+          $squadraByID = getSquadre($idSquadra, null, $db_conn);
+          if (empty($idSquadra)){
+            redirect('?redirect=squadre');
+          }else if (empty($squadraByID)){
+            redirect('?redirect=squadre');
+          }else if($squadraByID['FK_CorpoVVF'] != $_SESSION['ID']){
+            redirect('?redirect=squadre');
+          }
+          echo '<button class="style-button-white" onclick="location.href='."'?redirect=mostraSquadra&id=$idSquadra'".'">INDIETRO</button>';
+        }else{
+          echo '<button class="style-button-white" onclick="location.href='."'?redirect=squadre'".'">INDIETRO</button>';
+        }
       }else{
         echo '<button class="style-button-white" onclick="location.href='."'?redirect=vigili'".'">INDIETRO</button>';
       }
-    }else{
-
     }
 
    ?>
@@ -48,7 +59,7 @@
         $id = $corsi[$i][0];
         $corso = $corsi[$i][1];
         $file = $corsi[$i][2];
-        $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega
+        $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega restituisce la dimensione del file
         $show='';
         if ($file == ''){
           $show = '<td class="style-td"></td>';
@@ -92,7 +103,8 @@
     '<p>* dimensione massima 20mb</p>'+
     '<br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value="'+id+'">SALVA</button>'+
-    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newCertificatoModal.close()>ANNULLA</button>';
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newCertificatoModal.close()>ANNULLA</button>'+
+    '</form>';
 
     newCertificatoModal.open();
   }
