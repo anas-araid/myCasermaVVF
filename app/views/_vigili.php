@@ -1,4 +1,5 @@
 <div style="text-align:center">
+  <h2 class="mdl-color-text--grey-800">Vigili</h2>
   <button class="style-button-red"  onclick="newFireman()">AGGIUNGI VIGILE</button>
 </div>
 <div style="overflow:auto">

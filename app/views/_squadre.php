@@ -1,3 +1,7 @@
+<div style="text-align:center">
+  <h2 class="mdl-color-text--grey-800">Squadre</h2>
+  <button class="style-button-red"  onclick="newSquadra()">AGGIUNGI SQUADRA</button>
+</div>
 <div style="overflow:auto">
   <script>
     function openSquadra(id){
@@ -7,9 +11,6 @@
   </script>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
-      <div style="text-align:center">
-        <button class="style-button-red"  onclick="newSquadra()">AGGIUNGI SQUADRA</button>
-      </div>
       <tr style="text-align:left">
         <th class="style-td">Squadra</th>
         <th></th>

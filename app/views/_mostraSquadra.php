@@ -1,4 +1,21 @@
+<?php
+  if (isset($_GET['id'])){
+    $idSquadra = text_filter($_GET['id']);
+    $squadraByID = getSquadre($idSquadra, null, $db_conn);
+    if (empty($idSquadra)){
+      redirect('?redirect=squadre');
+    }else if (empty($squadraByID)){
+      redirect('?redirect=squadre');
+    }else if($squadraByID['FK_CorpoVVF'] != $_SESSION['ID']){
+      redirect('?redirect=squadre');
+    }
+  }
+  else{
+    redirect('?redirect=squadre');
+  }
+ ?>
 <div style="text-align:center">
+  <h2 class="mdl-color-text--grey-800">Squadra <?php echo $squadraByID['Numero'] ?></h2>
   <button class="style-button-red"  onclick="addFirefighters()">AGGIUNGI VIGILI</button>
   <button class="style-button-red"  onclick="location.href='?redirect=turni'">MOSTRA TURNI</button>
   <button class="style-button-white"  onclick="location.href='?redirect=squadre'">INDIETRO</button>
@@ -9,24 +26,6 @@
       location.href ="?redirect=mostraSquadra&id=" + id;
     }
   </script>
-  <?php
-    if (isset($_GET['id'])){
-      $idSquadra = text_filter($_GET['id']);
-      $squadraByID = getSquadre($idSquadra, null, $db_conn);
-      if (empty($idSquadra)){
-        redirect('?redirect=squadre');
-      }else if (empty($squadraByID)){
-        redirect('?redirect=squadre');
-      }else if($squadraByID['FK_CorpoVVF'] != $_SESSION['ID']){
-        redirect('?redirect=squadre');
-      }
-    }
-    else{
-      redirect('?redirect=squadre');
-    }
-
-
-   ?>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
       <tr style="text-align:left">
