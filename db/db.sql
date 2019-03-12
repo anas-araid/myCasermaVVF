@@ -25,6 +25,7 @@ CREATE TABLE t_vigili (
   Matricola		     VARCHAR(5),
   Cellulare		     VARCHAR(20)	UNIQUE,
   Chat_ID 		     VARCHAR(20)	UNIQUE,
+  Reperibile       BOOLEAN,
   FK_Grado 			   BIGINT,
   FK_CorpoVVF		   BIGINT,
   PRIMARY KEY(ID),

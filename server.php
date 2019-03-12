@@ -20,7 +20,7 @@
 
   //logger($messageObj);
   $text = $messageObj['text'];
-  
+
   if ($text == '/start'){
     $firemanData = getFiremanData(null, null, null, $chatID, $db_conn);
     if (!empty($firemanData)){
@@ -38,9 +38,9 @@
     $firemanData = getFiremanData(null, $phoneNumber, null, null, $db_conn);
     if($firemanData['ID'] != null){
       sendMsg($botToken,$chatID, "Autenticazione completata");
-      updateChatID($firemanData['ID'], $chatID, $db_conn);      
+      updateChatID($firemanData['ID'], $chatID, $db_conn);
       $vigile = getGrado($firemanData['FK_Grado'], $db_conn).": ".$firemanData['Nome']." ".$firemanData['Cognome']."\n";
-      $menu =  '["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
+      $menu =  '["Sono reperibile"], ["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
       sendMsg($botToken,$chatID, $vigile, $menu);
     }else{
       $btn = array('text' => "Riprova", 'request_contact'=>true);
@@ -51,7 +51,7 @@
   }
 
   $firemanData = getFiremanData(null, null, $chatID, $db_conn);
-  
+
   if (!empty($firemanData)){
     switch ($text) {
       case 'Mostra squadra':
@@ -65,26 +65,26 @@
         break;
       case 'Corsi':
         tempFunction($botToken, $chatID);
-        break; 
+        break;
       case 'Webcam':
         tempFunction($botToken, $chatID);
-        break; 
+        break;
       case 'I miei dati':
         $grado = getGrado($firemanData['FK_Grado'], $db_conn);
         $dati = "Nome: ".$firemanData['Nome']."\nCognome: ".$firemanData['Cognome']."\nMatricola: ".$firemanData['Matricola']."\nGrado: ".$grado;
-        sendMsg($botToken,$chatID, $dati, null);      
+        sendMsg($botToken,$chatID, $dati, null);
         menu($botToken, $chatID);
-        break;      
+        break;
       default:
         exit;
         break;
     }
   }
 
-    
-  
-  
-  
+
+
+
+
 
   //$buttonsCaserme = '["Btn 1" , "Btn 2"],["Test"],["Inviami"]';
   /*$buttonCaserme = getCaserma(null, null, $db_conn);
