@@ -1,6 +1,6 @@
 <?php
 
-function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
+function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn, $reperibile){
     $fireman = array();
     if ($ID == null){
       $sql = "SELECT * FROM t_vigili";
@@ -12,6 +12,9 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
     }
     if ($chatId != null){
       $sql = "SELECT * FROM t_vigili WHERE (Chat_ID='$chatId')";
+    }
+    if ($reperibile != null){
+      $sql = "SELECT * FROM t_vigili WHERE (Reperibile='$reperibile')";
     }
     if ($idCaserma != null){
       $sql = "SELECT * FROM t_vigili WHERE (FK_CorpoVVF='$idCaserma')";
@@ -30,6 +33,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $fireman['Matricola'] = $ris['Matricola'];
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
+        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
         return $fireman;
@@ -41,12 +45,13 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $fireman['Matricola'] = $ris['Matricola'];
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
+        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
         return $fireman;
       }
       if($ID == null){
-        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado'], $ris['FK_CorpoVVF']);
+        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['Reperibile'], $ris['FK_Grado'], $ris['FK_CorpoVVF']);
         $i++;
       }else{
         $fireman['ID'] = $ris['ID'];
@@ -55,6 +60,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn){
         $fireman['Matricola'] = $ris['Matricola'];
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
+        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
       }
