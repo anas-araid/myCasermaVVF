@@ -1,6 +1,6 @@
 <?php
 
-function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $db_conn){
+function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista, $db_conn){
     $fireman = array();
     if ($ID == null){
       $sql = "SELECT * FROM t_vigili";
@@ -15,6 +15,9 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $db_conn)
     }
     if ($reperibile != null){
       $sql = "SELECT * FROM t_vigili WHERE (Reperibile='$reperibile')";
+    }
+    if ($autista != null){
+      $sql = "SELECT * FROM t_vigili WHERE (Autista='$autista')";
     }
     if ($idCaserma != null){
       $sql = "SELECT * FROM t_vigili WHERE (FK_CorpoVVF='$idCaserma')";
@@ -33,9 +36,9 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $db_conn)
         $fireman['Matricola'] = $ris['Matricola'];
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
-        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
+        $fireman['Autista'] = $ris['Autista'];
         return $fireman;
       }
       if ($phone != null){
@@ -45,13 +48,14 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $db_conn)
         $fireman['Matricola'] = $ris['Matricola'];
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
-        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
+        $fireman['Reperibile'] = $ris['Reperibile'];
+        $fireman['Autista'] = $ris['Autista'];
         return $fireman;
       }
       if($ID == null){
-        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado'], $ris['FK_CorpoVVF'], $ris['Reperibile']);
+        $fireman["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado'], $ris['FK_CorpoVVF'], $ris['Reperibile'], $ris['Autista']);
         $i++;
       }else{
         $fireman['ID'] = $ris['ID'];
@@ -60,9 +64,10 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $db_conn)
         $fireman['Matricola'] = $ris['Matricola'];
         $fireman['Cellulare'] = $ris['Cellulare'];
         $fireman['Chat_ID'] = $ris['Chat_ID'];
-        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
+        $fireman['Reperibile'] = $ris['Reperibile'];
+        $fireman['Autista'] = $ris['Autista'];
       }
     }
     return $fireman;

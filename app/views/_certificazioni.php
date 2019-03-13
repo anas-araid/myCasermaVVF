@@ -2,7 +2,7 @@
   <?php
     if (isset($_GET['id'])){
       $idFireman = text_filter($_GET['id']);
-      $fireman = getFiremanData($idFireman, null, null, null, null, $db_conn);
+      $fireman = getFiremanData($idFireman, null, null, null, null, null, $db_conn);
       if (empty($fireman)){
         redirect('?redirect=vigili');
       }else if ($fireman['FK_CorpoVVF'] != $_SESSION['ID']){
