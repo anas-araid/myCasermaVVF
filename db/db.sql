@@ -28,6 +28,7 @@ CREATE TABLE t_vigili (
   Reperibile       BOOLEAN,
   FK_Grado 			   BIGINT,
   FK_CorpoVVF		   BIGINT,
+  Autista          BOOLEAN,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_Grado)    REFERENCES t_gradi(ID)
     ON DELETE NO ACTION
