@@ -33,6 +33,7 @@
         <th class="style-td">Cognome</th>
         <th class="style-td">Nome</th>
         <th class="style-td">Cellulare</th>
+        <th class="style-td">Autista</th>
         <th></th>
         <th></th>
       </tr>
@@ -48,11 +49,14 @@
           $cognome = $vigili['Cognome'];
           $cellulare = $vigili['Cellulare'];
           $grado = getGrado($vigili['FK_Grado'], $db_conn);
+          $autista = $vigili['Autista'];
+          $autista = ($autista == 0) ? 'No' : "Si";
           echo '<tr>
               <td class="style-td">'.$grado.'</td>
               <td class="style-td">'.$cognome.'</td>
               <td class="style-td">'.$nome.'</td>
               <td class="style-td">'.$cellulare.'</td>
+              <td class="style-td">'.$autista.'</td>
               <td class="style-td"><a class="style-link" href="dashboard.php?redirect=certificazioni&id='.$id.'&ref='."mostraSquadra".'&refID='.$idSquadra.'">Certificazioni</a></td>
               <td class="style-td"><a class="style-link" onclick="" style="color:red">Rimuovi</a></td>
             </tr>';
@@ -80,11 +84,20 @@
   // #################### AGGIUNTA DEI VIGILI AL MODAL #######################################
   var newVigile = '';
   <?php
-  $allFireFighters = getFiremanData(null,null, null, $_SESSION['ID'], null, null, $db_conn)[0];
+  // id, nome, cognome, matricola, cellulare, chatID, Grado, corpo, reperibile, autista
+  $allFireFighters = getFiremanData(null,null, null, $_SESSION['ID'], null, null, $db_conn);
+  $allID = array();
+  foreach ($allFireFighters as $vigile) {
+    array_push($allID, $vigile[0]);
+  }
   $squadFirefighters = getVigiliBySquadra(null, $idSquadra, $db_conn);
-  $allFireFighters = array_diff($allFireFighters, $squadFirefighters);
-  $allFireFighters = json_encode($allFireFighters);
-  echo "console.log($allFireFighters)";
+  //$squadFirefighters = json_encode($squadFirefighters);
+
+  $allFireFighters = array_diff($allID, $squadFirefighters);
+  //print_r($allFireFighters)
+  //$allFireFighters = json_encode($allFireFighters);
+  //echo "console.log($allFireFighters)\n";
+
   ?>
   function addFirefighters(){
     this.newVigile =
