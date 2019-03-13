@@ -23,7 +23,7 @@
     </thead>
     <tbody>
       <?php
-        $vigili = getFiremanData(null, null, null, $_SESSION['ID'], $db_conn);
+        $vigili = getFiremanData(null, null, null, $_SESSION['ID'], null, $db_conn);
         for ($i=0; $i < count($vigili); $i++){
           $checkingExists = true;
           $id = $vigili[$i][0];
@@ -124,7 +124,7 @@
   }
   if (isset($_GET['edit'])){
     $editID = text_filter($_GET['edit']);
-    $editFireman = getFiremanData($editID, null, null, null, $db_conn);
+    $editFireman = getFiremanData($editID, null, null, null, null, $db_conn);
     $data = json_encode($editFireman);
     echo "<script>editFireman($data)</script>";
   }

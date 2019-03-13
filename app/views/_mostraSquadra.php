@@ -42,7 +42,7 @@
         $listaVigili = getVigiliBySquadra(null, $idSquadra, $db_conn);
         for ($i=0; $i < count($listaVigili); $i++){
           $checkingExists = true;
-          $vigili = getFiremanData($listaVigili[$i], null, null, null, $db_conn);
+          $vigili = getFiremanData($listaVigili[$i], null, null, null, null, $db_conn);
           $id = $vigili['ID'];
           $nome = $vigili['Nome'];
           $cognome = $vigili['Cognome'];
@@ -80,7 +80,7 @@
   // #################### AGGIUNTA DEI VIGILI AL MODAL #######################################
   var newVigile = '';
   <?php
-  $allFireFighters = getFiremanData(null,null, null, $_SESSION['ID'], $db_conn)[0];
+  $allFireFighters = getFiremanData(null,null, null, $_SESSION['ID'], null, $db_conn)[0];
   $squadFirefighters = getVigiliBySquadra(null, $idSquadra, $db_conn);
   $allFireFighters = array_diff($allFireFighters, $squadFirefighters);
   $allFireFighters = json_encode($allFireFighters);

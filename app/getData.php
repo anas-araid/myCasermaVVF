@@ -1,6 +1,6 @@
 <?php
 
-function getFiremanData($ID, $phone, $chatId, $idCaserma, $db_conn, $reperibile){
+function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $db_conn){
     $fireman = array();
     if ($ID == null){
       $sql = "SELECT * FROM t_vigili";
