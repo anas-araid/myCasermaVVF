@@ -92,7 +92,6 @@
   }
   $squadFirefighters = getVigiliBySquadra(null, $idSquadra, $db_conn);
   //$squadFirefighters = json_encode($squadFirefighters);
-
   $allFireFighters = array_diff($allID, $squadFirefighters);
   //print_r($allFireFighters)
   //$allFireFighters = json_encode($allFireFighters);
@@ -105,7 +104,32 @@
     '<h3>Aggiungi vigili</h3>'+
     '<br>'+
     '<form method="post" action="app/controllers/addVigiliToSquadra.php" enctype="multipart/form-data">' +
-    ''+
+    '<div class="mdl-grid" style="width:90%">'+
+    <?php
+      $rows = count($allFireFighters) / 2;
+      if(!is_int($rows)){
+        $rows = (int)$rows + 1;
+      }
+      $index = 0;
+      for ($i=0; $i < $rows;$i++){
+        for($j=0;$j < 2; $j++){
+          if ($index < count($allFireFighters)){
+            // id, nome, cognome, matricola, cellulare, chatID, Grado, corpo, reperibile, autista
+            $allFiremen = getFiremanData(null,null, null, $_SESSION['ID'], null, null, $db_conn);
+            echo '
+            '."'".'<div class="mdl-cell mdl-cell--middle mdl-cell--6-col" style="text-align:left">'."'+".'
+              '."'".'<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="idVigile_'.$allFiremen[$index][0].'">'."'+".'
+                '."'".'<input type="checkbox" id="idVigile_'.$allFiremen[$index][0].'" class="mdl-checkbox__input" name="vigile_'.$allFiremen[$index][0].'" value="'.''.'">'."'+".'
+                '."'".'<span class="mdl-checkbox__label">'.$allFiremen[$index][1].' '.$allFiremen[$index][2].'</span>'."'+".'
+              '."'".'</label>'."'+".'
+            '."'".'</div>'."'+";
+            $index++;
+          }
+        }
+        echo "'<br>'+";
+      }
+     ?>
+     '</div>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
     '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newFirefighterModal.close()>ANNULLA</button>'+
     '</form>';
