@@ -29,11 +29,11 @@
     }
     return false;
   }
-  function updateFireman($ID, $nome, $cognome, $matricola, $cellulare, $idGrado, $idCorpo, $db_conn){
+  function updateFireman($ID, $nome, $cognome, $matricola, $cellulare, $idGrado, $idCorpo, $autista, $reperibile, $db_conn){
     if (!is_numeric($ID)){
       return;
     }else{
-      $sql = "UPDATE t_vigili SET Nome='$nome', Cognome='$cognome', Matricola='$matricola', Cellulare='$cellulare', FK_Grado='$idGrado'
+      $sql = "UPDATE t_vigili SET Nome='$nome', Cognome='$cognome', Matricola='$matricola', Cellulare='$cellulare', FK_Grado='$idGrado', Autista='$autista', Reperibile='$reperibile'
               WHERE ID='$ID'";
       $updateFireman = mysqli_query($db_conn, $sql);
       if ($updateFireman==null){

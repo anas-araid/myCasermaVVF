@@ -95,6 +95,13 @@
      ?>
     '</select>'+
     '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Autista</p>'+
+    '<select class="mdl-textfield__input" id="autista" name="autista" required="" style="outline:none">'+
+      '<option value="1">SI</option>' +
+      '<option value="0" selected>NO</option>' +
+    '</select>'+
+    '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
     '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editFiremanModal.close()>ANNULLA</button>'+
     '</form>';
@@ -175,6 +182,13 @@
         $selected = '';
       }
      ?>
+    '</select>'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Autista</p>'+
+    '<select class="mdl-textfield__input" id="autista" name="autista" required="" style="outline:none">'+
+      '<option value="1">SI</option>' +
+      '<option value="0" selected>NO</option>' +
     '</select>'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
