@@ -60,6 +60,7 @@
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <!-- Inserisco nel select tutte le caserme dal db -->
                 <select class="mdl-textfield__input" id="caserma" name="caserma" required="" style="outline:none">
+                  <option value="empty">---</option>
                   <?php
                     // variabile $error_message situata in dbConnection.php
                     if ($error_message) {
@@ -72,7 +73,7 @@
                     }
                     // $caserme contiene un array con le info degli operatori
                     $caserme = getCaserma(null, null, $db_conn);
-                    print_r($caserme);
+                    //print_r($caserme);
                     for ($i=0; $i < count($caserme); $i++){
                       echo "<option value='".$caserme[$i][0]."'>".$caserme[$i][1]."</option>";
                     }
@@ -105,6 +106,13 @@
   if(isset($_POST['password'])){
     // text_filter dell'input
     $id = text_filter($_POST["caserma"]);
+    if ($id == 'empty'){
+      echo "
+      <script>
+      flatAlert('Seleziona la tua caserma', '', 'error', 'login.php');
+      </script>";
+      return;
+    }
     // md5 della password
     $password = text_filter_encrypt($_POST["password"]);
     // controlla la password
