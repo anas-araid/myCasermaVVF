@@ -128,3 +128,30 @@ function alertDeleteSquadra(id){
     }
   });
 }
+
+function alertRemoveFiremanFromSquad(idVigile, idSquadra){
+  swal(
+    {
+      title: "Vuoi continuare?",
+      text: "Il vigile sara' rimosso dalla squadra",
+      icon: "error",
+      buttons: {
+        cancel: {
+          text: "Annulla",
+          visible: true,
+        },
+        button: {
+          text: "Continua",
+          visible: true,
+        }
+      }
+    }
+  ).then(Elimina => {
+    if (Elimina){
+      swal.close();
+      location.href='app/deleteData.php?data=vigileFromSquadra&idVigile='+idVigile + '&idSquadra='+ idSquadra;
+    }else{
+      swal.close();
+    }
+  });
+}

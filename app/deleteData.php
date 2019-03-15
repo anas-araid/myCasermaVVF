@@ -14,14 +14,40 @@
           break;
         case 'vigile':
           deleteFireman($id, $db_conn);
+          break;
         case 'mezzo':
           deleteMezzo($id, $db_conn);
+          break;
         case 'squadra':
           deleteSquadra($id, $db_conn);
+          break;
         default:
           break;
       }
     }
+  }
+  else if (isset($_GET['idVigile']) && isset($_GET['idSquadra'])){
+    $idVigile = text_filter($_GET['idVigile']);
+    $idSquadra = text_filter($_GET['idSquadra']);
+    if (isset($_GET['data'])){
+      $data = text_filter($_GET['data']);
+      switch ($data) {
+        case 'vigileFromSquadra':
+          removeVigileFromSquadra($idVigile, $idSquadra, $db_conn);
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  function removeVigileFromSquadra($idVigile, $idSquadra, $db_conn){
+    $sql = "DELETE FROM t_squadre WHERE FK_NumeroSquadra='$idSquadra' AND FK_Vigile='$idVigile' ";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("error");
+    }
+    redirect('../dashboard.php?redirect=mostraSquadra&id='.$idSquadra);
   }
 
   function deleteCertificato($id, $db_conn){

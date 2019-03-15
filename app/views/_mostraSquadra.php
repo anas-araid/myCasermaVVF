@@ -58,7 +58,7 @@
               <td class="style-td">'.$cellulare.'</td>
               <td class="style-td">'.$autista.'</td>
               <td class="style-td"><a class="style-link" href="dashboard.php?redirect=certificazioni&id='.$id.'&ref='."mostraSquadra".'&refID='.$idSquadra.'">Certificazioni</a></td>
-              <td class="style-td"><a class="style-link" onclick="" style="color:red">Rimuovi</a></td>
+              <td class="style-td"><a class="style-link" onclick="alertRemoveFiremanFromSquad('.$id.', '.$idSquadra.')" style="color:red">Rimuovi</a></td>
             </tr>';
         }
        ?>
