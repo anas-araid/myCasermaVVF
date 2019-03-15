@@ -29,7 +29,7 @@
           }else{
             echo "
             <script>
-              flatAlert('Errore nell\'aggiunta della squadrasquadre', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=squadre');
+              flatAlert('Errore nell\'aggiunta della squadre', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=squadre');
             </script>";
             return;
           }

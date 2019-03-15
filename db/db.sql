@@ -61,13 +61,15 @@ CREATE TABLE t_certificazioni (
 
 CREATE TABLE t_numeroSquadre (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
-  Numero           VARCHAR(50) UNIQUE,
+  Numero           VARCHAR(50),
   FK_CorpoVVF      BIGINT,
   PRIMARY KEY(ID),
   FOREIGN KEY(FK_CorpoVVF)    REFERENCES t_caserme(ID)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX squadraUnica ON t_numeroSquadre (Numero, FK_CorpoVVF);
 
 CREATE TABLE t_squadre (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
