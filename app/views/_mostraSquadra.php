@@ -86,17 +86,17 @@
   <?php
   // id, nome, cognome, matricola, cellulare, chatID, Grado, corpo, reperibile, autista
   $allFireFighters = getFiremanData(null,null, null, $_SESSION['ID'], null, null, $db_conn);
+  // inserisco gli id di tutti i vigili all'interno di $allID
   $allID = array();
   foreach ($allFireFighters as $vigile) {
     array_push($allID, $vigile[0]);
   }
+  // restituisce un array con gli id dei vigili della squadra con id $idSquadra
   $squadFirefighters = getVigiliBySquadra(null, $idSquadra, $db_conn);
-  //$squadFirefighters = json_encode($squadFirefighters);
+  // elimino dall'array $allFireFighters i vigili già inseriti nella squadra quindi nell'array $squadFirefighters
   $allFireFighters = array_diff($allID, $squadFirefighters);
-  //print_r($allFireFighters);
-  //$allFireFighters = json_encode($allFireFighters);
-  //echo "console.log($allFireFighters)\n";
-
+  // riordino l'index (1, 2, 3 ecc.) dell'array $allFireFighters
+  $allFireFighters = array_values($allFireFighters);
   ?>
   function addFirefighters(){
     this.newVigile =
@@ -117,22 +117,19 @@
             // $fireman --> id, nome, cognome, matricola, cellulare, chatID, Grado, corpo, reperibile, autista
             // getFiremanData --> id, phone, chatID, idCaserma, reperibile, autista
             $fireman = getFiremanData($allFireFighters[$index] ,null, null, null, null, null, $db_conn);
-            //print_r($fireman);
-            //$asdf = json_encode($allFireFighters);
-            //echo "console.log($asdf)";
             echo '
             '."'".'<div class="mdl-cell mdl-cell--middle mdl-cell--6-col" style="text-align:left">'."'+".'
-              '."'".'<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="idVigile_'.$fireman['Nome'].'">'."'+".'
-                '."'".'<input type="checkbox" id="idVigile_'.$fireman['ID'].'" class="mdl-checkbox__input" name="vigile_'.$fireman["ID"].'" value="'.''.'">'."'+".'
+              '."'".'<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="idVigile_'.$fireman['ID'].'">'."'+".'
+                '."'".'<input type="checkbox" id="idVigile_'.$fireman['ID'].'" class="mdl-checkbox__input" name="vigile_'.$fireman["ID"].'" value="'.$fireman['ID'].'">'."'+".'
                 '."'".'<span class="mdl-checkbox__label">'.$fireman["Nome"].' '.$fireman["Cognome"].'</span>'."'+".'
               '."'".'</label>'."'+".'
-              '."'".'</div>'."'";
+              '."'".'</div>'."'+";
           }else{
-            echo "+'<br>'+";
+            echo "'<br>'+";
           }
           $index++;
         }
-        echo "+'<br>'+";
+        echo "'<br>'+";
       }
      ?>
      '</div>'+
