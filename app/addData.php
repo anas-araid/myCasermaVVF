@@ -62,4 +62,17 @@
     }
     return true;
   }
+  function addVigiliToSquadra($idVigile, $idSquadra, $db_conn){
+    $sql = "INSERT INTO t_squadre (FK_NumeroSquadra, FK_Vigile)
+            VALUES ('$idSquadra', '$idVigile')";
+    try {
+      $addToSquadra = mysqli_query($db_conn, $sql);
+      if (!$addToSquadra){
+        return false;
+      }
+    } catch (Exception $e) {
+      return false;
+    }
+    return true;
+  }
 ?>

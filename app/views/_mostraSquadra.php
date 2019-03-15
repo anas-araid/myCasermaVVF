@@ -103,7 +103,7 @@
     '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
     '<h3>Aggiungi vigili</h3>'+
     '<br>'+
-    '<form method="post" action="app/controllers/" enctype="multipart/form-data">' +
+    '<form method="post" action="app/controllers/addFirefightersToSquad.php" enctype="multipart/form-data">' +
     '<div class="mdl-grid" style="width:90%">'+
     <?php
       $rows = count($allFireFighters) / 2;
@@ -131,9 +131,9 @@
         }
         echo "'<br>'+";
       }
+      echo "'</div>'+";
      ?>
-     '</div>'+
-    '<button class="style-button-red" name="salva" id="salva" type="submit">SALVA</button>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit" value="'+ <?php echo $idSquadra;?> +'">SALVA</button>'+
     '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newFirefighterModal.close()>ANNULLA</button>'+
     '</form>';
     newFirefighterModal.open();
