@@ -50,7 +50,8 @@
             }else{
               $lastID = 1;
             }
-            $filename = $firemanID.'_'.$lastID.'.pdf';
+            $idCorpo = $_SESSION['ID'];
+            $filename = $idCorpo.'_'.$firemanID.'_'.$lastID.'.pdf';
             $dir = "../../uploads/".$filename ;
             if (!move_uploaded_file($documento["tmp_name"], $dir)){
               echo "
