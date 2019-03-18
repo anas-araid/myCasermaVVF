@@ -40,43 +40,45 @@
    ?>
 
 </div>
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
-  <thead>
-    <tr style="text-align:left">
-      <th class="style-td">ID</th>
-      <th class="style-td">Corso</th>
-      <th class="style-td">Dimensioni file</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-      $checkingExists = false;
-      $corsi = getCorsi(null, $fireman['ID'], $db_conn);
-      for ($i=0; $i < count($corsi); $i++){
-        $checkingExists = true;
-        $id = $corsi[$i][0];
-        $corso = $corsi[$i][1];
-        $file = $corsi[$i][2];
-        $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega restituisce la dimensione del file
-        $show='';
-        if ($file == ''){
-          $show = '<td class="style-td"></td>';
-        }else{
-          $show = '<td class="style-td"><a onclick="window.open('."'uploads/".$file."'".')" style="cursor:pointer;text-decoration:underline">Mostra</a></td>';
+<div style="overflow:auto">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px;overflow:auto">
+    <thead>
+      <tr style="text-align:left">
+        <th class="style-td">ID</th>
+        <th class="style-td">Corso</th>
+        <th class="style-td">Dimensioni file</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        $checkingExists = false;
+        $corsi = getCorsi(null, $fireman['ID'], $db_conn);
+        for ($i=0; $i < count($corsi); $i++){
+          $checkingExists = true;
+          $id = $corsi[$i][0];
+          $corso = $corsi[$i][1];
+          $file = $corsi[$i][2];
+          $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega restituisce la dimensione del file
+          $show='';
+          if ($file == ''){
+            $show = '<td class="style-td"></td>';
+          }else{
+            $show = '<td class="style-td"><a onclick="window.open('."'uploads/".$file."'".')" style="cursor:pointer;text-decoration:underline">Mostra</a></td>';
+          }
+          echo '<tr>
+              <td class="style-td">'.$id.'</td>
+              <td class="style-td">'.$corso.'</td>
+              <td class="style-td">'.$filename.'</td>
+              '.$show.'
+              <td class="style-td"><a onclick="alertDeleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
+            </tr>';
         }
-        echo '<tr>
-            <td class="style-td">'.$id.'</td>
-            <td class="style-td">'.$corso.'</td>
-            <td class="style-td">'.$filename.'</td>
-            '.$show.'
-            <td class="style-td"><a onclick="alertDeleteCertificato('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
-          </tr>';
-      }
-      ?>
-  </tbody>
-</table>
+        ?>
+    </tbody>
+  </table>
+</div>
 <div style="text-align:center">
   <?php
   if(!$checkingExists){
