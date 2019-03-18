@@ -6,7 +6,7 @@ Management fire station webapp and Telegram Bot to be notified of firefighters' 
 * Manage firefighters
 * Certifications 
 * Fire vehicle
-* Configure Squads and shifts
+* Configure squads and shifts
 * Courses
 * Communications
 * Fire calendars
@@ -41,7 +41,8 @@ These instructions will get you a copy of the project to running on your local m
 
 #### Configuring
 * Navigate to "Configura"
-* Insert 
+* Set firestation name, email, phone number and password
+* Through side menu, all firestation resources could be configured 
 
 ```
 In your browser, navigate to localhost/myCaserma and have fun...
