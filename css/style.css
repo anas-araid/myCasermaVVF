@@ -195,3 +195,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
   background: #e74c3c;
   pointer-events: none;
 }
+.tingle-modal-box {
+  border-radius: 20px!important;
+  text-align: center!important;
+}
