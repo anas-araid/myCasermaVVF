@@ -17,7 +17,7 @@
 <div style="text-align:center">
   <h2 class="mdl-color-text--grey-800">Squadra <?php echo $squadraByID['Numero'] ?></h2>
   <button class="style-button-red"  onclick="addFirefighters()">AGGIUNGI VIGILI</button>
-  <button class="style-button-red"  onclick="location.href='?redirect=turni'">MOSTRA TURNI</button>
+  <button class="style-button-red"  onclick="location.href='?redirect=turni&id=<?php echo $idSquadra?>'">MOSTRA TURNI</button>
   <button class="style-button-white"  onclick="location.href='?redirect=squadre'">INDIETRO</button>
 </div>
 <div style="overflow:auto">

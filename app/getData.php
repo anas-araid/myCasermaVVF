@@ -271,4 +271,34 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $squadra;
   }
+  function getTurni($ID, $idSquadra, $db_conn){
+    if ($ID == null){
+      $sql = "SELECT * FROM t_turnifestivi";
+      $turni = array();
+    }else{
+      $sql = "SELECT * FROM t_turnifestivi WHERE (ID='$ID')";
+      $turni = '';
+    }
+    if ($idSquadra != null){
+      $sql = "SELECT * FROM t_turnifestivi WHERE (FK_NumeroSquadra='$idSquadra')";
+      $turni = array();
+    }
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getTurni");
+    }
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($idSquadra != null){
+        $turni["$i"] = array($ris['ID'], $ris['dataTurno'], $ris['FK_NumeroSquadra'], $ris['FK_Checklist']);
+        $i++;
+      }else if($ID == null){
+        $turni["$i"] = array($ris['ID'], $ris['dataTurno'], $ris['FK_NumeroSquadra'], $ris['FK_Checklist']);
+        $i++;
+      }else{
+        $turni = array($ris['ID'], $ris['dataTurno'], $ris['FK_NumeroSquadra'], $ris['FK_Checklist']);
+      }
+    }
+    return $turni;
+  }
 ?>
