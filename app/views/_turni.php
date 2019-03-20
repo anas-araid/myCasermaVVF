@@ -16,7 +16,7 @@
 ?>
 <div style="text-align:center">
   <h2 class="mdl-color-text--grey-800">Turni</h2>
-  <button class="style-button-red" onclick="">AGGIUNGI TURNO</button>
+  <button class="style-button-red" onclick="newTurno(<?php echo $idSquadra ?>)">AGGIUNGI TURNO</button>
   <button class="style-button-white"  onclick="location.href='?redirect=mostraSquadra&id=<?php echo $idSquadra?>'">INDIETRO</button>
 </div>
 <div style="overflow:auto">
@@ -54,4 +54,58 @@
   }
   ?>
 </div>
+
+
+<script>
+  var newShift = '';
+  function newTurno(id){
+    this.newShift =
+    '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
+    '<h3>Nuovo turno</h3>'+
+    '<br>'+
+    '<form method="post" action="app/controllers/.php" enctype="multipart/form-data">' +
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-800">Data</p>'+
+    '<input class="mdl-textfield__input" type="date" id="date" name="date" style="outline:none" required="">'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<select class="mdl-textfield__input" id="grado" name="grado" required="" style="outline:none">'+
+    <?php
+      $mezzi = getMezzi(null, $_SESSION['ID'], $db_conn);
+      $selected = '';
+      for ($i=0;$i<count($mezzi);$i++){
+        if ($i == 0){
+          $selected = 'selected';
+        }
+        echo "'".'<option value="'.$mezzi[$i][0].'" '.$selected.'>'.$mezzi[$i][1]."</option>'+";
+        $selected = '';
+      }
+     ?>
+    '</select>'+
+    '</div><br>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit" value="'+id+'">SALVA</button>'+
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=newTurnoModal.close()>ANNULLA</button>'+
+    '</form>';
+
+    newTurnoModal.open();
+  }
+  var newTurnoModal = new tingle.modal({
+        closeMethods: ['overlay', 'button', 'escape'],
+        closeLabel: "Chiudi",
+        cssClass: ['custom-class-1', 'custom-class-2'],
+        onOpen: function() {
+            newTurnoModal.setContent(
+                newShift
+            );
+        },
+        onClose: function() {
+            console.log('modal closed');
+        },
+        beforeClose: function() {
+            return true; // close the modal
+            return false; // nothing happens
+        }
+    });
+</script>
+
 
