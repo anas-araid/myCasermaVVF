@@ -28,9 +28,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
 .style-bg-darkblue{
   background-color: #2E4154!important;
 }
-.style-nav-dashboard{
-
-}
 .style-nav-dashboard:hover{
   color:#2E4154!important;
 }
@@ -154,6 +151,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
   60% {
     transform: translateY(-15px);
   }
+}
+
+.mdl-menu__outline{
+  border-radius:20px!important;
 }
 
 .pace {

@@ -73,11 +73,19 @@
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title style-text-red" style="font-weight:100">my</span><span class="mdl-layout-title style-text-red" style="font-weight:500">Caserma</span><span class="mdl-layout-title style-text-red" style="font-weight:600">VVF</span>
           <div class="mdl-layout-spacer"></div>
-          <nav class="mdl-navigation mdl-cell--hide-phone">
-            <a class="mdl-navigation__link style-text-red" href="index.php#home">Home</a>
-            <a class="mdl-navigation__link style-text-red" href="">Aiuto</a>
-            <a class="mdl-navigation__link style-text-red" href="app/logout.php">Esci</a>
-          </nav>
+          <button id="nav-menu"
+                  class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons style-text-red">settings</i>
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+              for="nav-menu"
+              style="border-radius:20px">
+            <li class="mdl-menu__item" onclick="location.href='index.php#home'">Home</li>
+            <li disabled class="mdl-menu__item">Impostazioni</li>
+            <li disabled class="mdl-menu__item" onclick="location.href=''">Aiuto</li>
+            <li class="mdl-menu__item" onclick="location.href='app/logout.php'">Esci</li>
+          </ul>
+        
         </div>
       </header>
       <div class="mdl-layout__drawer style-bg-darkblue" style="border:none">
