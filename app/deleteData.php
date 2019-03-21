@@ -21,6 +21,9 @@
         case 'squadra':
           deleteSquadra($id, $db_conn);
           break;
+        case 'turno':
+          deleteTurno($id, $db_conn);
+          break;
         default:
           break;
       }
@@ -86,5 +89,12 @@
     }
     redirect('../dashboard.php?redirect=squadre');
   }
-
+  function deleteTurno($id, $db_conn){
+    $sql = "DELETE FROM t_turnifestivi WHERE ID='$id'";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("Errore nella cancellazione del turno: contattare l'amministratore");
+    }
+    redirect('../dashboard.php?redirect=squadre');
+  }
  ?>

@@ -128,7 +128,32 @@ function alertDeleteSquadra(id){
     }
   });
 }
-
+function alertDeleteTurno(id){
+  swal(
+    {
+      title: "Vuoi continuare?",
+      text: "Il turno verrà eliminata",
+      icon: "error",
+      buttons: {
+        cancel: {
+          text: "Annulla",
+          visible: true,
+        },
+        button: {
+          text: "Continua",
+          visible: true,
+        }
+      }
+    }
+  ).then(Elimina => {
+    if (Elimina){
+      swal.close();
+      location.href='app/deleteData.php?data=turno&id='+id;
+    }else{
+      swal.close();
+    }
+  });
+}
 function alertRemoveFiremanFromSquad(idVigile, idSquadra){
   swal(
     {

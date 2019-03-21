@@ -40,7 +40,7 @@
           echo '<tr>
               <td class="style-td">'.date('d-m-Y', strtotime($data)).'</td>
               <td class="style-td">'.$mezzo.'</td>
-              <td class="style-td"><a onclick="alertDeleteMezzo('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
+              <td class="style-td"><a onclick="alertDeleteTurno('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
             </tr>';
         }
        ?>
