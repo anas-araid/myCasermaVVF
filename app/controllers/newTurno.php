@@ -25,13 +25,13 @@
           if ($addTurno){
             echo "
             <script>
-              flatAlert('', 'Turni aggiunti con successo', 'success', '../../dashboard.php?redirect=mostraSquadra&id='".$idSquadra.");
+              flatAlert('', 'Turni aggiunti con successo', 'success', '../../dashboard.php?redirect=turni&id=".$idSquadra."');
             </script>";
             return;
           }else{
             echo "
             <script>
-              flatAlert('Errore nell\'aggiunta della squadre', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=mostraSquadra&id='".$idSquadra.");
+              flatAlert('Errore nell\'aggiunta del turno', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=turni&id=".$idSquadra."');
             </script>";
             return;
           }
