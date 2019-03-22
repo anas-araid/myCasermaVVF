@@ -59,6 +59,7 @@
   if (!empty($firemanData)){
     switch ($text) {
       case 'Mostra squadra':
+        $dati = printMostraSquadra($firemanData, $db_conn);
         tempFunction($botToken, $chatID);
         break;
       case 'Mostra turni':
@@ -74,9 +75,7 @@
         tempFunction($botToken, $chatID);
         break;
       case 'I miei dati':
-        $grado = getGrado($firemanData['FK_Grado'], $db_conn);
-        $autista = ($firemanData['Autista'] == 0) ? "No" : "Si" ;
-        $dati = "Nome: ".$firemanData['Nome']."\nCognome: ".$firemanData['Cognome']."\nMatricola: ".$firemanData['Matricola']."\nGrado: ".$grado."\nAutista: ".$autista;
+        $dati = printMyData($firemanData, $db_conn);
         sendMsg($botToken,$chatID, $dati, null);
         menu($botToken, $chatID);
         break;

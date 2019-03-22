@@ -209,6 +209,40 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $corso;
   }
+  function getSquadraByVigili($ID, $FK_Vigile, $db_conn){
+    if ($ID == null){
+      $sql = "SELECT * FROM t_squadre";
+      $squadra = array();
+    }else{
+      $sql = "SELECT * FROM t_squadre WHERE (ID='$ID')";
+      $squadra = '';
+    }
+    if ($FK_Vigile != null){
+      $sql = "SELECT * FROM t_squadre WHERE (FK_Vigile='$FK_Vigile')";
+      $squadra = array();
+    }
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getSquadraByVigili");
+    }
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($FK_Vigile != null){
+        $squadra["$i"] = array($ris['ID'], $ris['FK_NumeroSquadra'], $ris['FK_Vigile']);
+        $i++;
+      }
+      else if($ID == null){
+        $squadra["$i"] = array($ris['ID'], $ris['FK_NumeroSquadra'], $ris['FK_Vigile']);
+        $i++;
+      }
+      else{
+        $squadra['ID'] = $ris['ID'];
+        $squadra['Corso'] = $ris['FK_NumeroSquadra'];
+        $squadra['FK_Vigile'] = $ris['FK_Vigile'];
+      }
+    }
+    return $squadra;
+  }
   function getSquadre($ID, $FK_CorpoVVF, $db_conn){
     if ($ID == null){
       $sql = "SELECT * FROM t_numeroSquadre";
