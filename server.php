@@ -27,7 +27,11 @@
     $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
     if (!empty($firemanData)){
       $firemanID = $firemanData['ID'];
-      updateChatID($firemanID, null, $db_conn);
+      $update = updateChatID($firemanID, null, $db_conn);
+      if(!$update){
+       sendMsg($botToken,$chatID, "Errore account gia esistente");
+       return;
+      }
     }
     sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", il servizio è ancora in fase di test, per qualsiasi problema contatta @asdf1899");
     $btn = array('text' => "Autenticazione", 'request_contact'=>true);
@@ -60,6 +64,9 @@
     switch ($text) {
       case 'Mostra squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
+        if (!$dati){
+          $dati = 'Vigile associato a nessuna squadra'."\n \n"."Contatta il responsabile per aggiungerti ad una squadra tramite il gestionale myCasermaVVF";
+        }
         sendMsg($botToken,$chatID, $dati, null);
         menu($botToken, $chatID);
         //tempFunction($botToken, $chatID);
