@@ -1,9 +1,11 @@
 <?php
+  // include libs 
   include 'bot/_layout.php';
   include 'app/dbConnection.php';
   include 'app/getData.php';
   include 'app/updateData.php';
   include 'bot/controller.php';
+  // connections
   $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
@@ -34,7 +36,9 @@
   }
   if ($messageObj['contact'] != null){
     $phoneNumber = $messageObj['contact']['phone_number'];
+    // remove +39
     $phoneNumber = substr($phoneNumber, 2);
+    // extract fireman data from mobile number
     $firemanData = getFiremanData(null, $phoneNumber, null, null, null, null, null, $db_conn);
     if($firemanData['ID'] != null){
       sendMsg($botToken,$chatID, "Autenticazione completata");
@@ -71,7 +75,8 @@
         break;
       case 'I miei dati':
         $grado = getGrado($firemanData['FK_Grado'], $db_conn);
-        $dati = "Nome: ".$firemanData['Nome']."\nCognome: ".$firemanData['Cognome']."\nMatricola: ".$firemanData['Matricola']."\nGrado: ".$grado;
+        $autista = ($firemanData['Autista'] == 0) ? "No" : "Si" ;
+        $dati = "Nome: ".$firemanData['Nome']."\nCognome: ".$firemanData['Cognome']."\nMatricola: ".$firemanData['Matricola']."\nGrado: ".$grado."\nAutista: ".$autista;
         sendMsg($botToken,$chatID, $dati, null);
         menu($botToken, $chatID);
         break;
