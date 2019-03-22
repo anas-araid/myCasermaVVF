@@ -156,6 +156,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
 .mdl-menu__outline{
   border-radius:20px!important;
 }
+/* PACE JS */
 
 .pace {
   -webkit-pointer-events: none;
@@ -196,7 +197,17 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
   background: #e74c3c;
   pointer-events: none;
 }
+/* TINGLE */
 .tingle-modal-box {
   border-radius: 20px!important;
   text-align: center!important;
+}
+.tingle-modal__close{
+  outline: none!important;
+}
+@media (max-width : 540px) {
+  .tingle-modal-box {
+    margin: 20px!important;
+  }
+
 }
