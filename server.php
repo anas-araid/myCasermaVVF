@@ -24,7 +24,7 @@
   $text = $messageObj['text'];
 
   if ($text == '/start'){
-    $firemanData = getFiremanData(null, null, null, $chatID, null, null, null, $db_conn);
+    $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
     if (!empty($firemanData)){
       $firemanID = $firemanData['ID'];
       updateChatID($firemanID, null, $db_conn);
@@ -39,7 +39,7 @@
     // remove +39
     $phoneNumber = substr($phoneNumber, 2);
     // extract fireman data from mobile number
-    $firemanData = getFiremanData(null, $phoneNumber, null, null, null, null, null, $db_conn);
+    $firemanData = getFiremanData(null, $phoneNumber, null, null, null, null, $db_conn);
     if($firemanData['ID'] != null){
       sendMsg($botToken,$chatID, "Autenticazione completata");
       updateChatID($firemanData['ID'], $chatID, $db_conn);
@@ -60,7 +60,9 @@
     switch ($text) {
       case 'Mostra squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
-        tempFunction($botToken, $chatID);
+        sendMsg($botToken,$chatID, $dati, null);
+        menu($botToken, $chatID);
+        //tempFunction($botToken, $chatID);
         break;
       case 'Mostra turni':
         tempFunction($botToken, $chatID);

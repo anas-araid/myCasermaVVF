@@ -43,15 +43,15 @@
   }
   function printMostraSquadra($firemanData, $db_conn){
     $idSquadra = getSquadraByVigili(null, $firemanData['ID'], $db_conn);
-    $squadra = getSquadre($idSquadra, null, $db_conn);
-    $listaIdVigili = getVigiliBySquadra(null, $idSquadra, $db_conn);
-    $listaVigili = array();
+    $squadra = getSquadre($idSquadra[1], null, $db_conn);
+    $listaIdVigili = getVigiliBySquadra(null, $squadra['ID'], $db_conn);
+    $dati = 'Squadra: '.$squadra['Numero']."\n";
     for ($i=0;$i<count($listaIdVigili);$i++){
-      $vigile = getFiremanData($listaIdVigili, null, null, null, null, null, $db_conn);
-      $autista = ($vigile['Autista'] == 0) ? "No" : "Si" ;
+      $vigile = getFiremanData($listaIdVigili[$i], null, null, null, null, null, $db_conn);
+      $autista = ($vigile['Autista'] == 1) ? "autista" : "" ;
       $grado = getGrado($vigile['FK_Grado'], $db_conn);
-      $listaVigili[$i] = $vigile['Nome'].' '.$vigile['Cognome'].' '.$grado.' Autista: '.$autista;
+      $dati .= $grado.' '.$autista.': '.$vigile['Nome'].' '.$vigile['Cognome'].' '."\n";
     }
-    return;
+    return $dati;
   }
 ?>

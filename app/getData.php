@@ -225,15 +225,12 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     if ($risultato == false){
       die("error getSquadraByVigili");
     }
-    $i=0;
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
       if ($FK_Vigile != null){
-        $squadra["$i"] = array($ris['ID'], $ris['FK_NumeroSquadra'], $ris['FK_Vigile']);
-        $i++;
+        $squadra = array($ris['ID'], $ris['FK_NumeroSquadra'], $ris['FK_Vigile']);
       }
       else if($ID == null){
-        $squadra["$i"] = array($ris['ID'], $ris['FK_NumeroSquadra'], $ris['FK_Vigile']);
-        $i++;
+        $squadra = array($ris['ID'], $ris['FK_NumeroSquadra'], $ris['FK_Vigile']);
       }
       else{
         $squadra['ID'] = $ris['ID'];
