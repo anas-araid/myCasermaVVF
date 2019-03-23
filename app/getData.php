@@ -38,6 +38,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
         $fireman['Chat_ID'] = $ris['Chat_ID'];
         $fireman['FK_Grado'] = $ris['FK_Grado'];
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
+        $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['Autista'] = $ris['Autista'];
         return $fireman;
       }
@@ -68,6 +69,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
         $fireman['FK_CorpoVVF'] = $ris['FK_CorpoVVF'];
         $fireman['Reperibile'] = $ris['Reperibile'];
         $fireman['Autista'] = $ris['Autista'];
+        return $fireman;
       }
     }
     return $fireman;

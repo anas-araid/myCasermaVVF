@@ -143,14 +143,14 @@
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">date_range</i>
-                    La distribuzione dei calendari
+                    <i class="material-icons mdl-list__item-icon">group</i>
+                    I vigili reperibili
                   </span>
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">videocam</i>
-                    E visualizzare le webcam del territorio
+                    <i class="material-icons mdl-list__item-icon">date_range</i>
+                    La distribuzione dei calendari
                   </span>
                 </li>
               </ul>

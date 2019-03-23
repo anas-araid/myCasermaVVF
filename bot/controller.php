@@ -28,11 +28,11 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID){
-    $menu =  '["Sono reperibile"], ["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
+    $menu =  '["Sono reperibile"], ["Mostra squadra"], ["Mostra turni"], ["Mostra reperibili"], ["Corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
   }
   function menu ($botToken, $chatID){
-    $menu =  '["Sono reperibile"], ["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
+    $menu =  '["Sono reperibile"], ["Mostra squadra"], ["Mostra turni"], ["Mostra reperibili"], ["Corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
     sendMsg($botToken, $chatID, 'Menu:', $menu);
   }
   function printMyData($firemanData, $db_conn){
@@ -46,7 +46,7 @@
     if (!empty($idSquadra)){
       $squadra = getSquadre($idSquadra[1], null, $db_conn);
       $listaIdVigili = getVigiliBySquadra(null, $squadra['ID'], $db_conn);
-      $dati = 'Squadra: '.$squadra['Numero']."\n";
+      $dati = 'Squadra: '.$squadra['Numero']."\n\n";
       for ($i=0;$i<count($listaIdVigili);$i++){
         $vigile = getFiremanData($listaIdVigili[$i], null, null, null, null, null, $db_conn);
         $autista = ($vigile['Autista'] == 1) ? "autista" : "" ;

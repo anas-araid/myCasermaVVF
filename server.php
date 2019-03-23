@@ -28,10 +28,10 @@
     if (!empty($firemanData)){
       $firemanID = $firemanData['ID'];
       $update = updateChatID($firemanID, null, $db_conn);
-      if(!$update){
+      /*if(!$update){
        sendMsg($botToken,$chatID, "Errore account gia esistente");
        return;
-      }
+      }*/
     }
     sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", il servizio è ancora in fase di test, per qualsiasi problema contatta @asdf1899");
     $btn = array('text' => "Autenticazione", 'request_contact'=>true);
@@ -47,9 +47,9 @@
     if($firemanData['ID'] != null){
       sendMsg($botToken,$chatID, "Autenticazione completata");
       updateChatID($firemanData['ID'], $chatID, $db_conn);
-      $vigile = getGrado($firemanData['FK_Grado'], $db_conn).": ".$firemanData['Nome']." ".$firemanData['Cognome']."\n";
-      $menu =  '["Sono reperibile"], ["Mostra squadra"], ["Mostra turni"], ["Calendari"], ["Corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
-      sendMsg($botToken,$chatID, $vigile, $menu);
+      $dati = printMyData($firemanData, $db_conn);
+      sendMsg($botToken,$chatID, $dati, null);
+      menu($botToken, $chatID);
     }else{
       $btn = array('text' => "Riprova", 'request_contact'=>true);
       $btn = "[".json_encode($btn)."]";
