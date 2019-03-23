@@ -334,4 +334,18 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $turni;
   }
+  function getReperibili($FK_CorpoVVF, $reperibile, $db_conn){
+    $sql = "SELECT ID FROM t_vigili WHERE (Reperibile='$reperibile') AND (FK_CorpoVVF='$FK_CorpoVVF')";
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getReperibili");
+    }
+    $i=0;
+    $reperibili = array();
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      $reperibili[$i] = array($ris['ID']);
+      $i++;
+    }
+    return $reperibili;
+  }
 ?>

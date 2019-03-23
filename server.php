@@ -59,7 +59,7 @@
   }
 
   $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
-
+  $FK_CorpoVVF = $firemanData['FK_CorpoVVF'];
   if (!empty($firemanData)){
     switch ($text) {
       case "Sono reperibile":
@@ -67,6 +67,14 @@
         break;
       case "Non sono più reperibile":
         tempFunction($botToken, $chatID, $firemanData);
+        break;
+      case "Mostra reperibili":
+        $dati = printReperibili($FK_CorpoVVF, $db_conn);
+        if (!$dati){
+          $dati = 'Nessun vigile disponibile';
+        }
+        sendMsg($botToken,$chatID, $dati, null);
+        menu($botToken, $chatID, $firemanData);
         break;
       case 'Mostra squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);

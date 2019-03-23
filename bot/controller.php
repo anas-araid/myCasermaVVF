@@ -74,4 +74,19 @@
     }
     return $dati;
   }
+  function printReperibili($FK_CorpoVVF, $db_conn){
+    $reperibili = getReperibili($FK_CorpoVVF, true, $db_conn);
+    if (!empty($reperibili)){
+      $dati = "Vigili disponibili: \n\n";
+      for ($i=0;$i<count($reperibili);$i++){
+        $fireman = getFiremanData($reperibili[$i][0], null, null, null, null, null, $db_conn);
+        $autista = ($fireman['Autista'] == 1) ? "autista" : "" ;
+        $grado = getGrado($fireman['FK_Grado'], $db_conn);
+        $dati .= $grado.' '.$autista.': '.$fireman['Nome'].' '.$fireman['Cognome'].' '."\n";
+      }
+    }else{
+      $dati = false;
+    }
+    return $dati;
+  }
 ?>
