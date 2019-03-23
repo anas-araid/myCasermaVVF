@@ -49,7 +49,7 @@
       updateChatID($firemanData['ID'], $chatID, $db_conn);
       $dati = printMyData($firemanData, $db_conn);
       sendMsg($botToken,$chatID, $dati, null);
-      menu($botToken, $chatID);
+      menu($botToken, $chatID, $firemanData);
     }else{
       $btn = array('text' => "Riprova", 'request_contact'=>true);
       $btn = "[".json_encode($btn)."]";
@@ -62,31 +62,37 @@
 
   if (!empty($firemanData)){
     switch ($text) {
+      case "Sono reperibile":
+        tempFunction($botToken, $chatID, $firemanData);
+        break;
+      case "Non sono più reperibile":
+        tempFunction($botToken, $chatID, $firemanData);
+        break;
       case 'Mostra squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
         if (!$dati){
           $dati = 'Vigile associato a nessuna squadra'."\n \n"."Contatta il responsabile per aggiungerti ad una squadra tramite il gestionale myCasermaVVF";
         }
         sendMsg($botToken,$chatID, $dati, null);
-        menu($botToken, $chatID);
+        menu($botToken, $chatID, $firemanData);
         //tempFunction($botToken, $chatID);
         break;
       case 'Mostra turni':
-        tempFunction($botToken, $chatID);
+        tempFunction($botToken, $chatID, $firemanData);
         break;
       case 'Calendari':
-        tempFunction($botToken, $chatID);
+        tempFunction($botToken, $chatID, $firemanData);
         break;
-      case 'Corsi':
-        tempFunction($botToken, $chatID);
+      case 'I miei corsi':
+        tempFunction($botToken, $chatID, $firemanData);
         break;
       case 'Webcam':
-        tempFunction($botToken, $chatID);
+        tempFunction($botToken, $chatID, $firemanData);
         break;
       case 'I miei dati':
         $dati = printMyData($firemanData, $db_conn);
         sendMsg($botToken,$chatID, $dati, null);
-        menu($botToken, $chatID);
+        menu($botToken, $chatID, $firemanData);
         break;
       default:
         exit;
