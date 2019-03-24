@@ -57,4 +57,18 @@
     }
     return true;
   }
+  function updateReperibilita($ID, $reperibile, $db_conn){
+    if (!is_numeric($ID)){
+      return;
+    }else{
+      $sql = "UPDATE t_vigili SET Reperibile='$reperibile'
+              WHERE ID='$ID'";
+      $updateFireman = mysqli_query($db_conn, $sql);
+      if ($updateFireman==null){
+        echo "Errore nell'aggiornamento della reperibilità (updateReperibilita() in updateData.php): contattare l'amministratore";
+        return false;
+      }
+    }
+    return true;
+  }
 ?>

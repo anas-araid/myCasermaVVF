@@ -6,7 +6,7 @@
     }else {
       $keyboard = '&reply_markup={"remove_keyboard":true}';
     }
-    $TelegramUrlSendMessage = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard;
+    $TelegramUrlSendMessage = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard."&parse_mode=html";
     return file_get_contents($TelegramUrlSendMessage);
   }
   function logger($MessageObj){
@@ -77,16 +77,24 @@
   function printReperibili($FK_CorpoVVF, $db_conn){
     $reperibili = getReperibili($FK_CorpoVVF, true, $db_conn);
     if (!empty($reperibili)){
-      $dati = "Vigili disponibili: \n\n";
+      $dati = "<b>VIGILI DISPONIBILI:</b> \n";
       for ($i=0;$i<count($reperibili);$i++){
+        $dati.="______________________________________________\n\n";
         $fireman = getFiremanData($reperibili[$i][0], null, null, null, null, null, $db_conn);
         $autista = ($fireman['Autista'] == 1) ? "autista" : "" ;
         $grado = getGrado($fireman['FK_Grado'], $db_conn);
-        $dati .= $grado.' '.$autista.': '.$fireman['Nome'].' '.$fireman['Cognome'].' '."\n";
+        $dati .= '<i>'.$grado.' '.$autista.': </i><b>'.$fireman['Nome'].' '.$fireman['Cognome']."</b> \n";
+        $dati .= '<i>Cell:</i> '.$fireman['Cellulare']."\n";
       }
     }else{
       $dati = false;
     }
     return $dati;
+  }
+  function changeReperibilita($firemanData, $db_conn){
+    $firemanID = $firemanData['ID'];
+    $currentReperibilita = $firemanData['Reperibile'];
+    $newReperibilita = !$currentReperibilita;
+    return updateReperibilita($firemanID, $newReperibilita, $db_conn);
   }
 ?>

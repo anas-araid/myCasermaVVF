@@ -63,10 +63,22 @@
   if (!empty($firemanData)){
     switch ($text) {
       case "Sono reperibile":
-        tempFunction($botToken, $chatID, $firemanData);
+        // changeReperibilita ritorna true se è andato a buon fine
+        $status = changeReperibilita($firemanData, $db_conn);
+        $dati = ($status) ? "Reperibilità aggiornata con successo.\n" : "Errore nell'aggiornamento della reperibilità: contattare l'amministratore\n";
+        sendMsg($botToken,$chatID, $dati, null);
+        // richiedo $firemanData aggiornato
+        $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn); 
+        menu($botToken, $chatID, $firemanData);
         break;
       case "Non sono più reperibile":
-        tempFunction($botToken, $chatID, $firemanData);
+        // changeReperibilita ritorna true se è andato a buon fine
+        $status = changeReperibilita($firemanData, $db_conn);
+        $dati = ($status) ? "Reperibilità aggiornata con successo.\n" : "Errore nell'aggiornamento della reperibilità: contattare l'amministratore\n";
+        sendMsg($botToken,$chatID, $dati, null);
+        // richiedo $firemanData aggiornato       
+        $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);         
+        menu($botToken, $chatID, $firemanData);
         break;
       case "Mostra reperibili":
         $dati = printReperibili($FK_CorpoVVF, $db_conn);
