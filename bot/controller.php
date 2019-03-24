@@ -62,13 +62,19 @@
     if (!empty($idSquadra)){
       $squadra = getSquadre($idSquadra[1], null, $db_conn);
       $listaIdVigili = getVigiliBySquadra(null, $squadra['ID'], $db_conn);
-      $dati = 'SQUADRA: '.$squadra['Numero']."\n\n";
+      $dati = '<b>SQUADRA: '.$squadra['Numero']."</b>\n";
       for ($i=0;$i<count($listaIdVigili);$i++){
+        $dati.="______________________________________________\n\n";
         $vigile = getFiremanData($listaIdVigili[$i], null, null, null, null, null, $db_conn);
         $autista = ($vigile['Autista'] == 1) ? "autista" : "" ;
         $grado = getGrado($vigile['FK_Grado'], $db_conn);
-        $dati .= $grado.' '.$autista.': '.$vigile['Nome'].' '.$vigile['Cognome'].' '."\n";
+        $dati .= "<i>".$grado.' '.$autista.': </i><b>'.$vigile['Nome'].' '.$vigile['Cognome'].'</b>'."\n";
+        // se nel db il vigile ha impostato il num cell allora lo mostra
+        if (isset($vigile['Cellulare'])){
+          $dati .= '<i>Cell:</i> '.$vigile['Cellulare']."\n";
+        }
       }
+      $dati.="______________________________________________\n\n";
     }else{
       $dati = false;
     }
@@ -86,6 +92,7 @@
         $dati .= '<i>'.$grado.' '.$autista.': </i><b>'.$fireman['Nome'].' '.$fireman['Cognome']."</b> \n";
         $dati .= '<i>Cell:</i> '.$fireman['Cellulare']."\n";
       }
+      $dati.="______________________________________________\n\n";
     }else{
       $dati = false;
     }
