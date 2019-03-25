@@ -39,21 +39,40 @@
     sendMsg($botToken,$chatID, "Per utilizzare @myCasermaVVF_bot bisogna autenticarsi tramite numero di cellulare", $btn);
   }
   if ($messageObj['contact'] != null){
-    $phoneNumber = $messageObj['contact']['phone_number'];
-    // remove +39
-    $phoneNumber = substr($phoneNumber, 2);
-    // extract fireman data from mobile number
-    $firemanData = getFiremanData(null, $phoneNumber, null, null, null, null, $db_conn);
-    if($firemanData['ID'] != null){
-      sendMsg($botToken,$chatID, "Autenticazione completata");
-      updateChatID($firemanData['ID'], $chatID, $db_conn);
-      $dati = printMyData($firemanData, $db_conn);
-      sendMsg($botToken,$chatID, $dati, null);
-      menu($botToken, $chatID, $firemanData);
+    // se il contatto non viene inviato da myCasermaVVF allora non è sicro
+    // controllo se replay_to_message è impostato
+    if (!empty($messageObj['reply_to_message'])){
+      // se il messaggio è riferito al bot e la user_id è impostata allora è affidabile
+      if($messageObj['reply_to_message']['from']['is_bot'] && isset($messageObj['contact']['user_id']) ){
+        $phoneNumber = $messageObj['contact']['phone_number'];
+        // remove +39
+        $phoneNumber = substr($phoneNumber, 2);
+        // extract fireman data from mobile number
+        $firemanData = getFiremanData(null, $phoneNumber, null, null, null, null, $db_conn);
+        if($firemanData['ID'] != null){
+          sendMsg($botToken,$chatID, "Autenticazione completata");
+          updateChatID($firemanData['ID'], $chatID, $db_conn);
+          $dati = printMyData($firemanData, $db_conn);
+          sendMsg($botToken,$chatID, $dati, null);
+          menu($botToken, $chatID, $firemanData);
+        }else{
+          $btn = array('text' => "Riprova", 'request_contact'=>true);
+          $btn = "[".json_encode($btn)."]";
+          sendMsg($botToken,$chatID, "Vigile non trovato. Digita /start per tornare all'inizio", $btn);
+          exit();
+        }
+      }else{
+        // se non viene dal bot chiedo di premere riprova
+        $btn = array('text' => "Riprova", 'request_contact'=>true);
+        $btn = "[".json_encode($btn)."]";
+        sendMsg($botToken,$chatID, "Contatto non riconosciuto premere su 'Riprova'", $btn);
+        exit();
+      }
     }else{
+      // se non viene dal bot chiedo di premere riprova
       $btn = array('text' => "Riprova", 'request_contact'=>true);
       $btn = "[".json_encode($btn)."]";
-      sendMsg($botToken,$chatID, "Vigile non trovato. Digita /start per tornare all'inizio", $btn);
+      sendMsg($botToken,$chatID, "Contatto non riconosciuto premere su 'Riprova'", $btn);
       exit();
     }
   }
@@ -66,7 +85,7 @@
         // changeReperibilita ritorna true se è andato a buon fine
         $status = changeReperibilita($firemanData, $db_conn);
         $dati = ($status) ? "Reperibilità aggiornata con successo.\n" : "Errore nell'aggiornamento della reperibilità: contattare l'amministratore\n";
-        sendMsg($botToken,$chatID, $dati, null);
+        sendMsg($botToken,$chatID, $dati);
         // richiedo $firemanData aggiornato
         $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn); 
         menu($botToken, $chatID, $firemanData);
@@ -75,25 +94,27 @@
         // changeReperibilita ritorna true se è andato a buon fine
         $status = changeReperibilita($firemanData, $db_conn);
         $dati = ($status) ? "Reperibilità aggiornata con successo.\n" : "Errore nell'aggiornamento della reperibilità: contattare l'amministratore\n";
-        sendMsg($botToken,$chatID, $dati, null);
+        sendMsg($botToken,$chatID, $dati);
         // richiedo $firemanData aggiornato       
         $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);         
         menu($botToken, $chatID, $firemanData);
         break;
       case "Mostra reperibili":
         $dati = printReperibili($FK_CorpoVVF, $db_conn);
+        // se printReperibili() è false, vuol dire che non ci sono reperibili 
         if (!$dati){
           $dati = 'Nessun vigile disponibile';
         }
-        sendMsg($botToken,$chatID, $dati, null);
+        sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
       case 'Mostra squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
+        // se printMostraSquadra() è false, vuol dire che non ci sono reperibili         
         if (!$dati){
           $dati = 'Vigile associato a nessuna squadra'."\n \n"."Contatta il responsabile per aggiungerti ad una squadra tramite il gestionale myCasermaVVF";
         }
-        sendMsg($botToken,$chatID, $dati, null);
+        sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         //tempFunction($botToken, $chatID);
         break;
@@ -119,21 +140,4 @@
         break;
     }
   }
-
-
-
-
-
-
-  //$buttonsCaserme = '["Btn 1" , "Btn 2"],["Test"],["Inviami"]';
-  /*$buttonCaserme = getCaserma(null, null, $db_conn);
-
-
-  //$btn= '["'.$buttonCaserme[0][1].'"]';
-  $btn = '';
-  for ($i=0;$i< count($buttonCaserme); $i++){
-    $btn .= '[" /caserma '.$buttonCaserme[$i][1].'"]';
-  }
-  sendMsg($botToken,$chatID, "Seleziona corpo di appartenenza:", $btn);*/
-
 ?>
