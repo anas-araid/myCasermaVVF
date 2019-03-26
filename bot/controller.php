@@ -98,6 +98,30 @@
     }
     return $dati;
   }
+  function printTurni($firemanData, $db_conn){
+    $numSquadra = getSquadraByVigili(null, $firemanData['ID'], $db_conn)[1];
+    $idSquadra = getSquadre($numSquadra, null, $db_conn)['ID'];
+    $turni = getTurni(null, $idSquadra, $db_conn);
+    $dati ="";
+    if (!empty($turni)){
+      for ($i=0;$i<count($turni);$i++){
+        $currentShift = $turni[$i];
+        $dati .="______________________________________________\n\n";
+        $date = date('d-m-Y', strtotime($currentShift[1]));
+        $dati .= "<i>Data:</i><b> $date </b>\n";
+        $mezzo = getMezzi($currentShift[3], null, $db_conn);
+        if (!empty($mezzo)){
+          $dati .= "<i>Checklist:</i> <b>$mezzo</b>\n";
+        }else{
+          $dati .= "<i>Checklist: Nessun Mezzo</i>\n";        
+        }
+      }
+      $dati.="______________________________________________\n\n";
+    }else{
+      $dati = false;
+    }
+    return $dati;
+  }
   function changeReperibilita($firemanData, $db_conn){
     $firemanID = $firemanData['ID'];
     $currentReperibilita = $firemanData['Reperibile'];

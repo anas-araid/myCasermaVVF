@@ -116,10 +116,14 @@
         }
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
-        //tempFunction($botToken, $chatID);
         break;
       case 'Mostra turni':
-        tempFunction($botToken, $chatID, $firemanData);
+        $dati = printTurni($firemanData, $db_conn);
+        if (!$dati){
+          $dati = 'Nessun turno disponibile'."\n \n"."Contatta il responsabile per aggiungere i turni tramite il gestionale myCasermaVVF";
+        }
+        sendMsg($botToken,$chatID, $dati);
+        menu($botToken, $chatID, $firemanData);
         break;
       case 'Calendari':
         tempFunction($botToken, $chatID, $firemanData);
