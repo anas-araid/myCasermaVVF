@@ -306,14 +306,14 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
   }
   function getTurni($ID, $idSquadra, $db_conn){
     if ($ID == null){
-      $sql = "SELECT * FROM t_turnifestivi";
+      $sql = "SELECT * FROM t_turnifestivi ORDER BY dataTurno DESC";
       $turni = array();
     }else{
       $sql = "SELECT * FROM t_turnifestivi WHERE (ID='$ID')";
       $turni = '';
     }
     if ($idSquadra != null){
-      $sql = "SELECT * FROM t_turnifestivi WHERE (FK_NumeroSquadra='$idSquadra')";
+      $sql = "SELECT * FROM t_turnifestivi WHERE (FK_NumeroSquadra='$idSquadra') ORDER BY dataTurno DESC";
       $turni = array();
     }
     $risultato = mysqli_query($db_conn, $sql);
