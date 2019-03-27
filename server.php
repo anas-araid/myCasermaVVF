@@ -110,7 +110,7 @@
         break;
       case 'Mostra squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
-        // se printMostraSquadra() è false, vuol dire che non ci sono reperibili         
+        // se printMostraSquadra() è false, vuol dire che non ci sono squadre associate al vigile         
         if (!$dati){
           $dati = 'Vigile associato a nessuna squadra'."\n \n"."Contatta il responsabile per aggiungerti ad una squadra tramite il gestionale myCasermaVVF";
         }
@@ -118,6 +118,7 @@
         menu($botToken, $chatID, $firemanData);
         break;
       case 'Mostra turni':
+        // se printTurni() è false, vuoldire che non ci sono turni associati al db
         $dati = printTurni($firemanData, $db_conn);
         if (!$dati){
           $dati = 'Nessun turno disponibile'."\n \n"."Contatta il responsabile per aggiungere i turni tramite il gestionale myCasermaVVF";

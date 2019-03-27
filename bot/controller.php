@@ -102,7 +102,7 @@
     $numSquadra = getSquadraByVigili(null, $firemanData['ID'], $db_conn)[1];
     $idSquadra = getSquadre($numSquadra, null, $db_conn)['ID'];
     $turni = getTurni(null, $idSquadra, $db_conn);
-    $dati ="";
+    $dati ="<b>TURNI:</b> \n";
     if (!empty($turni)){
       for ($i=0;$i<count($turni);$i++){
         $currentShift = $turni[$i];
