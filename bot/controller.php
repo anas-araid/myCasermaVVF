@@ -1,4 +1,6 @@
 <?php
+  $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
+
   function sendMsg($token, $chatID, $msgTxt, $button=null){
     $keyboard = "";
     if($button != null) {
@@ -8,6 +10,11 @@
     }*/
     $TelegramUrlSendMessage = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard."&parse_mode=html";
     return file_get_contents($TelegramUrlSendMessage);
+  }
+  function sendDocuments($token, $chatID, $file){
+    $dir = "https://d17568e8.ngrok.io/php/myCasermaVVF/uploads/".$file;
+    $doc = "https://api.telegram.org/".$token."/sendDocuments?chat_id=".$chatID."&document=".$dir."&parse_mode=html";
+    return file_get_contents($doc);
   }
   function logger($MessageObj){
     $chatID = $MessageObj['chat']['id'];
@@ -102,8 +109,8 @@
     $numSquadra = getSquadraByVigili(null, $firemanData['ID'], $db_conn)[1];
     $idSquadra = getSquadre($numSquadra, null, $db_conn)['ID'];
     $turni = getTurni(null, $idSquadra, $db_conn);
-    $dati ="<b>TURNI:</b> \n";
     if (!empty($turni)){
+      $dati ="<b>TURNI:</b> \n";
       for ($i=0;$i<count($turni);$i++){
         $currentShift = $turni[$i];
         $dati .="______________________________________________\n\n";
@@ -127,5 +134,21 @@
     $currentReperibilita = $firemanData['Reperibile'];
     $newReperibilita = !$currentReperibilita;
     return updateReperibilita($firemanID, $newReperibilita, $db_conn);
+  }
+  function printCorsi($firemanData, $token, $db_conn){
+    $corsi = getCorsi(null, $firemanData['ID'], $db_conn);
+    if (!empty($corsi)){
+      $dati ="<b>I MIEI CORSI:</b> \n";
+      for ($i=0; $i < count($corsi); $i++){
+        $dati .="______________________________________________\n\n";
+        $dati .= "<b>".$corsi[$i][1]."</b>\n";
+        $dati .= "File: ".$corsi[$i][2]."\n";
+        //sendDocuments($botToken, $firemanData['Chat_ID'], $corsi[$i][2]);
+      }
+      $dati .="______________________________________________\n";
+      return $dati;
+    }else{
+      return false;
+    }
   }
 ?>

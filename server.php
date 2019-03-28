@@ -130,7 +130,12 @@
         tempFunction($botToken, $chatID, $firemanData);
         break;
       case 'I miei corsi':
-        tempFunction($botToken, $chatID, $firemanData);
+        $dati = printCorsi($firemanData, $db_conn);
+        if (!$dati){
+          $dati = "Nessun corso disponibile \n";
+        }
+        sendMsg($botToken,$chatID, $dati);
+        menu($botToken, $chatID, $firemanData);
         break;
       case 'Webcam':
         tempFunction($botToken, $chatID, $firemanData);
