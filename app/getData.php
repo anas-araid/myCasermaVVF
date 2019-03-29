@@ -177,6 +177,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     return $caserma;
   }
   function getCorsi($ID, $FK_Vigile, $db_conn){
+    $sql = '';
     if ($ID == null){
       $sql = "SELECT * FROM t_certificazioni";
       $corso = array();
