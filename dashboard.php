@@ -58,6 +58,9 @@
             case 'certificazioni':
                 $_SESSION['_dashboardLayout'] = 'app/views/_certificazioni.php';
                 break;
+            case 'impostazioni':
+              $_SESSION['_dashboardLayout'] = 'app/views/_impostazioni.php';
+              break;
             default:
               $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
               break;
@@ -81,18 +84,17 @@
               for="nav-menu"
               style="border-radius:20px">
             <li class="mdl-menu__item" onclick="location.href='index.php#home'">Home</li>
-            <li disabled class="mdl-menu__item">Impostazioni</li>
+            <li class="mdl-menu__item" onclick="location.href='?redirect=impostazioni'">Impostazioni</li>
             <li disabled class="mdl-menu__item" onclick="location.href=''">Aiuto</li>
             <li class="mdl-menu__item" onclick="location.href='app/logout.php'">Esci</li>
           </ul>
-        
         </div>
       </header>
       <div class="mdl-layout__drawer style-bg-darkblue" style="border:none">
         <p class="mdl-layout-title mdl-color-text--white"><?php echo $caserma['Descrizione'] ?></p>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="index.php#home">Home</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="">Aiuto</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=impostazioni">Impostazioni</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="app/logout.php">Esci</a>
           <hr style="width:80%">
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=vigili">Vigili</a>
