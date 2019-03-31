@@ -119,15 +119,19 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
       if ($Descrizione != null){
         $caserme['ID'] = $ris['ID'];
         $caserme['Descrizione'] = $ris['Descrizione'];
+        $caserme['Email'] = $ris['Email'];
+        $caserme['Telefono'] = $ris['Telefono'];
         $caserme['Password'] = $ris['Password'];
         return $caserme;
       }
       if($ID == null){
-        $caserme["$i"] = array($ris['ID'], $ris['Descrizione'], $ris['Password']);
+        $caserme["$i"] = array($ris['ID'], $ris['Descrizione'], $ris['Email'], $ris['Telefono'], $ris['Password']);
         $i++;
       }else{
         $caserme['ID'] = $ris['ID'];
         $caserme['Descrizione'] = $ris['Descrizione'];
+        $caserme['Email'] = $ris['Email'];
+        $caserme['Telefono'] = $ris['Telefono'];
         $caserme['Password'] = $ris['Password'];
       }
     }
