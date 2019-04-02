@@ -18,7 +18,7 @@
     </div>
     <br>
     <div>
-      <button class="style-button-red" type="submit" name="aggiorna">AGGIORNA</button><br>
+      <button class="style-button-red" type="submit" name="aggiorna" value="<?php echo $caserma['ID']?>">AGGIORNA</button><br>
       <button class="style-button-white" onclick="location.href='?redirect=home'" type="reset">INDIETRO</button>
     </div>
     <br><br><br>
