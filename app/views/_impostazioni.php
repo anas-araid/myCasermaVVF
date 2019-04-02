@@ -1,7 +1,7 @@
 <div style="text-align:center">
   <h2 class="mdl-color-text--grey-800">Impostazioni</h2>
   <br>
-  <form action="../controller/editCaserma.php" method="POST" style="text-align:center">
+  <form action="app/controllers/editCaserma.php" method="POST" style="text-align:center">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" id="caserma" name="caserma" value="<?php echo $caserma['Descrizione'] ?>" required="">
       <label class="mdl-textfield__label" for="caserma">Corpo di appartenenza</label>

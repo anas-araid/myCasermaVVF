@@ -22,20 +22,20 @@
           $caserma = text_filter($_POST["caserma"]);
           $email = text_filter($_POST["email"]);
           $telefono = text_filter($_POST["telefono"]);
-          //$editCorpo = updateSquadra($id, $nome, $_SESSION['ID'], $db_conn);
-          /*if ($editSquadra){
+          $editCorpo = updateCorpo($id, $caserma, $email, $telefono, $db_conn);
+          if ($editSquadra){
             echo "
             <script>
-              flatAlert('', 'Squadra modificata con successo', 'success', '../../dashboard.php?redirect=squadre');
+              flatAlert('', 'Caserma modificata con successo', 'success', '../../dashboard.php?redirect=impostazioni');
             </script>";
             return;
           }else{
             echo "
             <script>
-              flatAlert('Errore nella modifica del vigile', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=squadre');
+              flatAlert('Errore nella modifica della caserma', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=impostazioni');
             </script>";
             return;
-          }*/
+          }
         }
       }
     ?>
