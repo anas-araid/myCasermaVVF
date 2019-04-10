@@ -71,4 +71,18 @@
     }
     return true;
   }
+  function updateCorpo($id, $caserma, $email, $telefono, $db_conn){
+    if (!is_numeric($id)){
+      return;
+    }else{
+      $sql = "UPDATE t_caserme SET Descrizione='$caserma', Telefono='$telefono', Email='$email'
+              WHERE ID='$id'";
+      $updateFireman = mysqli_query($db_conn, $sql);
+      if ($updateFireman==null){
+        echo "Errore nell'aggiornamento della caserma (updateCorpo() in updateData.php): contattare l'amministratore";
+        return false;
+      }
+    }
+    return true;
+  }
 ?>

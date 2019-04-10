@@ -23,7 +23,7 @@
           $email = text_filter($_POST["email"]);
           $telefono = text_filter($_POST["telefono"]);
           $editCorpo = updateCorpo($id, $caserma, $email, $telefono, $db_conn);
-          if ($editSquadra){
+          if ($editCorpo){
             echo "
             <script>
               flatAlert('', 'Caserma modificata con successo', 'success', '../../dashboard.php?redirect=impostazioni');
