@@ -24,7 +24,10 @@
         case 'turno':
           deleteTurno($id, $db_conn);
           break;
+        case 'caserma':
+          deleteCaserma($id, $db_conn);
         default:
+          redirect('../dashboard.php?redirect=home');        
           break;
       }
     }
@@ -72,6 +75,14 @@
       die("Errore nella cancellazione del vigile: contattare l'amministratore");
     }
     redirect('../dashboard.php?redirect=vigili');
+  }
+  function deleteCaserma($id, $db_conn){
+    $sql = "DELETE FROM t_caserme WHERE ID='$id'";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("Errore nella cancellazione della caserma: contattare l'amministratore");
+    }
+    redirect('logout.php');
   }
   function deleteMezzo($id, $db_conn){
     $sql = "DELETE FROM t_mezzi WHERE ID='$id'";

@@ -23,7 +23,13 @@
     </div>
     <br><br><br>
     <div>
-      <button class="style-button-red" type="reset" name="delete" style="background:red;color:white">CANCELLA L'ACCOUNT</button><br>
+      <button class="style-button-red" 
+              onclick="flatAlert('Vuoi continuare?', 'Tutti i dati relativi alla tua caserma verranno cancellati', 'error', 'app/deleteData.php?data=caserma&id=<?php echo $caserma['ID'] ?>', true)" 
+              type="reset" 
+              name="delete" 
+              style="background:red;color:white">
+              CANCELLA L'ACCOUNT
+      </button><br>
     </div>
   </form>
 </div>
