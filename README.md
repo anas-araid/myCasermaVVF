@@ -44,9 +44,14 @@ These instructions will get you a copy of the project to running on your local m
 * Set firestation name, email, phone number and password
 * Through side menu, all firestation resources could be configured 
 
-```
-In your browser, navigate to localhost/myCaserma and have fun...
-```
+#### Set up the telegram bot
+If you use myCasermaVVF_bot, you don't need setting up anything else (only mobile number in the webapp configuration)
+Otherwise if you want to create your own test bot
+* Create a bot using the bot father
+* Host your myCasermaVVF web server online
+* Set telegram api webhook
+* https://api.telegram.org/bot-token/setWebhook?url=yourWebServerUrl/myCasermaVVF/server.php
+
 
 ## Built With
 

@@ -6,7 +6,7 @@
   include 'app/updateData.php';
   include 'bot/controller.php';
   // connections
-  $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
+  $botToken = "api";
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
   if(!$update)
