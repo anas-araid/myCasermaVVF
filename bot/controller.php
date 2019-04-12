@@ -136,6 +136,9 @@
     $newReperibilita = !$currentReperibilita;
     return updateReperibilita($firemanID, $newReperibilita, $db_conn);
   }
+  function getApiToken($file){
+    return file_get_contents($file);
+  }
   function printCorsi($firemanData, $db_conn){
     $corsi = getCorsi(null, $firemanData['ID'], $db_conn);
     if (!empty($corsi)){

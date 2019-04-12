@@ -2,3 +2,4 @@ vigili.sql
 /logs/*
 /uploads/*
 /.vscode
+api.key
