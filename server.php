@@ -28,10 +28,6 @@
     if (!empty($firemanData)){
       $firemanID = $firemanData['ID'];
       $update = updateChatID($firemanID, null, $db_conn);
-      /*if(!$update){
-       sendMsg($botToken,$chatID, "Errore account gia esistente");
-       return;
-      }*/
     }
     sendMsg($botToken,$chatID, "Benvenuto ".$sendName.", il servizio è ancora in fase di test, per qualsiasi problema contatta @asdf1899");
     $btn = array('text' => "Autenticazione", 'request_contact'=>true);
