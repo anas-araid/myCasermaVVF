@@ -36,7 +36,7 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["Mostra squadra"], ["Mostra turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["Mostra squadra"], ["Mostra Squadra Weekend"], ["Mostra turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
       $stato = 'non sono reperibile';
@@ -47,7 +47,7 @@
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
   }
   function menu ($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["Mostra squadra"], ["Mostra turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["Mostra squadra"], ["Mostra Squadra Weekend"], ["Mostra turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
     $stato = '';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;

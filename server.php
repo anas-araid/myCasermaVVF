@@ -113,6 +113,9 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
+      case 'Mostra Squadra Weekend':
+        tempFunction($botToken, $chatID, $firemanData);
+        break;
       case 'Mostra turni':
         // se printTurni() è false, vuoldire che non ci sono turni associati al db
         $dati = printTurni($firemanData, $db_conn);
