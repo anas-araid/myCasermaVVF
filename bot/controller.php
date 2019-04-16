@@ -88,6 +88,22 @@
     }
     return $dati;
   }
+  /*function isWeekend($date) {
+    $weekDay = date('w', strtotime($date));
+    return ($weekDay == 0 || $weekDay == 6);
+  }*/
+  function printMostraSquadraWeekend($FK_CorpoVVF, $db_conn){
+     /*if (isWeekend($currentDate)){
+      echo 'Weekend: '.$currentDate;
+    }else{
+      $saturday = strtotime("next Saturday");
+      $sunday = strtotime("next Sunday");
+    }
+    echo 'Domenica '.date('d-m-Y', $sunday);*/
+    $currentDate = date('d/m/Y');
+    $saturday = strtotime("next Saturday");
+    $sunday = strtotime("next Sunday");
+  }
   function printReperibili($FK_CorpoVVF, $db_conn){
     $reperibili = getReperibili($FK_CorpoVVF, true, $db_conn);
     if (!empty($reperibili)){

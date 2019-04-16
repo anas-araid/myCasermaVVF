@@ -309,6 +309,9 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $squadra;
   }
+  function getTurnoByDate($date, $db_conn){
+    $sql = "SELECT * FROM t_turnifestivi WHERE (dataTurno=$date)";
+  }
   function getTurni($ID, $idSquadra, $db_conn){
     if ($ID == null){
       $sql = "SELECT * FROM t_turnifestivi ORDER BY dataTurno DESC";
