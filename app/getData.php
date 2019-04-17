@@ -309,8 +309,22 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $squadra;
   }
-  function getTurnoByDate($date, $db_conn){
-    $sql = "SELECT * FROM t_turnifestivi WHERE (dataTurno=$date)";
+  function getTurnoByDate($date, $FK_CorpoVVF, $db_conn){
+    $sql = "SELECT * FROM t_turnifestivi as turni, t_numerosquadre as squad 
+            WHERE (turni.FK_NumeroSquadra = squad.ID) and 
+                  (squad.FK_CorpoVVF = '$FK_CorpoVVF') and 
+                  (turni.dataTurno = '$date')";
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getTurnoByDate");
+    }
+    $turni = array();
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      $turni["$i"] = array($ris['ID'], $ris['dataTurno'], $ris['FK_NumeroSquadra'], $ris['FK_Checklist']);
+      $i++;
+    }
+    return $turni;
   }
   function getTurni($ID, $idSquadra, $db_conn){
     if ($ID == null){

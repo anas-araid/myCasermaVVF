@@ -9,7 +9,7 @@
   $botToken = getApiToken("api.key");
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
-  printMostraSquadraWeekend(1, $db_conn);
+  echo printMostraSquadraWeekend(1, $db_conn);
   if(!$update)
   {
     exit;
