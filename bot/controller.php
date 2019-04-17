@@ -95,40 +95,43 @@
     $weekDay = date('w', strtotime($date));
     return ($weekDay == 0 || $weekDay == 6);
   }*/
-  function printMostraSquadraWeekend($FK_CorpoVVF, $db_conn){
-     /*if (isWeekend($currentDate)){
+  /*if (isWeekend($currentDate)){
       echo 'Weekend: '.$currentDate;
     }else{
       $saturday = strtotime("next Saturday");
       $sunday = strtotime("next Sunday");
     }
     echo 'Domenica '.date('d-m-Y', $sunday);*/
+  function printMostraSquadraWeekend($FK_CorpoVVF, $db_conn){
+    $dati = false;
     $currentDate = date('d/m/Y');
-    $saturday = strtotime("next Saturday");
-    $sunday = strtotime("next Sunday");
-    $turni = getTurnoByDate(date('Y/m/d', $saturday), $FK_CorpoVVF, $db_conn);
-    print_r($turni);
-    if (!empty($turni)){
-      $dati = "Questo weekend è disponibile la seguente squadra: \n\n";
-      $dati .= mostraSquadra($turni[0][2], $db_conn);
-      $dati .="\n\n<b>TURNI:</b> \n";
-      for ($i=0;$i<count($turni);$i++){
-        $currentShift = $turni[$i];
-        $dati .="______________________________________________\n\n";
-        $date = date('d-m-Y', strtotime($currentShift[1]));
-        $dati .= "<i>Data:</i><b> $date </b>\n";
-        $mezzo = getMezzi($currentShift[3], null, $db_conn);
-        if (!empty($mezzo)){
-          $dati .= "<i>Checklist:</i> <b>$mezzo</b>\n";
-        }else{
-          $dati .= "<i>Checklist: Nessun Mezzo</i>\n";        
+    $weekend = array(strtotime("next Saturday"), strtotime("next Sunday"));
+    for ($j=0;$j<count($weekend);$j++){
+      $turni = getTurnoByDate(date('Y/m/d', $weekend[$j]), $FK_CorpoVVF, $db_conn);
+      if (!empty($turni)){
+        if ($j==0){
+          $dati .= "Questo weekend è disponibile la seguente squadra: \n\n";
+          $dati .= mostraSquadra($turni[0][2], $db_conn);
+          $dati .="\n\n<b>TURNI:</b> \n";
         }
+        for ($i=0;$i<count($turni);$i++){
+          $currentShift = $turni[$i];
+          $dati .="______________________________________________\n\n";
+          $date = date('d-m-Y', strtotime($currentShift[1]));
+          $dati .= "<i>Data:</i><b> $date </b>\n";
+          $mezzo = getMezzi($currentShift[3], null, $db_conn);
+          if (!empty($mezzo)){
+            $dati .= "<i>Checklist:</i> <b>$mezzo</b>\n";
+          }else{
+            $dati .= "<i>Checklist: Nessun Mezzo</i>\n";        
+          }
+        }
+        $dati.="______________________________________________\n\n";
+      }else{
+        $dati = false;
       }
-      $dati.="______________________________________________\n\n";
-    }else{
-      $dati = false;
     }
-    return $dati;
+    return $dati;    
   }
   function printReperibili($FK_CorpoVVF, $db_conn){
     $reperibili = getReperibili($FK_CorpoVVF, true, $db_conn);
