@@ -36,7 +36,7 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["Mostra squadra"], ["Mostra Squadra Weekend"], ["Mostra turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
       $stato = 'non sono reperibile';
@@ -47,7 +47,7 @@
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
   }
   function menu ($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["Mostra squadra"], ["Mostra Squadra Weekend"], ["Mostra turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
     $stato = '';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
@@ -65,10 +65,9 @@
     $dati = "Nome: ".$firemanData['Nome']."\nCognome: ".$firemanData['Cognome']."\nMatricola: ".$firemanData['Matricola']."\nGrado: ".$grado."\nAutista: ".$autista."\nReperibile: ".$reperibile;
     return $dati;
   }
-  function printMostraSquadra($firemanData, $db_conn){
-    $idSquadra = getSquadraByVigili(null, $firemanData['ID'], $db_conn);
+  function mostraSquadra($idSquadra, $db_conn){
     if (!empty($idSquadra)){
-      $squadra = getSquadre($idSquadra[1], null, $db_conn);
+      $squadra = getSquadre($idSquadra, null, $db_conn);
       $listaIdVigili = getVigiliBySquadra(null, $squadra['ID'], $db_conn);
       $dati = '<b>SQUADRA: '.$squadra['Numero']."</b>\n";
       for ($i=0;$i<count($listaIdVigili);$i++){
@@ -88,6 +87,10 @@
     }
     return $dati;
   }
+  function printMostraSquadra($firemanData, $db_conn){
+    $idSquadra = getSquadraByVigili(null, $firemanData['ID'], $db_conn);
+    return mostraSquadra($idSquadra[1], $db_conn);
+  }
   /*function isWeekend($date) {
     $weekDay = date('w', strtotime($date));
     return ($weekDay == 0 || $weekDay == 6);
@@ -106,7 +109,9 @@
     $turni = getTurnoByDate(date('Y/m/d', $saturday), $FK_CorpoVVF, $db_conn);
     print_r($turni);
     if (!empty($turni)){
-      $dati ="<b>TURNI:</b> \n";
+      $dati = "Questo weekend è disponibile la seguente squadra: \n\n";
+      $dati .= mostraSquadra($turni[0][2], $db_conn);
+      $dati .="\n\n<b>TURNI:</b> \n";
       for ($i=0;$i<count($turni);$i++){
         $currentShift = $turni[$i];
         $dati .="______________________________________________\n\n";
