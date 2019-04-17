@@ -9,7 +9,6 @@
   $botToken = getApiToken("api.key");
   $rawInput = file_get_contents("php://input");
   $update = json_decode($rawInput, TRUE);
-  echo printMostraSquadraWeekend(1, $db_conn);
   if(!$update)
   {
     exit;
@@ -105,7 +104,7 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'Mostra squadra':
+      case 'La mia squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
         // se printMostraSquadra() è false, vuol dire che non ci sono squadre associate al vigile         
         if (!$dati){
@@ -114,7 +113,7 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'Mostra Squadra Weekend':
+      case 'Questo weekend':
         $dati = printMostraSquadraWeekend($FK_CorpoVVF, $db_conn);
         // se printMostraSquadraWeekend() è false, vuol dire che non ci sono squadre associate al vigile         
         if (!$dati){
@@ -124,7 +123,7 @@
         menu($botToken, $chatID, $firemanData);
         //tempFunction($botToken, $chatID, $firemanData);
         break;
-      case 'Mostra turni':
+      case 'I miei turni':
         // se printTurni() è false, vuoldire che non ci sono turni associati al db
         $dati = printTurni($firemanData, $db_conn);
         if (!$dati){
