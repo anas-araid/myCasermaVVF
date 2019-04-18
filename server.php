@@ -24,7 +24,9 @@
   $text = $messageObj['text'];
 
   if ($text == '/start'){
+    // primo accesso, controllo se l'account ha già fatto l'accesso in passato
     $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
+    // se $firemanData è vuota allora aggiorno i dati con chatID nuovo
     if (!empty($firemanData)){
       $firemanID = $firemanData['ID'];
       $update = updateChatID($firemanID, null, $db_conn);
@@ -45,6 +47,7 @@
         $phoneNumber = substr($phoneNumber, 2);
         // extract fireman data from mobile number
         $firemanData = getFiremanData(null, $phoneNumber, null, null, null, null, $db_conn);
+        // cerco nel db a chi è associato il numero di telefono
         if($firemanData['ID'] != null){
           sendMsg($botToken,$chatID, "Autenticazione completata");
           updateChatID($firemanData['ID'], $chatID, $db_conn);
@@ -121,7 +124,6 @@
         }
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
-        //tempFunction($botToken, $chatID, $firemanData);
         break;
       case 'I miei turni':
         // se printTurni() è false, vuoldire che non ci sono turni associati al db

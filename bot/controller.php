@@ -107,6 +107,7 @@
     $currentDate = date('d/m/Y');
     $weekend = array(strtotime("next Saturday"), strtotime("next Sunday"));
     for ($j=0;$j<count($weekend);$j++){
+      // restituisce i turni riferiti al prossimo weekend
       $turni = getTurnoByDate(date('Y/m/d', $weekend[$j]), $FK_CorpoVVF, $db_conn);
       if (!empty($turni)){
         if ($j==0){
