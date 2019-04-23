@@ -137,14 +137,14 @@
               <ul class="mdl-list">
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">directions_car</i>
-                    La checklist dei mezzi
+                   <i class="material-icons mdl-list__item-icon">group</i>
+                    I vigili reperibili
                   </span>
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">group</i>
-                    I vigili reperibili
+                    <i class="material-icons mdl-list__item-icon">directions_car</i>
+                    La checklist dei mezzi
                   </span>
                 </li>
                 <li class="mdl-list__item">

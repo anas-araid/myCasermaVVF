@@ -65,7 +65,7 @@
           if ($file == ''){
             $show = '<td class="style-td"></td>';
           }else{
-            $show = '<td class="style-td"><a onclick="window.open('."'uploads/".$file."'".')" style="cursor:pointer;text-decoration:underline">Mostra</a></td>';
+            $show = '<td class="style-td"><a onclick="window.open('."'uploads/".$file."'".', '."'popup'".')" style="cursor:pointer;text-decoration:underline">Mostra</a></td>';
           }
           echo '<tr>
               <td class="style-td">'.$id.'</td>
