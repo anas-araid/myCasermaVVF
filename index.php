@@ -112,45 +112,57 @@
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--2-col"></div>
             <div class="mdl-cell mdl-cell--8-col" style="text-align:left">
-              <h4 class="style-text-darkred">Telegram ti avvisa:</h4>
+              <h4 class="style-text-darkred">myCasermaVVF ti aiuta a gestire:</h4>
               <ul class="mdl-list">
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">group</i>
+                    Tutto il personale
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">build</i>
+                    Le attrezzature
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
                     <i class="material-icons mdl-list__item-icon">calendar_today</i>
-                    Dei turni festivi
+                    Le squadre e i turni 
                   </span>
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
                     <i class="material-icons mdl-list__item-icon">chat</i>
-                    Delle comunicazioni di servizio
-                  </span>
-                </li>
-                <li class="mdl-list__item">
-                  <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">access_time</i>
-                    Delle scadenze dei corsi
+                    Le comunicazioni di servizio 
                   </span>
                 </li>
               </ul>
-              <h4 class="style-text-darkred">Inoltre di aiuta a gestire:</h4>
+              <h4 class="style-text-darkred">Inoltre grazie a Telegram:</h4>
               <ul class="mdl-list">
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                   <i class="material-icons mdl-list__item-icon">group</i>
-                    I vigili reperibili
+                   <i class="material-icons mdl-list__item-icon">notification_important</i>
+                    Visualizzare la reperibilità dei vigili 
                   </span>
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">directions_car</i>
-                    La checklist dei mezzi
+                    <i class="material-icons mdl-list__item-icon">chrome_reader_mode</i>
+                    Consultare la propria squadra e i propri turni
                   </span>
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">date_range</i>
-                    La distribuzione dei calendari
+                    <i class="material-icons mdl-list__item-icon">whatshot</i>
+                    Visualizzare la squadra disponibile durante il weekend
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">assignment_turned_in</i>
+                    Visualizzare i propri corsi 
                   </span>
                 </li>
               </ul>
