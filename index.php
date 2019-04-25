@@ -184,12 +184,23 @@
             </div>
           </div>
         </section>
-        <div id="footer" style="margin:0;bottom:0;background-color:#c0392b;height:max-content;padding:20px">
+        <footer class="mdl-mini-footer" style="background-color:#c0392b">
+          <div class="mdl-mini-footer__left-section">
+          <ul class="mdl-mini-footer__link-list mdl-color-text--white">
+              <li><a href="#">Aiuto</a></li>
+              <li><a href="#" onclick="privacy()">Privacy Policy</a></li>
+            </ul> 
+          </div>
+          <div class="mdl-mini-footer__right-section">
+           <div class="mdl-logo">&copy 2019 myCasermaVVF Anas Araid <br> <i>Dai soccorritori per i soccorritori</i></div>           
+          </div>
+        </footer>
+        <!--<div id="footer" style="margin:0;bottom:0;background-color:#c0392b;height:max-content;padding:20px">
           <h6 style="color:white">Anas Araid &copy 2019 myCasermaVVF. 
             <i>Creato dai soccorritori per i soccorritori.</i>
             <a href="#" onclick="privacy()">Privacy Policy</a>
           </h6>
-        </div>
+        </div>--<
       </main>
     </div>
   </body>
