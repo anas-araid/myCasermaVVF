@@ -52,8 +52,8 @@
             case 'comunicazioni':
               $_SESSION['_dashboardLayout'] = 'app/views/_comunicazioni.php';
               break;
-            case 'calendari':
-              $_SESSION['_dashboardLayout'] = 'app/views/_calendari.php';
+            case 'attrezzature':
+              $_SESSION['_dashboardLayout'] = 'app/views/_attrezzature.php';
               break;
             case 'certificazioni':
                 $_SESSION['_dashboardLayout'] = 'app/views/_certificazioni.php';
@@ -100,9 +100,9 @@
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=vigili">Vigili</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=mezzi">Mezzi</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=squadre">Squadre</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=attrezzature">Attrezzature</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=comunicazioni">Comunicazioni</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=corsi">Corsi</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=calendari">Calendari</a>
         </nav>
       </div>
       <main class="mdl-layout__content">

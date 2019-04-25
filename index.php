@@ -185,7 +185,10 @@
           </div>
         </section>
         <div id="footer" style="margin:0;bottom:0;background-color:#c0392b;height:max-content;padding:20px">
-          <h6 style="color:white">Anas Araid &copy 2019 myCasermaVVF. <i>Creato dai soccorritori per i soccorritori.</i></h6>
+          <h6 style="color:white">Anas Araid &copy 2019 myCasermaVVF. 
+            <i>Creato dai soccorritori per i soccorritori.</i>
+            <a href="#" onclick="privacy()">Privacy Policy</a>
+          </h6>
         </div>
       </main>
     </div>
