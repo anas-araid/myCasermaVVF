@@ -29,7 +29,7 @@
      ?>
   </head>
   <body style="margin:0">
-    <div class="mdl-layout mdl-js-layout">
+    <div class="mdl-layout mdl-js-layout tingle-content-wrapper">
       <header class="mdl-layout__header mdl-layout--fixed-header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title style-text-red" style="font-weight:100">my</span><span class="mdl-layout-title style-text-red" style="font-weight:500">Caserma</span><span class="mdl-layout-title style-text-red" style="font-weight:600">VVF</span>
@@ -189,13 +189,21 @@
           <ul class="mdl-mini-footer__link-list mdl-color-text--white">
               <li><a href="#">Aiuto</a></li>
               <li><a href="#" onclick="privacy()">Privacy Policy</a></li>
+              <li><a href="#" onclick="privacy()">Termini e condizioni</a></li>
             </ul> 
           </div>
           <div class="mdl-mini-footer__right-section">
            <div class="mdl-logo">&copy 2019 myCasermaVVF Anas Araid <br> <i>Dai soccorritori per i soccorritori</i></div>           
           </div>
         </footer>
-        <!--<div id="footer" style="margin:0;bottom:0;background-color:#c0392b;height:max-content;padding:20px">
+        <script>
+          new Noty({
+            layout: 'bottomRight',
+            closeWith: ['click', 'button'],
+            text: 'Questo sito si avvale di cookie necessari al funzionamento illustrato nella privacy policy. Chiudendo questo banner, scorrendo questa pagina, cliccando su un link o proseguendo la navigazione in altra maniera, acconsenti all’uso dei cookie.'
+          }).show();
+        </script>
+        <!-- <div id="footer" style="margin:0;bottom:0;background-color:#c0392b;height:max-content;padding:20px">
           <h6 style="color:white">Anas Araid &copy 2019 myCasermaVVF. 
             <i>Creato dai soccorritori per i soccorritori.</i>
             <a href="#" onclick="privacy()">Privacy Policy</a>
