@@ -187,7 +187,6 @@
         <footer class="mdl-mini-footer" style="background-color:#c0392b">
           <div class="mdl-mini-footer__left-section">
           <ul class="mdl-mini-footer__link-list mdl-color-text--white">
-              <li><a href="#">Aiuto</a></li>
               <li><a href="#" onclick="privacy()">Privacy Policy</a></li>
               <li><a href="#" onclick="terms()">Termini e condizioni</a></li>
             </ul> 

@@ -98,6 +98,17 @@
             <img src="img/screen.png" class="style-bounce" style="width:90%"></img>
           </div>
         </div>
+        <footer class="mdl-mini-footer" style="background-color:#c0392b">
+          <div class="mdl-mini-footer__left-section">
+          <ul class="mdl-mini-footer__link-list mdl-color-text--white">
+              <li><a href="#" onclick="privacy()">Privacy Policy</a></li>
+              <li><a href="#" onclick="terms()">Termini e condizioni</a></li>
+            </ul> 
+          </div>
+          <div class="mdl-mini-footer__right-section">
+           <div class="mdl-logo">&copy 2019 myCasermaVVF Anas Araid <br> <i>Dai soccorritori per i soccorritori</i></div>           
+          </div>
+        </footer>
       </main>
     </div>
   </body>

@@ -28,7 +28,7 @@
     ?>
   </head>
   <body style="margin:0">
-    <div class="mdl-layout mdl-js-layout">
+    <div class="mdl-layout mdl-js-layout tingle-content-wrapper">
       <header class="mdl-layout__header mdl-layout--fixed-header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title style-text-red" style="font-weight:100">my</span><span class="mdl-layout-title style-text-red" style="font-weight:500">Caserma</span><span class="mdl-layout-title style-text-red" style="font-weight:600">VVF</span>
@@ -82,6 +82,11 @@
                 <label class="mdl-textfield__label" for="confermaPassword">Conferma password</label>
               </div>
               <p>Il tuo corpo VVF è già stato configurato? <a href="login.php" style="cursor:pointer">Clicca qui</a></p>
+              <p>
+                <i>Continuando con la registrazione dichiari di aver letto <br> 
+                  <a href="#" onclick="privacy()" style="cursor:pointer">l'informativa sul trattamento dei dati</a> e <a href="#" onclick="terms()" style="cursor:pointer">i termini e condizioni d'utilizzo</a>
+                </i>
+              </p>
               <div>
                 <button class="style-button-red" type="submit" name="conferma">CONTINUA</button><br>
                 <button class="style-button-white" onclick="location.href='index.php'" type="reset">INDIETRO</button>
@@ -117,6 +122,17 @@
               </script>";
           }
         ?>
+        <footer class="mdl-mini-footer" style="background-color:#c0392b">
+          <div class="mdl-mini-footer__left-section">
+          <ul class="mdl-mini-footer__link-list mdl-color-text--white">
+              <li><a href="#" onclick="privacy()">Privacy Policy</a></li>
+              <li><a href="#" onclick="terms()">Termini e condizioni</a></li>
+            </ul> 
+          </div>
+          <div class="mdl-mini-footer__right-section">
+           <div class="mdl-logo">&copy 2019 myCasermaVVF Anas Araid <br> <i>Dai soccorritori per i soccorritori</i></div>           
+          </div>
+        </footer>
       </main>
     </div>
   </body>

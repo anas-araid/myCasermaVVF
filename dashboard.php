@@ -85,7 +85,7 @@
               style="border-radius:20px">
             <li class="mdl-menu__item" onclick="location.href='index.php#home'">Home</li>
             <li class="mdl-menu__item" onclick="location.href='?redirect=impostazioni'">Impostazioni</li>
-            <li disabled class="mdl-menu__item" onclick="location.href=''">Aiuto</li>
+            <li class="mdl-menu__item" onclick="help()">Aiuto</li>
             <li class="mdl-menu__item" onclick="location.href='app/logout.php'">Esci</li>
           </ul>
         </div>
@@ -95,6 +95,7 @@
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="index.php#home">Home</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=impostazioni">Impostazioni</a>
+          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="#" onclick="help()">Aiuto</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="app/logout.php">Esci</a>
           <hr style="width:80%">
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=vigili">Vigili</a>
@@ -119,6 +120,36 @@
           // integra il file salvato nella session
           include $_SESSION['_dashboardLayout'];
         ?>
+        <script>
+          function help(){
+            swal({
+              title: "Aiuto",
+              icon: "info",
+              buttons: {
+                cancel: "Indietro",
+                privacy: {
+                  text: "Privacy",
+                  value: "privacy",
+                },
+                defeat: {
+                  text: "Termini",
+                  value: "terms",
+                }
+              }
+            }).then((value) => {
+              switch (value) {
+                case "privacy":
+                  privacy()
+                  break;
+            
+                case "terms":
+                  terms();
+                  break;
+                default:
+              };
+          });
+        }
+        </script>
       </main>
     </div>
   </body>

@@ -253,3 +253,23 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
     margin: 20px!important;
   }
 }
+
+::-moz-selection {
+  color: white;
+  background: #2E4154;
+  border-radius: 15px!important;
+  padding:10px;
+}
+
+::selection {
+  color: white;
+  background: #2E4154;
+  border-radius: 15px!important;
+  
+}
+.swal-button{
+  background-color: #2E4154!important;
+}
+.swal-button--cancel{
+  background-color: #efefef!important;
+}
