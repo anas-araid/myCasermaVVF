@@ -189,7 +189,7 @@
           <ul class="mdl-mini-footer__link-list mdl-color-text--white">
               <li><a href="#">Aiuto</a></li>
               <li><a href="#" onclick="privacy()">Privacy Policy</a></li>
-              <li><a href="#" onclick="privacy()">Termini e condizioni</a></li>
+              <li><a href="#" onclick="terms()">Termini e condizioni</a></li>
             </ul> 
           </div>
           <div class="mdl-mini-footer__right-section">
@@ -197,6 +197,7 @@
           </div>
         </footer>
         <script>
+          // notifica cookie
           new Noty({
             layout: 'bottomRight',
             closeWith: ['click', 'button'],

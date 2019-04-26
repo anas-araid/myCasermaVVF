@@ -106,7 +106,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
   padding: 15px!important;
   border-radius: 15px;
 }
-
+.noty_close_button{
+  border-radius:10px!important;
+  background-color: rgba(0, 0, 0, 0.3)!important;
+}
 
 .animated {
     -webkit-animation-duration: 1s;
