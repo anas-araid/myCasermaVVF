@@ -14,56 +14,58 @@
         include "app/dbConnection.php";
         include "app/functions.php";
         include "app/getData.php";
-        if ($_SESSION['ID'] != null){
-          $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
-          // se l'id non esiste allora fa il logout
-          if ($caserma['ID'] == null){
+        if (!$error_message) {
+          if ($_SESSION['ID'] != null){
+            $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
+            // se l'id non esiste allora fa il logout
+            if ($caserma['ID'] == null){
+              redirect('app/logout.php');
+              return;
+            }
+          }else{
             redirect('app/logout.php');
             return;
           }
-        }else{
-          redirect('app/logout.php');
-          return;
-        }
-        if (!$_SESSION['_dashboardLayout']){
-          $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
-        }
-        if (isset($_GET['redirect'])){
-          $redirect = text_filter($_GET['redirect']);
-          switch ($redirect) {
-            case 'vigili':
-              $_SESSION['_dashboardLayout'] = 'app/views/_vigili.php';
-              break;
-            case 'mezzi':
-              $_SESSION['_dashboardLayout'] = 'app/views/_mezzi.php';
-              break;
-            case 'squadre':
-              $_SESSION['_dashboardLayout'] = 'app/views/_squadre.php';
-              break;
-            case 'mostraSquadra':
-              $_SESSION['_dashboardLayout'] = 'app/views/_mostraSquadra.php';
-              break;
-            case 'turni':
-              $_SESSION['_dashboardLayout'] = 'app/views/_turni.php';
-              break;
-            case 'corsi':
-              $_SESSION['_dashboardLayout'] = 'app/views/_corsi.php';
-              break;
-            case 'comunicazioni':
-              $_SESSION['_dashboardLayout'] = 'app/views/_comunicazioni.php';
-              break;
-            case 'attrezzature':
-              $_SESSION['_dashboardLayout'] = 'app/views/_attrezzature.php';
-              break;
-            case 'certificazioni':
-                $_SESSION['_dashboardLayout'] = 'app/views/_certificazioni.php';
+          if (!$_SESSION['_dashboardLayout']){
+            $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
+          }
+          if (isset($_GET['redirect'])){
+            $redirect = text_filter($_GET['redirect']);
+            switch ($redirect) {
+              case 'vigili':
+                $_SESSION['_dashboardLayout'] = 'app/views/_vigili.php';
                 break;
-            case 'impostazioni':
-              $_SESSION['_dashboardLayout'] = 'app/views/_impostazioni.php';
-              break;
-            default:
-              $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
-              break;
+              case 'mezzi':
+                $_SESSION['_dashboardLayout'] = 'app/views/_mezzi.php';
+                break;
+              case 'squadre':
+                $_SESSION['_dashboardLayout'] = 'app/views/_squadre.php';
+                break;
+              case 'mostraSquadra':
+                $_SESSION['_dashboardLayout'] = 'app/views/_mostraSquadra.php';
+                break;
+              case 'turni':
+                $_SESSION['_dashboardLayout'] = 'app/views/_turni.php';
+                break;
+              case 'corsi':
+                $_SESSION['_dashboardLayout'] = 'app/views/_corsi.php';
+                break;
+              case 'comunicazioni':
+                $_SESSION['_dashboardLayout'] = 'app/views/_comunicazioni.php';
+                break;
+              case 'attrezzature':
+                $_SESSION['_dashboardLayout'] = 'app/views/_attrezzature.php';
+                break;
+              case 'certificazioni':
+                  $_SESSION['_dashboardLayout'] = 'app/views/_certificazioni.php';
+                  break;
+              case 'impostazioni':
+                $_SESSION['_dashboardLayout'] = 'app/views/_impostazioni.php';
+                break;
+              default:
+                $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
+                break;
+            }
           }
         }
       }catch(Exception $e){

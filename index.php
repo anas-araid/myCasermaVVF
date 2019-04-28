@@ -15,13 +15,15 @@
         include "app/functions.php";
         include "app/getData.php";
         $logged = false;
-        if ($_SESSION['ID'] != null){
-          $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
-          // se l'id non esiste allora fa il logout
-          if ($caserma['ID'] == null){
-            header('location:app/logout.php');
-          }else {
-            $logged = true;
+        if (!$error_message) {
+          if ($_SESSION['ID'] != null){
+            $caserma = getCaserma($_SESSION['ID'], null, $db_conn);
+            // se l'id non esiste allora fa il logout
+            if ($caserma['ID'] == null){
+              header('location:app/logout.php');
+            }else {
+              $logged = true;
+            }
           }
         }
       }catch(Exception $e){
@@ -68,7 +70,8 @@
         </div>
         <section id="home">
           <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--7-col" style="text-align:center">
+            <div class="mdl-cell mdl-cell--7-col" 
+                style="text-align:center">
               <br><br><br><br>
               <h2 class="style-text-red">La tua <b>caserma</b> a portata di mano...</h2>
               <br><br>
@@ -95,7 +98,7 @@
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone">
               <img src="img/desktop.png" class="style-bounce" style="width:90%"></img>
             </div>
-            <div class="mdl-cell mdl-cell--7-col" style="text-align:center" >
+            <div class="mdl-cell mdl-cell--7-col" style="text-align:center">
               <h3 class="style-text-red">Consulta e gestisci le attività in caserma in modo facile e <i>veloce.</i></h3>
               <h5 class="style-text-darkGrey" style="text-align:left;padding:30px">
                 Una volta configurato il sistema da un tuo responsabile, non ti serve installare nulla,
@@ -208,7 +211,7 @@
             <i>Creato dai soccorritori per i soccorritori.</i>
             <a href="#" onclick="privacy()">Privacy Policy</a>
           </h6>
-        </div>--<
+        </div>-->
       </main>
     </div>
   </body>
