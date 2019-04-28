@@ -1,6 +1,6 @@
 # myCasermaVVF
 
-Management fire station webapp and Telegram Bot to be notified of firefighters' activities such as shifts, courses, etc.
+Management fire station webapp and Telegram Bot to be notified of firefighter's activities such as shifts, courses, etc.
 
 ### WebApp
 * Manage firefighters
@@ -9,14 +9,16 @@ Management fire station webapp and Telegram Bot to be notified of firefighters' 
 * Configure squads and shifts
 * Courses
 * Communications
-* Fire calendars
+* Fire tools
 
 ### Telegram Bot
 * Using Telegram mobile number auth (if fireman mobile number has been setup in firestation configuration)
-* View your squad components and shifts
+* Setting your availability state
+* View your and the next weekend squad components and shifts
 * Notification shifts
-* Show current courses
-* View your data
+* Show and download your courses
+* View your personal data
+* Webcams
 
 ## Getting Started
 
@@ -50,7 +52,7 @@ Otherwise if you want to create your own test bot
 * Create a bot using telegram bot father
 * Host your myCasermaVVF web server online
 * Set telegram api webhook
-* https://api.telegram.org/bot-token/setWebhook?url=yourWebServerUrl/myCasermaVVF/server.php
+* https://api.telegram.org/your-bot-token/setWebhook?url=yourWebServerUrl/myCasermaVVF/server.php
 
 
 ## Built With

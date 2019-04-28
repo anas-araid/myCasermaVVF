@@ -168,6 +168,12 @@
                     Visualizzare i propri corsi 
                   </span>
                 </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">chat</i>
+                    Ricevere le comunicazioni di servizio direttamente sul bot myCasermaVVF
+                  </span>
+                </li>
               </ul>
             </div>
             <div class="mdl-cell mdl-cell--2-col"></div>
