@@ -19,18 +19,18 @@
       if (!$error_message) {
         if (isset($_POST['salva'])){
           $attrezzatura = text_filter($_POST["attrezzatura"]);
-          $mezzo = text_filter($_POST["attrezzatura"]);
-          $addMezzo = addAttrezzatura($mezzo, $_SESSION['ID'], $db_conn);
-          if ($addMezzo){
+          $quantita = text_filter($_POST["quantita"]);
+          $addAttrezzatura = addAttrezzatura($attrezzatura, $quantita, $_SESSION['ID'], $db_conn);
+          if ($addAttrezzatura){
             echo "
             <script>
-              flatAlert('', 'Mezzo aggiunto con successo', 'success', '../../dashboard.php?redirect=mezzi');
+              flatAlert('', 'Attrezzatura aggiunta con successo', 'success', '../../dashboard.php?redirect=attrezzature');
             </script>";
             return;
           }else{
             echo "
             <script>
-              flatAlert('Errore nell\'aggiunta del mezzo', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=mezzo');
+              flatAlert('Errore nell\'aggiunta dell\'attrezzatura', 'Controlla bene i dati immessi', 'error', '../../dashboard.php?redirect=attrezzature');
             </script>";
             return;
           }

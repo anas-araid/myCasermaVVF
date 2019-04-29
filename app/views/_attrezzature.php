@@ -18,7 +18,7 @@
           $checkingExists = true;
           $id = $attr[$i][0];
           $nome = $attr[$i][1];
-          $quantita = $attr[$i][1];
+          $quantita = $attr[$i][2];
           echo '<tr>
               <td class="style-td">'.$nome.'</td>
               <td class="style-td">'.$quantita.'</td>
@@ -43,7 +43,7 @@
     '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
     '<h3>Aggiungi un attrezzatura</h3>'+
     '<br>'+
-    '<form method="post" action="app/controllers/" enctype="multipart/form-data">' +
+    '<form method="post" action="app/controllers/newAttrezzatura.php" enctype="multipart/form-data">' +
     '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
     '<p class="mdl-color-text--grey-900">Attrezzatura</p>'+
     '<input class="mdl-textfield__input" type="text" id="attrezzatura" name="attrezzatura" style="outline:none" required="">'+

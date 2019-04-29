@@ -49,6 +49,19 @@
     }
     return true;
   }
+  function addAttrezzatura($attrezzatura, $quantita, $idCorpo, $db_conn){
+    $sql = "INSERT INTO t_attrezzature (Nome, Quantita, FK_CorpoVVF)
+            VALUES ('$attrezzatura', '$quantita', '$idCorpo')";
+    try {
+      $addAttrezzatura = mysqli_query($db_conn, $sql);
+      if (!$addAttrezzatura){
+        return false;
+      }
+    } catch (Exception $e) {
+      return false;
+     }
+    return true;
+  }
   function addSquadra($nome, $idCorpo, $db_conn){
     $sql = "INSERT INTO t_numeroSquadre (Numero, FK_CorpoVVF)
             VALUES ('$nome', '$idCorpo')";
