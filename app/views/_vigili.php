@@ -136,6 +136,9 @@
   if (isset($_GET['edit'])){
     $editID = text_filter($_GET['edit']);
     $editFireman = getFiremanData($editID, null, null, null, null, null, $db_conn);
+    if ($editFireman == null){
+      redirect('dashboard.php?redirect=vigili');
+    }
     $data = json_encode($editFireman);
     echo "<script>editFireman($data)</script>";
   }

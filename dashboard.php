@@ -143,7 +143,6 @@
                 case "privacy":
                   privacy()
                   break;
-            
                 case "terms":
                   terms();
                   break;

@@ -22,6 +22,7 @@
           echo '<tr>
               <td class="style-td">'.$nome.'</td>
               <td class="style-td">'.$quantita.'</td>
+              <td class="style-td"><a class="style-link" href="dashboard.php?redirect=attrezzature&edit='.$id.'">Modifica</a></td>
               <td class="style-td"><a onclick="alertDeleteAttrezzatura('.$id.')" style="color:red;cursor:pointer;text-decoration:underline">Elimina</a></td>
             </tr>';
         }
@@ -31,9 +32,15 @@
 </div>
 <div style="text-align:center">
   <?php
-  if(!$checkingExists){
-    echo "<h5 class='style-text-darkblue'>Nessun attrezzatura</h5>";
-  }
+    if(!$checkingExists){
+      echo "<h5 class='style-text-darkblue'>Nessun attrezzatura</h5>";
+    }
+    if (isset($_GET['edit'])){
+      $editID = text_filter($_GET['edit']);
+      $editAttrezzature = getAttrezzature($editID, $_SESSION['ID'], $db_conn);
+      $data = json_encode($editAttrezzature);
+      echo "<script>editFireman($data)</script>";
+    }
   ?>
 </div>
 <script>
