@@ -167,6 +167,35 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $mezzi;
   }
+  function getAttrezzature($ID, $FK_CorpoVVF, $db_conn){
+    $attrezzature = array();
+    if ($ID == null){
+      $sql = "SELECT * FROM t_attrezzature ORDER BY Nome";
+    }else{
+      $sql = "SELECT * FROM t_attrezzature WHERE (ID='$ID')";
+      $attrezzature = '';
+    }
+    if ($FK_CorpoVVF != null){
+      $sql = "SELECT * FROM t_attrezzature WHERE (FK_CorpoVVF='$FK_CorpoVVF') ORDER BY Nome";
+    }
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getAttrezzature");
+    }
+    $i=0;
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      if ($FK_CorpoVVF != null){
+        $attrezzature["$i"] = array($ris['ID'], $ris['Nome'], $ris['Quantita']);
+        $i++;
+      }else if($ID == null){
+        $attrezzature["$i"] = array($ris['ID'], $ris['Nome'], $ris['Quantita']);
+        $i++;
+      }else{
+        $attrezzature["$i"] = array($ris['Nome'], $ris['Quantita']);
+      }
+    }
+    return $attrezzature;
+  }
   function checkPassword($id, $password, $db_conn){
     $selectQuery = "SELECT * FROM t_caserme WHERE ID='$id' AND Password='$password'";
     $select = mysqli_query($db_conn, $selectQuery);

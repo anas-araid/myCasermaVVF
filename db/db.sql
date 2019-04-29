@@ -48,6 +48,17 @@ CREATE TABLE t_mezzi (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
+CREATE TABLE t_attrezzature (
+  ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
+  Nome             VARCHAR(50),
+  Quantita         VARCHAR(50),
+  FK_CorpoVVF      BIGINT,
+  PRIMARY KEY(ID),
+  FOREIGN KEY(FK_CorpoVVF)    REFERENCES t_caserme(ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
 CREATE TABLE t_certificazioni (
   ID 		           BIGINT				NOT NULL 	AUTO_INCREMENT,
   Corso            VARCHAR(200),
