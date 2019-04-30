@@ -85,4 +85,18 @@
     }
     return true;
   }
+  function updateAttrezzatura($id, $attrezzatura, $quantita, $idCorpo, $db_conn){
+    if (!is_numeric($id)){
+      return;
+    }else{
+      $sql = "UPDATE t_attrezzature SET Nome='$attrezzatura', Quantita='$quantita', FK_CorpoVVF='$idCorpo'
+              WHERE ID='$id'";
+      $updateTool = mysqli_query($db_conn, $sql);
+      if ($updateTool==null){
+        echo "Errore nell'aggiornamento dell'attrezzatura (updateAttrezzatura() in updateData.php): contattare l'amministratore";
+        return false;
+      }
+    }
+    return true;
+  }
 ?>

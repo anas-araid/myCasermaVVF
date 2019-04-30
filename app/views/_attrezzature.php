@@ -30,6 +30,46 @@
     </tbody>
   </table>
 </div>
+<script>
+  // #################### EDIT ATTREZZATURA #######################################
+  var editContent = '';
+  function editTools(data){
+    var id = data[0][0];
+    var attrezzatura = data[0][1];
+    var quantita = data[0][2];
+    console.log(data);
+    this.editContent =
+    '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
+    '<h3>Aggiorna l\' attrezzatura</h3>'+
+    '<br>'+
+    '<form method="post" action="app/controllers/editAttrezzatura.php" enctype="multipart/form-data">' +
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Attrezzatura</p>'+
+    '<input class="mdl-textfield__input" type="text" id="attrezzatura" name="attrezzatura" value="'+attrezzatura+'" style="outline:none" required="">'+
+    '</div><br>'+
+    '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Quantità</p>'+
+    '<input class="mdl-textfield__input" type="text" id="quantita" name="quantita" value="'+quantita+'" style="outline:none" required="">'+
+    '</div><br>'+
+    '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
+    '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editToolsModal.close()>ANNULLA</button>'+
+    '</form>';
+    editToolsModal.open();
+  }
+  var editToolsModal = new tingle.modal({
+        closeMethods: ['overlay', 'button', 'escape'],
+        closeLabel: "Chiudi",
+        onOpen: function() {
+          editToolsModal.setContent(
+              editContent
+            );
+        },
+        onClose: function() {
+            location.href="dashboard.php?redirect=attrezzature";
+            console.log('modal closed');
+        },
+    });
+</script>
 <div style="text-align:center">
   <?php
     if(!$checkingExists){
@@ -39,7 +79,8 @@
       $editID = text_filter($_GET['edit']);
       $editAttrezzature = getAttrezzature($editID, $_SESSION['ID'], $db_conn);
       $data = json_encode($editAttrezzature);
-      echo "<script>editFireman($data)</script>";
+      echo "<script>editTools($data)</script>";
+      echo "<script>console.log($data)</script>";
     }
   ?>
 </div>
