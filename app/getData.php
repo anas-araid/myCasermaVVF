@@ -190,12 +190,8 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
       }else if($ID == null){
         $attrezzature["$i"] = array($ris['ID'], $ris['Nome'], $ris['Quantita']);
         $i++;
-      }else if ($ID != null){
-        $attrezzature['ID'] = $ris['ID'];
-        $attrezzature['Nome'] = $ris['Nome'];
-        $attrezzature['Quantita'] = $ris['Quantita'];
       }else{
-        $attrezzature["$i"] = array($ris['Nome'], $ris['Quantita']);
+        $attrezzature["$i"] = array($ris['ID'], $ris['Nome'], $ris['Quantita']);
       }
     }
     return $attrezzature;

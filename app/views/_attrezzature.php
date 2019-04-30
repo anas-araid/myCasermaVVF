@@ -49,7 +49,7 @@
     '</div><br>'+
     '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
     '<p class="mdl-color-text--grey-900">Quantità</p>'+
-    '<input class="mdl-textfield__input" type="text" id="quantita" name="quantita" value="'+quantita+'" style="outline:none" required="">'+
+    '<input class="mdl-textfield__input" type="number" id="quantita" name="quantita" value="'+quantita+'" style="outline:none" required="">'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
     '<button class="style-button-red" name="annulla" id="annulla" type="reset" onclick=editToolsModal.close()>ANNULLA</button>'+
@@ -77,10 +77,13 @@
     }
     if (isset($_GET['edit'])){
       $editID = text_filter($_GET['edit']);
-      $editAttrezzature = getAttrezzature($editID, $_SESSION['ID'], $db_conn);
+      $editAttrezzature = getAttrezzature($editID, null, $db_conn);
+      echo "<script>console.log($editAttrezzature)</script>";
+      if ($editAttrezzature == null){
+        redirect('dashboard.php?redirect=attrezzature');
+      }
       $data = json_encode($editAttrezzature);
       echo "<script>editTools($data)</script>";
-      echo "<script>console.log($data)</script>";
     }
   ?>
 </div>
