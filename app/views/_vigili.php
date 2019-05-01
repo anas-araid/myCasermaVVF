@@ -110,7 +110,6 @@
   var editFiremanModal = new tingle.modal({
         closeMethods: ['overlay', 'button', 'escape'],
         closeLabel: "Chiudi",
-        cssClass: ['custom-class-1', 'custom-class-2'],
         onOpen: function() {
             editFiremanModal.setContent(
               editVigile
@@ -120,10 +119,6 @@
             location.href="dashboard.php?redirect=vigili";
             console.log('modal closed');
         },
-        beforeClose: function() {
-            return true; // close the modal
-            return false; // nothing happens
-        }
     });
 </script>
 

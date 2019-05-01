@@ -78,7 +78,6 @@
     if (isset($_GET['edit'])){
       $editID = text_filter($_GET['edit']);
       $editAttrezzature = getAttrezzature($editID, null, $db_conn);
-      echo "<script>console.log($editAttrezzature)</script>";
       if ($editAttrezzature == null){
         redirect('dashboard.php?redirect=attrezzature');
       }

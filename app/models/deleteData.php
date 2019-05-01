@@ -1,8 +1,8 @@
 <?php
   @ob_start();
   session_start();
-  include 'dbConnection.php';
-  include 'functions.php';
+  include '../dbConnection.php';
+  include '../functions.php';
   include 'getData.php';
   if (isset($_GET['id'])){
     $id = text_filter($_GET['id']);
@@ -32,7 +32,7 @@
         case 'caserma':
           deleteCaserma($id, $db_conn);
         default:
-          redirect('../dashboard.php?redirect=home');        
+          redirect('../../dashboard.php?redirect=home');        
           break;
       }
     }
@@ -58,20 +58,20 @@
     if ($deleteQuery == null){
       die("error");
     }
-    redirect('../dashboard.php?redirect=mostraSquadra&id='.$idSquadra);
+    redirect('../../dashboard.php?redirect=mostraSquadra&id='.$idSquadra);
   }
 
   function deleteCertificato($id, $db_conn){
     $corso = getCorsi($id, null, $db_conn);
-    if (isset($corso['File'])){
-      unlink('../uploads/'.$corso['File']);
+    if (!empty($corso['File'])){
+      unlink('../../uploads/'.$corso['File']);
     }
     $sql = "DELETE FROM t_certificazioni WHERE ID='$id'";
     $deleteQuery = mysqli_query($db_conn, $sql);
     if ($deleteQuery == null){
       die("error");
     }
-    redirect('../dashboard.php?redirect=certificazioni&id='.$corso['FK_Vigile']);
+    redirect('../../dashboard.php?redirect=certificazioni&id='.$corso['FK_Vigile']);
   }
   function deleteFireman($id, $db_conn){
     $sql = "DELETE FROM t_vigili WHERE ID='$id'";
@@ -79,7 +79,7 @@
     if ($deleteQuery == null){
       die("Errore nella cancellazione del vigile: contattare l'amministratore");
     }
-    redirect('../dashboard.php?redirect=vigili');
+    redirect('../../dashboard.php?redirect=vigili');
   }
   function deleteCaserma($id, $db_conn){
     $sql = "DELETE FROM t_caserme WHERE ID='$id'";
@@ -87,7 +87,7 @@
     if ($deleteQuery == null){
       die("Errore nella cancellazione della caserma: contattare l'amministratore");
     }
-    redirect('logout.php');
+    redirect('../logout.php');
   }
   function deleteMezzo($id, $db_conn){
     $sql = "DELETE FROM t_mezzi WHERE ID='$id'";
@@ -95,7 +95,7 @@
     if ($deleteQuery == null){
       die("Errore nella cancellazione del mezzo: contattare l'amministratore");
     }
-    redirect('../dashboard.php?redirect=mezzi');
+    redirect('../../dashboard.php?redirect=mezzi');
   }
   function deleteSquadra($id, $db_conn){
     $sql = "DELETE FROM t_numeroSquadre WHERE ID='$id'";
@@ -103,7 +103,7 @@
     if ($deleteQuery == null){
       die("Errore nella cancellazione della squadra: contattare l'amministratore");
     }
-    redirect('../dashboard.php?redirect=squadre');
+    redirect('../../dashboard.php?redirect=squadre');
   }
   function deleteTurno($id, $idSquadra, $db_conn){
     $sql = "DELETE FROM t_turnifestivi WHERE ID='$id'";
@@ -112,9 +112,9 @@
       die("Errore nella cancellazione del turno: contattare l'amministratore");
     }
     if ($idSquadra != null){
-      redirect('../dashboard.php?redirect=turni&id='.$idSquadra);
+      redirect('../../dashboard.php?redirect=turni&id='.$idSquadra);
     }else{
-      redirect('../dashboard.php?redirect=squadre');
+      redirect('../../dashboard.php?redirect=squadre');
     }
   }
  ?>

@@ -13,7 +13,7 @@
         // inclusione del file per la connessione al database
         include "app/dbConnection.php";
         include "app/functions.php";
-        include "app/getData.php";
+        include "app/models/getData.php";
         if (!$error_message) {
           if ($_SESSION['ID'] != null){
             $caserma = getCaserma($_SESSION['ID'], null, $db_conn);

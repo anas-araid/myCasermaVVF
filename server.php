@@ -2,8 +2,8 @@
   // include libs 
   include 'bot/_layout.php';
   include 'app/dbConnection.php';
-  include 'app/getData.php';
-  include 'app/updateData.php';
+  include 'app/models/getData.php';
+  include 'app/models/updateData.php';
   include 'bot/controller.php';
   // connections
   $botToken = getApiToken("api.key");

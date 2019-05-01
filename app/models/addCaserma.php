@@ -1,8 +1,8 @@
 <?php
   @ob_start();
   session_start();
-  include 'dbConnection.php';
-  include 'functions.php';
+  include '../dbConnection.php';
+  include '../functions.php';
   include 'getData.php';
   include 'addData.php';
  ?>

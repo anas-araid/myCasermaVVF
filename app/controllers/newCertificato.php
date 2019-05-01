@@ -3,9 +3,9 @@
   session_start();
   include '../dbConnection.php';
   include '../functions.php';
-  include '../getData.php';
-  include '../addData.php';
-  include '../updateData.php';
+  include '../models/getData.php';
+  include '../models/addData.php';
+  include '../models/updateData.php';
  ?>
 <html>
   <head>

@@ -68,7 +68,7 @@ function alertDeleteFireman(id){
   ).then(Elimina => {
     if (Elimina){
         swal.close();
-        location.href='app/deleteData.php?data=vigile&id='+id;
+        location.href='app/models/deleteData.php?data=vigile&id='+id;
     }else{
       swal.close();
     }
@@ -94,7 +94,7 @@ function alertDeleteCertificato(id){
   ).then(Elimina => {
     if (Elimina){
       swal.close();
-      location.href='app/deleteData.php?data=certificato&id='+id;
+      location.href='app/models/deleteData.php?data=certificato&id='+id;
     }else{
       swal.close();
     }
@@ -120,7 +120,7 @@ function alertDeleteMezzo(id){
   ).then(Elimina => {
     if (Elimina){
       swal.close();
-      location.href='app/deleteData.php?data=mezzo&id='+id;
+      location.href='app/models/deleteData.php?data=mezzo&id='+id;
     }else{
       swal.close();
     }
@@ -146,7 +146,7 @@ function alertDeleteSquadra(id){
   ).then(Elimina => {
     if (Elimina){
       swal.close();
-      location.href='app/deleteData.php?data=squadra&id='+id;
+      location.href='app/models/deleteData.php?data=squadra&id='+id;
     }else{
       swal.close();
     }
@@ -172,7 +172,7 @@ function alertDeleteTurno(id, idSquadra){
   ).then(Elimina => {
     if (Elimina){
       swal.close();
-      location.href='app/deleteData.php?data=turno&idSquadra='+idSquadra+'&id='+id;
+      location.href='app/models/deleteData.php?data=turno&idSquadra='+idSquadra+'&id='+id;
     }else{
       swal.close();
     }
@@ -198,7 +198,7 @@ function alertRemoveFiremanFromSquad(idVigile, idSquadra){
   ).then(Elimina => {
     if (Elimina){
       swal.close();
-      location.href='app/deleteData.php?data=vigileFromSquadra&idVigile='+idVigile + '&idSquadra='+ idSquadra;
+      location.href='app/models/deleteData.php?data=vigileFromSquadra&idVigile='+idVigile + '&idSquadra='+ idSquadra;
     }else{
       swal.close();
     }
