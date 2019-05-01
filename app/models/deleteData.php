@@ -6,6 +6,9 @@
   include 'getData.php';
   if (isset($_GET['id'])){
     $id = text_filter($_GET['id']);
+    if (!is_numeric($id)){
+      redirect('../../dashboard.php?redirect=home');
+    }
     if (isset($_GET['data'])){
       $data = text_filter($_GET['data']);
       switch ($data) {
@@ -31,6 +34,10 @@
           break;
         case 'caserma':
           deleteCaserma($id, $db_conn);
+          break;
+        case 'attrezzatura':
+          deleteAttrezzatura($id, $db_conn);
+          break;
         default:
           redirect('../../dashboard.php?redirect=home');        
           break;
@@ -104,6 +111,14 @@
       die("Errore nella cancellazione della squadra: contattare l'amministratore");
     }
     redirect('../../dashboard.php?redirect=squadre');
+  }
+  function deleteAttrezzatura($id, $db_conn){
+    $sql = "DELETE FROM t_attrezzature WHERE ID='$id'";
+    $deleteQuery = mysqli_query($db_conn, $sql);
+    if ($deleteQuery == null){
+      die("Errore nella cancellazione dell'attrezzatura: contattare l'amministratore");
+    }
+    redirect('../../dashboard.php?redirect=attrezzature');
   }
   function deleteTurno($id, $idSquadra, $db_conn){
     $sql = "DELETE FROM t_turnifestivi WHERE ID='$id'";
