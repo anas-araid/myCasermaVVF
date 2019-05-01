@@ -25,7 +25,7 @@
           if ($addTurno){
             echo "
             <script>
-              flatAlert('', 'Turni aggiunti con successo', 'success', '../../dashboard.php?redirect=turni&id=".$idSquadra."');
+              flatAlert('', 'Turno aggiunto con successo', 'success', '../../dashboard.php?redirect=turni&id=".$idSquadra."');
             </script>";
             return;
           }else{
