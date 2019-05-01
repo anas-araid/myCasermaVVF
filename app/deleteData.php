@@ -22,7 +22,12 @@
           deleteSquadra($id, $db_conn);
           break;
         case 'turno':
-          deleteTurno($id, $db_conn);
+          if (isset($_GET['idSquadra']) && is_numeric($_GET['idSquadra'])){
+            $idSquadra = text_filter($_GET['idSquadra']);
+            deleteTurno($id, $idSquadra,$db_conn);
+          }else{
+            deleteTurno($id, null, $db_conn);
+          }
           break;
         case 'caserma':
           deleteCaserma($id, $db_conn);
@@ -100,12 +105,16 @@
     }
     redirect('../dashboard.php?redirect=squadre');
   }
-  function deleteTurno($id, $db_conn){
+  function deleteTurno($id, $idSquadra, $db_conn){
     $sql = "DELETE FROM t_turnifestivi WHERE ID='$id'";
     $deleteQuery = mysqli_query($db_conn, $sql);
     if ($deleteQuery == null){
       die("Errore nella cancellazione del turno: contattare l'amministratore");
     }
-    redirect('../dashboard.php?redirect=squadre');
+    if ($idSquadra != null){
+      redirect('../dashboard.php?redirect=turni&id='.$idSquadra);
+    }else{
+      redirect('../dashboard.php?redirect=squadre');
+    }
   }
  ?>

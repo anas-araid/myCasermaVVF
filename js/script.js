@@ -152,7 +152,7 @@ function alertDeleteSquadra(id){
     }
   });
 }
-function alertDeleteTurno(id){
+function alertDeleteTurno(id, idSquadra){
   swal(
     {
       title: "Vuoi continuare?",
@@ -172,7 +172,7 @@ function alertDeleteTurno(id){
   ).then(Elimina => {
     if (Elimina){
       swal.close();
-      location.href='app/deleteData.php?data=turno&id='+id;
+      location.href='app/deleteData.php?data=turno&idSquadra='+idSquadra+'&id='+id;
     }else{
       swal.close();
     }
