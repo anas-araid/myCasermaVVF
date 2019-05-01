@@ -3,7 +3,7 @@
   <br>
   <form action="app/controllers/newMessaggio.php" method="POST" style="text-align:center">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <textarea class="mdl-textfield__input" row="3" id="messaggio" name="messaggio" required="" maxlength="40"></textarea>
+      <textarea class="mdl-textfield__input" row="3" id="messaggio" name="messaggio" required="" maxlength="300"></textarea>
       <label class="mdl-textfield__label" for="messaggio">Invia un messaggio a tutti i vigili</label>
     </div>
     <br>
