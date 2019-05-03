@@ -75,8 +75,11 @@
       exit();
     }
   }
+  // controllo se dentro $text (testo che viene mandato al bot) se contiene /webcam
+  // /webcam NomeStrada
   if (strpos($text, '/webcam')){
-
+    $strada = substr($text, strpos($text, " ") + 1);
+    
   }
   $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
   $FK_CorpoVVF = $firemanData['FK_CorpoVVF'];
