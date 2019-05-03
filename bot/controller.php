@@ -36,7 +36,7 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
       $stato = 'non sono reperibile';
@@ -46,8 +46,9 @@
     }
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
   }
+  
   function menu ($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Calendari"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
     $stato = '';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
@@ -57,6 +58,10 @@
       $stato = 'sono reperibile';
     }
     sendMsg($botToken, $chatID, 'STATO: '.$stato, $menu);
+  }
+  function webCamMenu($botToken, $chatID){
+    $menu =  '["/webcam SS47"], ["/webcam SS12"], ["/webcam SS43"], ["/webcam SP235"], ["/webcam SS240"], ["/webcam SP79"], ["/indetro"], ["/start"]';
+    sendMsg($botToken,$chatID, 'Seleziona il tratto stradale', $menu);
   }
   function printMyData($firemanData, $db_conn){
     $grado = getGrado($firemanData['FK_Grado'], $db_conn);

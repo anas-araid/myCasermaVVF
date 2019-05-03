@@ -75,7 +75,9 @@
       exit();
     }
   }
+  if (strpos($text, '/webcam')){
 
+  }
   $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
   $FK_CorpoVVF = $firemanData['FK_CorpoVVF'];
   if (!empty($firemanData)){
@@ -134,9 +136,6 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'Calendari':
-        tempFunction($botToken, $chatID, $firemanData);
-        break;
       case 'I miei corsi':
         $dati = printCorsi($firemanData, $db_conn);
         if (!$dati){
@@ -146,11 +145,14 @@
         menu($botToken, $chatID, $firemanData);
         break;
       case 'Webcam':
-        tempFunction($botToken, $chatID, $firemanData);
+        webCamMenu($botToken, $chatID);
         break;
       case 'I miei dati':
         $dati = printMyData($firemanData, $db_conn);
         sendMsg($botToken,$chatID, $dati, null);
+        menu($botToken, $chatID, $firemanData);
+        break;
+      case '/indetro':
         menu($botToken, $chatID, $firemanData);
         break;
       default:
