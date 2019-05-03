@@ -80,32 +80,6 @@
   $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);
   $FK_CorpoVVF = $firemanData['FK_CorpoVVF'];
   if (!empty($firemanData)){
-    // controllo se dentro $text (testo che viene mandato al bot) se contiene /webcam
-    // /webcam NomeStrada
-    if (strpos($text, 'webcam') != false){
-      $json = getWebcamJson('bot/webcam.json');
-      if ($json != false){
-        $webcamData = json_decode($json, true);
-        // $strada è il NomeStrada dopo /webcam tipo SS47 ecc.
-        $strada = substr($text, strpos($text, " ") + 1);
-        $stradaSelezionata = $webcamData[$strada];
-        if ($stradaSelezionata != null){
-          // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
-          $localita = array();
-          for ($i=0;$i<count($stradaSelezionata);$i++){
-            $localita[$i] = $stradaSelezionata[$i]['nome'];
-          }
-          $menu = menuParser($localita);
-          sendMsg($botToken,$chatID, 'Webcam disponibili', $menu);
-        }else{
-          sendMsg($botToken,$chatID, 'Webcam non disponibili');
-          menu($botToken, $chatID, $firemanData);
-        }
-      }else{
-        sendMsg($botToken,$chatID, 'Webcam non disponibili');
-        menu($botToken, $chatID, $firemanData);
-      }
-    }
     switch ($text) {
       case "Sono reperibile":
         // changeReperibilita ritorna true se è andato a buon fine
@@ -181,6 +155,49 @@
         menu($botToken, $chatID, $firemanData);
         break;
       default:
+        // controllo se dentro $text (testo che viene mandato al bot) se contiene /webcam
+        // /webcam NomeStrada
+        if (strpos($text, 'webcam') != false){
+          $json = getWebcamJson('bot/webcam.json');
+          if ($json != false){
+            $webcamData = json_decode($json, true);
+            // $strada è il NomeStrada dopo /webcam tipo SS47 ecc.
+            $strada = substr($text, strpos($text, " ") + 1);
+            $stradaSelezionata = $webcamData[$strada];
+            if ($stradaSelezionata != null){
+              // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
+              $localita = array();
+              for ($i=0;$i<count($stradaSelezionata);$i++){
+                $localita[$i] = $stradaSelezionata[$i]['nome'];
+              }
+              $menu = menuParser($localita);
+              sendMsg($botToken,$chatID, 'Webcam disponibili', $menu);
+            }else{
+              sendMsg($botToken,$chatID, 'Webcam non disponibili');
+              menu($botToken, $chatID, $firemanData);
+            }
+          }else{
+            sendMsg($botToken,$chatID, 'Webcam non disponibili');
+            menu($botToken, $chatID, $firemanData);
+          }
+        }else if (strpos($text, 'cam') != false){
+          $json = getWebcamJson('bot/webcam.json');
+          if ($json != false){
+            $webcamData = json_decode($json, true);
+            $localita = substr($text, strpos($text, " ") + 1);
+            $url = getWebcamUrlByLocation($webcamData, $localita);
+            if ($url != false){
+              sendPhoto($botToken,$chatID, $url);
+              //sendMsg($botToken,$chatID, 'Webcam non disponibile');
+            }else{
+              sendMsg($botToken,$chatID, 'Webcam non disponibile');
+              menu($botToken, $chatID, $firemanData);
+            }
+          }else{
+            sendMsg($botToken,$chatID, 'Webcam non disponibili');
+            menu($botToken, $chatID, $firemanData);
+          }
+        }
         exit;
         break;
     }

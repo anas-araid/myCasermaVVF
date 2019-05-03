@@ -10,6 +10,10 @@
     $TelegramUrlSendMessage = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard."&parse_mode=html&disable_web_page_preview=true";
     return file_get_contents($TelegramUrlSendMessage);
   }
+  function sendPhoto($botToken, $chatID, $url){
+    $TelegramUrlSendMessage = "https://api.telegram.org/".$botToken."/sendPhoto?chat_id=".$chatID."&photo=".$url;
+    return file_get_contents($TelegramUrlSendMessage);
+  }
   function sendDocuments($chatID, $file){
     $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
     $server = $_SERVER['SERVER_NAME'];
@@ -66,9 +70,9 @@
   function menuParser($array){
     $menu = '';
     for ($i=0;$i<count($array);$i++){
-      $menu .= '["'.$array[$i].'"],';
+      $menu .= '["/cam '.$array[$i].'"],';
     }
-    $menu .= '["Webcam"]';
+    $menu .= '["Webcam", "/menu"]';
     return $menu;
   }
   function printMyData($firemanData, $db_conn){
@@ -200,6 +204,16 @@
   }
   function getWebcamJson($file){
     return file_get_contents($file);
+  }
+  function getWebcamUrlByLocation($json, $location){
+    foreach ($json as $road){
+      for ($i=0;$i<count($road);$i++){
+        if ($road[$i]['nome'] == $location){
+          return $road[$i]['url'];
+        }
+      }
+    }
+    return false;
   }
   function printCorsi($firemanData, $db_conn){
     $corsi = getCorsi(null, $firemanData['ID'], $db_conn);
