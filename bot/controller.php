@@ -60,8 +60,16 @@
     sendMsg($botToken, $chatID, 'STATO: '.$stato, $menu);
   }
   function webCamMenu($botToken, $chatID){
-    $menu =  '["/webcam SS47"], ["/webcam SS12"], ["/webcam SS43"], ["/webcam SP235"], ["/webcam SS240"], ["/webcam SP79"], ["/indetro"], ["/start"]';
+    $menu =  '["/webcam SS47"], ["/webcam SS12"], ["/webcam SS43"], ["/webcam SP235"], ["/webcam SS240"], ["/webcam SP79"], ["/menu"], ["/start"]';
     sendMsg($botToken,$chatID, 'Seleziona il tratto stradale', $menu);
+  }
+  function menuParser($array){
+    $menu = '';
+    for ($i=0;$i<count($array);$i++){
+      $menu .= '["'.$array[$i].'"],';
+    }
+    $menu .= '["Webcam"]';
+    return $menu;
   }
   function printMyData($firemanData, $db_conn){
     $grado = getGrado($firemanData['FK_Grado'], $db_conn);
@@ -188,6 +196,9 @@
     return updateReperibilita($firemanID, $newReperibilita, $db_conn);
   }
   function getApiToken($file){
+    return file_get_contents($file);
+  }
+  function getWebcamJson($file){
     return file_get_contents($file);
   }
   function printCorsi($firemanData, $db_conn){
