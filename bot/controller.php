@@ -7,12 +7,16 @@
     }/*else {
       $keyboard = '&reply_markup={"remove_keyboard":true}';
     }*/
-    $TelegramUrlSendMessage = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard."&parse_mode=html&disable_web_page_preview=true";
-    return file_get_contents($TelegramUrlSendMessage);
+    $sendMsg = "https://api.telegram.org/".$token."/sendMessage?chat_id=".$chatID."&text=".urlencode($msgTxt).$keyboard."&parse_mode=html&disable_web_page_preview=true";
+    return file_get_contents($sendMsg);
   }
   function sendPhoto($botToken, $chatID, $url){
-    $TelegramUrlSendMessage = "https://api.telegram.org/".$botToken."/sendPhoto?chat_id=".$chatID."&photo=".$url;
-    return file_get_contents($TelegramUrlSendMessage);
+    $sendPhoto = "https://api.telegram.org/".$botToken."/sendPhoto?chat_id=".$chatID."&photo=".$url;
+    return file_get_contents($sendPhoto);
+  }
+  function sendAudio($botToken, $chatID, $url){
+    $sendAudio = "https://api.telegram.org/".$botToken."/sendAudio?chat_id=".$chatID."&audio=".$url;
+    return file_get_contents($sendAudio);
   }
   function sendDocuments($chatID, $file){
     $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
@@ -40,7 +44,7 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["Meteo trentino"], ["I miei dati"], ["/start"]';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
       $stato = 'non sono reperibile';
@@ -52,7 +56,7 @@
   }
   
   function menu ($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["Meteo trentino"], ["I miei dati"], ["/start"]';
     $stato = '';
     if (!$firemanData['Reperibile']){
       $menu = '["Sono reperibile"], '.$menu;
@@ -65,6 +69,7 @@
   }
   function webCamMenu($botToken, $chatID){
     $menu =  '["/webcam SS47"], ["/webcam SS12"], ["/webcam SS43"], ["/webcam SP235"], ["/webcam SS240"], ["/webcam SP79"], ["/menu"], ["/start"]';
+    sendMsg($botToken,$chatID, 'Webcam disponibili solo nel territorio Trentino');
     sendMsg($botToken,$chatID, 'Seleziona il tratto stradale', $menu);
   }
   function menuParser($array){

@@ -146,6 +146,9 @@
       case 'Webcam':
         webCamMenu($botToken, $chatID);
         break;
+      case 'Meteo trentino':
+       sendAudio($botToken, $chatID, 'http://m.viaggiareintrentino.it/var/vit/storage/video/meteotrentino-notiziar.mp3');
+        break;
       case 'I miei dati':
         $dati = printMyData($firemanData, $db_conn);
         sendMsg($botToken,$chatID, $dati, null);
