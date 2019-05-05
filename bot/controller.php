@@ -262,15 +262,14 @@
     }
     return false;
   }
-  function sendCamPhoto($configFile, $text){
+  function getWebcamUrl($configFile, $text){
     $json = getWebcamJson($configFile);
     if ($json != false){
       $webcamData = json_decode($json, true);
       $localita = substr($text, strpos($text, " ") + 1);
       $url = getWebcamUrlByLocation($webcamData, $localita);
       if ($url != false){
-        sendPhoto($botToken,$chatID, $url);
-        return true;
+        return $url;
       }
     }
     return false;
