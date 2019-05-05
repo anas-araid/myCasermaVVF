@@ -243,4 +243,36 @@
       return false;
     }
   }
+  function getWebCamList($configFile, $text){
+    $json = getWebcamJson($configFile);
+    if ($json != false){
+      $webcamData = json_decode($json, true);
+      // $strada è il NomeStrada dopo /webcam tipo SS47 ecc.
+      $strada = substr($text, strpos($text, " ") + 1);
+      $stradaSelezionata = $webcamData[$strada];
+      if ($stradaSelezionata != null){
+        // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
+        $localita = array();
+        for ($i=0;$i<count($stradaSelezionata);$i++){
+          $localita[$i] = $stradaSelezionata[$i]['nome'];
+        }
+        $menu = menuParser($localita);
+        return $menu;
+      }
+    }
+    return false;
+  }
+  function sendCamPhoto($configFile, $text){
+    $json = getWebcamJson($configFile);
+    if ($json != false){
+      $webcamData = json_decode($json, true);
+      $localita = substr($text, strpos($text, " ") + 1);
+      $url = getWebcamUrlByLocation($webcamData, $localita);
+      if ($url != false){
+        sendPhoto($botToken,$chatID, $url);
+        return true;
+      }
+    }
+    return false;
+  }
 ?>
