@@ -174,7 +174,15 @@
           // getWebcamUrl --> restituisce l'url della webcam in base alla località
           $url = getWebcamUrl('bot/webcam.json', $text);
           if ($url != false){
-            sendPhoto($botToken,$chatID, $url);
+            // getFile scarica l'immagine e la salva temporaneamente sul server
+            $filename = getFile($url);
+            // getFileUrl restituisce l'url dell'immagine temporanea
+            $newUrl = getFileUrl($filename);
+            // invio la photo all'utente
+            sendPhoto($botToken,$chatID, $newUrl);
+            // sleep
+            // rimuovo l'immagine temporanea della webcam
+            removePhoto($filename);
           }else{
             sendMsg($botToken,$chatID, 'Webcam non disponibili');
             menu($botToken, $chatID, $firemanData);

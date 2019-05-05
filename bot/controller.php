@@ -235,7 +235,6 @@
           $dati .= "File: <a href='$dir'>Apri documento</a> "."\n";
           //sendDocuments($firemanData['Chat_ID'], $file);
         }
-
       }
       $dati .="______________________________________________\n";
       return $dati;
@@ -273,5 +272,17 @@
       }
     }
     return false;
+  }
+  function getFile($url){
+    $webcamName = time().'_'.basename($url);
+    $file = 'uploads/webcam/'.$webcamName;
+    // file_get_contents restituisce il contenuto dell'immagine nell'url
+    // file_put_contents salva il file nella directory
+    $save = file_put_contents($file, file_get_contents($url));
+    if ($save == false){
+      return false;
+    }else{
+      return $file;
+    }
   }
 ?>
