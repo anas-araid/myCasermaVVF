@@ -285,4 +285,14 @@
       return $file;
     }
   }
+  function getFileUrl($dir){
+    $server = $_SERVER['SERVER_NAME'];
+    $url = "https://$server/php/myCasermaVVF/".$dir;
+    return $url;
+  }
+  function removePhoto($fileDir){
+    if (file_exists($fileDir)) {
+      unlink($fileDir);
+    }
+  }
 ?>

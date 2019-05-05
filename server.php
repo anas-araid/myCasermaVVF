@@ -175,14 +175,14 @@
           $url = getWebcamUrl('bot/webcam.json', $text);
           if ($url != false){
             // getFile scarica l'immagine e la salva temporaneamente sul server
-            $filename = getFile($url);
+            $fileDir = getFile($url);
             // getFileUrl restituisce l'url dell'immagine temporanea
-            $newUrl = getFileUrl($filename);
+            $newUrl = getFileUrl($fileDir);
             // invio la photo all'utente
             sendPhoto($botToken,$chatID, $newUrl);
             // sleep
             // rimuovo l'immagine temporanea della webcam
-            removePhoto($filename);
+            removePhoto($fileDir);
           }else{
             sendMsg($botToken,$chatID, 'Webcam non disponibili');
             menu($botToken, $chatID, $firemanData);
