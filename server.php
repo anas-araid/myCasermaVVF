@@ -163,7 +163,7 @@
         if (strpos($text, 'webcam') != false){
           // getWebcamList --> legge la configurazione in webcam.json 
           // crea il formato del menu con le strade all'interno del file
-          $menu = getWebcamList('webcam.json', $text);
+          $menu = getWebcamList('bot/webcam.json', $text);
           if ($menu != false){
             sendMsg($botToken,$chatID, 'Webcam disponibili', $menu);
           }else{
@@ -172,8 +172,10 @@
           }
         }else if (strpos($text, 'cam') != false){
           // sendCamPhoto --> read url camera from configuration and send directly the photo
-          $photo = sendCamPhoto('webcam.json', $text);
-          if (!$photo){
+          $url = getWebcamUrl('bot/webcam.json', $text);
+          if ($url != false){
+            sendPhoto($botToken,$chatID, $url);
+          }else{
             sendMsg($botToken,$chatID, 'Webcam non disponibili');
             menu($botToken, $chatID, $firemanData);
           }
