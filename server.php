@@ -147,7 +147,15 @@
         webCamMenu($botToken, $chatID);
         break;
       case 'Meteo trentino':
-       sendAudio($botToken, $chatID, 'http://m.viaggiareintrentino.it/var/vit/storage/video/meteotrentino-notiziar.mp3');
+        sendMsg($botToken,$chatID, "Le previsioni del meteo di oggi:", $menu);
+        // getAudioFile scarica l'audio del meteo e lo salva temporaneamente sul server
+        $fileDir = getFile('http://m.viaggiareintrentino.it/var/vit/storage/video/meteotrentino-notiziar.mp3');
+        // getFileUrl restituisce l'url del file temporaneo
+        $newUrl = getFileUrl($fileDir);
+        // invio la photo all'utente
+        sendAudio($botToken, $chatID, $newUrl);
+        // rimuovo il file
+        removeFile($fileDir);
         break;
       case 'I miei dati':
         $dati = printMyData($firemanData, $db_conn);
@@ -182,7 +190,7 @@
             sendPhoto($botToken,$chatID, $newUrl);
             // sleep
             // rimuovo l'immagine temporanea della webcam
-            removePhoto($fileDir);
+            removeFile($fileDir);
           }else{
             sendMsg($botToken,$chatID, 'Webcam non disponibili');
             menu($botToken, $chatID, $firemanData);

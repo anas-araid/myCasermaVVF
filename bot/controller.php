@@ -274,9 +274,9 @@
     return false;
   }
   function getFile($url){
-    $webcamName = time().'_'.basename($url);
-    $file = 'uploads/webcam/'.$webcamName;
-    // file_get_contents restituisce il contenuto dell'immagine nell'url
+    $name = time().'_'.basename($url);
+    $file = 'uploads/temp/'.$name;
+    // file_get_contents restituisce il contenuto del file nell'url
     // file_put_contents salva il file nella directory
     $save = file_put_contents($file, file_get_contents($url));
     if ($save == false){
@@ -290,7 +290,7 @@
     $url = "https://$server/php/myCasermaVVF/".$dir;
     return $url;
   }
-  function removePhoto($fileDir){
+  function removeFile($fileDir){
     if (file_exists($fileDir)) {
       unlink($fileDir);
     }
