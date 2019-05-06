@@ -248,13 +248,15 @@
       $webcamData = json_decode($json, true);
       // $strada è il NomeStrada dopo /webcam tipo SS47 ecc.
       $strada = substr($text, strpos($text, " ") + 1);
+        // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
       $stradaSelezionata = $webcamData[$strada];
       if ($stradaSelezionata != null){
-        // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
+        // $località è un array con all'interno tutte le località relative a $stradaSelezionata
         $localita = array();
         for ($i=0;$i<count($stradaSelezionata);$i++){
           $localita[$i] = $stradaSelezionata[$i]['nome'];
         }
+        // menuParser sistema i dati in modo da essere letto dall'api di telegram
         $menu = menuParser($localita);
         return $menu;
       }
@@ -262,10 +264,12 @@
     return false;
   }
   function getWebcamUrl($configFile, $text){
+    // legge il file di configurazione delle webcam
     $json = getWebcamJson($configFile);
     if ($json != false){
       $webcamData = json_decode($json, true);
       $localita = substr($text, strpos($text, " ") + 1);
+      // restituisce l'immagine della webcam relativa alla localita
       $url = getWebcamUrlByLocation($webcamData, $localita);
       if ($url != false){
         return $url;
@@ -274,6 +278,7 @@
     return false;
   }
   function getFile($url){
+    // il nome del file è il timestamp_nomeFileUrl
     $name = time().'_'.basename($url);
     $file = 'uploads/temp/'.$name;
     // file_get_contents restituisce il contenuto del file nell'url
