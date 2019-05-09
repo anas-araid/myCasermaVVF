@@ -7,7 +7,6 @@ Management fire station webapp and Telegram Bot to be notified of firefighter's 
 * Certifications 
 * Fire vehicle
 * Configure squads and shifts
-* Courses
 * Communications
 * Fire tools
 
@@ -18,7 +17,7 @@ Management fire station webapp and Telegram Bot to be notified of firefighter's 
 * Notification shifts
 * Show and download your courses
 * View your personal data
-* Webcams
+* Webcams and weather in Trentino
 
 ## Getting Started
 
