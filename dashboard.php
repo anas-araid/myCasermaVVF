@@ -105,7 +105,6 @@
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=squadre">Squadre</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=attrezzature">Attrezzature</a>
           <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=comunicazioni">Comunicazioni</a>
-          <a class="mdl-navigation__link mdl-color-text--white style-nav-dashboard" href="?redirect=corsi">Corsi</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
