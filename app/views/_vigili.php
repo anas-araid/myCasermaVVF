@@ -53,6 +53,7 @@
   // #################### EDIT VIGILE #######################################
   var editVigile = '';
   var newGrado = '';
+  var isAutista = '';
   function editFireman(data){
     var id = data['ID'];
     var nome = data['Nome'];
@@ -61,6 +62,7 @@
     var matricola = data['Matricola'];
     var grado = data['FK_Grado'];
     this.newGrado = data['FK_Grado'];
+    this.isAutista = data['Autista'];
     this.editVigile =
     '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
     '<h3>Aggiorna vigile</h3>'+
@@ -83,15 +85,16 @@
     '<input class="mdl-textfield__input" type="text" id="matricola" name="matricola" value="'+matricola+'" style="outline:none">'+
     '</div><br>'+
     '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+    '<p class="mdl-color-text--grey-900">Grado</p>'+
     '<select class="mdl-textfield__input" id="grado" name="grado" required="" style="outline:none">'+
     <?php
       $gradi = getGrado(null, $db_conn);
-      $selected = '';
+      //$selected = '';
       for ($i=0;$i<count($gradi);$i++){
-        if ($i == count($gradi) - 1){
+        /*if ($i == count($gradi) - 1){
           $selected = 'selected';
-        }
-        echo "'".'<option id="grado_'.$gradi[$i][0].'" value="'.$gradi[$i][0].'" '.$selected.'>'.$gradi[$i][1]."</option>'+";
+        }*/
+        echo "'".'<option id="grado_'.$gradi[$i][0].'" value="'.$gradi[$i][0].'">'.$gradi[$i][1]."</option>'+";
         $selected = '';
       }
      ?>
@@ -100,8 +103,8 @@
     '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
     '<p class="mdl-color-text--grey-900">Autista</p>'+
     '<select class="mdl-textfield__input" id="autista" name="autista" required="" style="outline:none">'+
-      '<option value="1">SI</option>' +
-      '<option value="0" selected>NO</option>' +
+      '<option id="autista_si" value="1">SI</option>' +
+      '<option id="autista_no" value="0">NO</option>' +
     '</select>'+
     '</div><br>'+
     '<button class="style-button-red" name="salva" id="salva" type="submit" value=' + id +'>SALVA</button>'+
@@ -116,6 +119,13 @@
             editFiremanModal.setContent(
               editVigile
             );
+            // seleziono se il vigile è autista o no
+            setAutista = document.getElementById('autista').options;
+            if (isAutista == 1){
+              setAutista.autista_si.selected = true;
+            }else{
+              setAutista.autista_no.selected = true;
+            }
             // newGrado contiene l'ID del grado del vigile selezionato
             var setGrado = document.getElementById('grado').options;
             // attiva il select sull'option in base al grado del vigile
