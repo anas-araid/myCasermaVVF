@@ -52,6 +52,7 @@
 <script>
   // #################### EDIT VIGILE #######################################
   var editVigile = '';
+  var newGrado = '';
   function editFireman(data){
     var id = data['ID'];
     var nome = data['Nome'];
@@ -59,6 +60,7 @@
     var cellulare = data['Cellulare'];
     var matricola = data['Matricola'];
     var grado = data['FK_Grado'];
+    this.newGrado = data['FK_Grado'];
     this.editVigile =
     '<div class="mdl-card mdl-shadow--8dp" style="border-radius:20px;padding:20px;width:85%;min-height:200px;display:inline-block;margin:20px;text-align:center">'+
     '<h3>Aggiorna vigile</h3>'+
@@ -89,7 +91,7 @@
         if ($i == count($gradi) - 1){
           $selected = 'selected';
         }
-        echo "'".'<option value="'.$gradi[$i][0].'" '.$selected.'>'.$gradi[$i][1]."</option>'+";
+        echo "'".'<option id="grado_'.$gradi[$i][0].'" value="'.$gradi[$i][0].'" '.$selected.'>'.$gradi[$i][1]."</option>'+";
         $selected = '';
       }
      ?>
@@ -114,6 +116,32 @@
             editFiremanModal.setContent(
               editVigile
             );
+            // newGrado contiene l'ID del grado del vigile selezionato
+            var setGrado = document.getElementById('grado').options;
+            // attiva il select sull'option in base al grado del vigile
+            switch(newGrado){
+              case '1':
+                setGrado.grado_1.selected = true;
+                break;
+              case '2':
+                setGrado.grado_2.selected = true;
+                break;
+              case '3':
+                setGrado.grado_3.selected = true;
+                break;
+              case '4':
+                setGrado.grado_4.selected = true;
+                break;
+              case '5':
+                setGrado.grado_5.selected = true;
+                break;
+              case '6':
+                setGrado.grado_6.selected = true;
+                break;
+              case '7':
+                setGrado.grado_7.selected = true;
+                break;
+            }
         },
         onClose: function() {
             location.href="dashboard.php?redirect=vigili";
