@@ -8,10 +8,10 @@
  ?>
 <html>
   <head>
-    <script src="../js/script.js"></script>
-    <script src="../js/sweetalert.js"></script>
-    <link type="text/css" rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/font-quicksand.css">
+    <script src="../../js/script.js"></script>
+    <script src="../../js/sweetalert.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/font-quicksand.css">
   </head>
   <body>
     <?php
@@ -35,12 +35,12 @@
           if ($addCaserma){
            echo "
            <script>
-             flatAlert('', 'Corpo VVF aggiunto con successo', 'success', '../dashboard.php');
+             flatAlert('', 'Corpo VVF aggiunto con successo', 'success', '../../dashboard.php');
            </script>";
           }else{
            echo "
            <script>
-             flatAlert('Errore', 'Errore nell\'aggiunta del Corpo VVF: contattare l\'amministratore', 'error', '../config.php');
+             flatAlert('Errore', 'Errore nell\'aggiunta del Corpo VVF: contattare l\'amministratore', 'error', '../../config.php');
            </script>";
           }
         }

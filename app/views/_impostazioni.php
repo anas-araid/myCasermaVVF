@@ -24,7 +24,7 @@
     <br><br><br>
     <div>
       <button class="style-button-red" 
-              onclick="flatAlert('Vuoi continuare?', 'Tutti i dati relativi alla tua caserma verranno cancellati', 'error', 'app/deleteData.php?data=caserma&id=<?php echo $caserma['ID'] ?>', true)" 
+              onclick="flatAlert('Vuoi continuare?', 'Tutti i dati relativi alla tua caserma verranno cancellati', 'error', 'app/models/deleteData.php?data=caserma&id=<?php echo $caserma['ID'] ?>', true)" 
               type="reset" 
               name="delete" 
               style="background:red;color:white">

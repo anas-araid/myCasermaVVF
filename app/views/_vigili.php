@@ -211,7 +211,7 @@
       $gradi = getGrado(null, $db_conn);
       $selected = '';
       for ($i=0;$i<count($gradi);$i++){
-        if ($i == 0){
+        if ($i == count($gradi) -1){
           $selected = 'selected';
         }
         echo "'".'<option value="'.$gradi[$i][0].'" '.$selected.'>'.$gradi[$i][1]."</option>'+";

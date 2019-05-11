@@ -58,14 +58,14 @@
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--7-col" style="text-align:center">
             <h2 class="style-text-red">Configurazione</h2>
-            <form action="app/addCaserma.php" method="POST" style="text-align:center">
+            <form action="app/models/addCaserma.php" method="POST" style="text-align:center">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="caserma" name="caserma" required="">
                 <label class="mdl-textfield__label" for="caserma">Corpo di appartenenza</label>
               </div>
               <br>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="email" id="email" name="email">
+                <input class="mdl-textfield__input" type="email" id="email" name="email" required="">
                 <label class="mdl-textfield__label" for="email">Email</label>
               </div>
               <br>

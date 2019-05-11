@@ -100,7 +100,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
   }
   function getCaserma($ID, $Descrizione, $db_conn){
     if ($ID == null){
-      $sql = "SELECT * FROM t_caserme";
+      $sql = "SELECT * FROM t_caserme ORDER BY Descrizione";
       $caserme = array();
     }else{
       $sql = "SELECT * FROM t_caserme WHERE (ID='$ID')";
