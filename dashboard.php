@@ -30,6 +30,7 @@
             $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
           }
           if (isset($_GET['redirect'])){
+            // se il get è impostato allora includo nella dashboard il percorso del file selezionato
             $redirect = text_filter($_GET['redirect']);
             switch ($redirect) {
               case 'vigili':

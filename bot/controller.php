@@ -291,7 +291,9 @@
     }
   }
   function getFileUrl($dir){
+    // $server contiene il nome del dominio
     $server = $_SERVER['SERVER_NAME'];
+    // url temporaneo su xampp
     $url = "https://$server/php/myCasermaVVF/".$dir;
     return $url;
   }
