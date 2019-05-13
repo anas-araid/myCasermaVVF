@@ -9,6 +9,25 @@
     }
 
   </script>
+  <div>
+    <form action="app/controller/search.php" method="POST" style="text-align:center">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:40%;">
+        <input class="mdl-textfield__input" 
+               style="border-bottom:1px solid #c5003e;color:grey" 
+               type="text" 
+               id="find" 
+               name="find" 
+               required="">
+        <label class="mdl-textfield__label" for="find">Cerca</label>
+      </div>
+      <button id="btn-search" 
+              type="submit" 
+              value="vigili"
+              class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect style-text-red">
+        <i class="material-icons style-text-darkRed">search</i>
+      </button>
+    </form>
+  </div>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
       <tr style="text-align:left">
@@ -24,7 +43,11 @@
     </thead>
     <tbody>
       <?php
-        $vigili = getFiremanData(null, null, null, $_SESSION['ID'], null, null, $db_conn);
+        if (isset($_GET['search'])){
+        $vigili = getFiremanData(null, null, null, null, null, null, $db_conn);
+        }else{
+          $vigili = getFiremanData(null, null, null, $_SESSION['ID'], null, null, $db_conn);
+        }
         for ($i=0; $i < count($vigili); $i++){
           $checkingExists = true;
           $id = $vigili[$i][0];
