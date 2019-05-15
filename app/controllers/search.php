@@ -12,6 +12,7 @@
       case 'vigili':
         $firemenID = getFiremanByKeyword($keyword, $_SESSION['ID'], $db_conn);
         print_r($firemenID);
+        //redirect('../../dashboard.php?redirect=vigili');
         break;
       case 'mezzi':
         break;

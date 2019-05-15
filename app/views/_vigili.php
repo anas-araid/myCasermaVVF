@@ -16,9 +16,9 @@
                style="border-bottom:1px solid #c5003e;color:grey" 
                type="text" 
                id="find" 
-               name="find" 
+               name="find"
                required="">
-        <label class="mdl-textfield__label" for="find">Cerca</label>
+        <label class="mdl-textfield__label" for="find">Cerca per nome, cognome o matricola</label>
       </div>
       <button id="btn-search" 
               name="submit"
