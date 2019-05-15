@@ -399,4 +399,19 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $reperibili;
   }
+  function getFiremanByKeyword($keyword, $FK_CorpoVVF, $db_conn){
+    // cerca per cellulare da problemi quando c'è un contatto cell->null
+    $sql = "SELECT ID FROM t_vigili WHERE Concat(Nome, ' ', Cognome, ' ', Matricola, ' ') LIKE "."'%$keyword%'"." AND (FK_CorpoVVF=$FK_CorpoVVF)";
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getFiremenByKeyword");
+    }
+    $i=0;
+    $fireman = array();
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      $fireman[$i] = array($ris['ID']);
+      $i++;
+    }
+    return $fireman;
+  }
 ?>

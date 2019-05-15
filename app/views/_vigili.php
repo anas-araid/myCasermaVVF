@@ -10,7 +10,7 @@
 
   </script>
   <div>
-    <form action="app/controller/search.php" method="POST" style="text-align:center">
+    <form action="app/controllers/search.php" method="POST" style="text-align:center">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:40%;">
         <input class="mdl-textfield__input" 
                style="border-bottom:1px solid #c5003e;color:grey" 
@@ -21,6 +21,7 @@
         <label class="mdl-textfield__label" for="find">Cerca</label>
       </div>
       <button id="btn-search" 
+              name="submit"
               type="submit" 
               value="vigili"
               class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect style-text-red">
@@ -43,11 +44,7 @@
     </thead>
     <tbody>
       <?php
-        if (isset($_GET['search'])){
-        $vigili = getFiremanData(null, null, null, null, null, null, $db_conn);
-        }else{
-          $vigili = getFiremanData(null, null, null, $_SESSION['ID'], null, null, $db_conn);
-        }
+        $vigili = getFiremanData(null, null, null, $_SESSION['ID'], null, null, $db_conn);
         for ($i=0; $i < count($vigili); $i++){
           $checkingExists = true;
           $id = $vigili[$i][0];
