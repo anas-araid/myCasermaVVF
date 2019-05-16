@@ -11,8 +11,9 @@
     switch($type){
       case 'vigili':
         $firemenID = getFiremanByKeyword($keyword, $_SESSION['ID'], $db_conn);
+        $_SESSION['search'] = $firemenID;
         print_r($firemenID);
-        //redirect('../../dashboard.php?redirect=vigili');
+        redirect('../../dashboard.php?redirect=cercavigili');
         break;
       case 'mezzi':
         break;
