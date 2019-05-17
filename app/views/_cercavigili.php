@@ -21,6 +21,7 @@
                type="text" 
                id="find" 
                name="find"
+               value="<?php echo $_SESSION['searchKeyword'] ?>"
                required="">
         <label class="mdl-textfield__label" for="find">Cerca per nome, cognome o matricola</label>
       </div>

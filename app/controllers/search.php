@@ -20,6 +20,7 @@
           $type = text_filter($_POST['submit']);
           switch($type){
             case 'vigili':
+              // restituisce un array con gli id 
               $firemenID = getFiremanByKeyword($keyword, $_SESSION['ID'], $db_conn);
               if (empty($firemenID)){
                 echo "
@@ -30,7 +31,6 @@
               }else{
                 $_SESSION['searchKeyword'] = $keyword;
                 $_SESSION['search'] = $firemenID;
-                //print_r($firemenID);
                 redirect('../../dashboard.php?redirect=cercavigili');
               }
               break;

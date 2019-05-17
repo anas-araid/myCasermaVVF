@@ -2,6 +2,26 @@
   <h2 class="mdl-color-text--grey-800">Mezzi</h2>
   <button class="style-button-red" onclick="newMezzo()">AGGIUNGI MEZZO</button>
 </div>
+<div>
+  <form action="app/controllers/search.php" method="POST" style="text-align:center">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:40%;">
+      <input class="mdl-textfield__input" 
+              style="border-bottom:1px solid #c5003e;color:grey" 
+              type="text" 
+              id="find" 
+              name="find"
+              required="">
+      <label class="mdl-textfield__label" for="find">Cerca</label>
+    </div>
+    <button id="btn-search" 
+            name="submit"
+            type="submit" 
+            value="mezzi"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect style-text-red">
+      <i class="material-icons style-text-darkRed">search</i>
+    </button>
+  </form>
+</div>
 <div style="overflow:auto">
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:95%;margin:10px">
     <thead>
