@@ -5,13 +5,13 @@
 ?>
 <div style="text-align:center">
   <h2 class="mdl-color-text--grey-800">Vigili</h2>
+  <button class="style-button-red" onclick="location.href='dashboard.php?redirect=vigili' ">INDIETRO</button>
 </div>
 <div style="overflow:auto">
   <script>
     function openCertificazioni(id){
       location.href ="?redirect=certificazioni&ref=vigili&id=" + id;
     }
-
   </script>
   <div>
     <form action="app/controllers/search.php" method="POST" style="text-align:center">
