@@ -66,6 +66,9 @@
               case 'cercavigili':
                 $_SESSION['_dashboardLayout'] = 'app/views/_cercavigili.php';
                 break;
+              case 'cercamezzi':
+                $_SESSION['_dashboardLayout'] = 'app/views/_cercamezzi.php';
+                break;
               default:
                 $_SESSION['_dashboardLayout'] = 'app/views/_home.php';
                 break;

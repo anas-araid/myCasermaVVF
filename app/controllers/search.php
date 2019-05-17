@@ -35,6 +35,18 @@
               }
               break;
             case 'mezzi':
+              $mezziID = getMezziByKeyword($keyword, $_SESSION['ID'], $db_conn);
+              if (empty($mezziID)){
+                echo "
+                <script>
+                  flatAlert('', 'La ricerca non ha prodotto risultati', 'warning', '../../dashboard.php?redirect=mezzi');
+                </script>";
+                return;
+              }else{
+                $_SESSION['searchKeyword'] = $keyword;
+                $_SESSION['search'] = $mezziID;
+                redirect('../../dashboard.php?redirect=cercamezzi');
+              }
               break;
             case 'attrezzature':
               break;
