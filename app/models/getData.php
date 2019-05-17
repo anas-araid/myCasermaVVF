@@ -414,4 +414,18 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $fireman;
   }
+  function getMezziByKeyword($keyword, $FK_CorpoVVF, $db_conn){
+    $sql = "SELECT ID FROM t_mezzi WHERE Descrizione LIKE "."'%$keyword%'"." AND (FK_CorpoVVF=$FK_CorpoVVF)";
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getMezziByKeyword");
+    }
+    $i=0;
+    $mezzi = array();
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      $mezzi[$i] = array($ris['ID']);
+      $i++;
+    }
+    return $mezzi;
+  }
 ?>
