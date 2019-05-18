@@ -428,4 +428,18 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     return $mezzi;
   }
+  function getAttrezzatureByKeyword($keyword, $FK_CorpoVVF, $db_conn){
+    $sql = "SELECT ID FROM t_attrezzature WHERE Concat(Nome, ' ', Quantita) LIKE "."'%$keyword%'"." AND (FK_CorpoVVF=$FK_CorpoVVF)";
+    $risultato = mysqli_query($db_conn, $sql);
+    if ($risultato == false){
+      die("error getAttrezzatureByKeyword");
+    }
+    $i=0;
+    $tools = array();
+    while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){
+      $tools[$i] = array($ris['ID']);
+      $i++;
+    }
+    return $tools;
+  }
 ?>
