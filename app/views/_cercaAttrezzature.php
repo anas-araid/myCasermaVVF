@@ -5,7 +5,7 @@
 ?>
 <div style="text-align:center">
   <h2 class="mdl-color-text--grey-800">Attrezzature</h2>
-  <button class="style-button-red" onclick="location.href='dashboard.php?redirect=mezzi'">IDIETRO</button>
+  <button class="style-button-red" onclick="location.href='dashboard.php?redirect=attrezzature'">INDIETRO</button>
 </div>
 <div>
   <form action="app/controllers/search.php" method="POST" style="text-align:center">
@@ -43,7 +43,7 @@
     <tbody>
       <?php
         $tools = $_SESSION['search'];
-        for ($i=0; $i < count($attr); $i++){
+        for ($i=0; $i < count($tools); $i++){
           $checkingExists = true;
           $attr = getAttrezzature($tools[$i][0], null, $db_conn);
           $id = $attr[0][0];
