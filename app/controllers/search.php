@@ -49,6 +49,18 @@
               }
               break;
             case 'attrezzature':
+              $attrezzatureID = getAttrezzatureByKeyword($keyword, $_SESSION['ID'], $db_conn);
+              if (empty($attrezzatureID)){
+                echo "
+                <script>
+                  flatAlert('', 'La ricerca non ha prodotto risultati', 'warning', '../../dashboard.php?redirect=attrezzature');
+                </script>";
+                return;
+              }else{
+                $_SESSION['searchKeyword'] = $keyword;
+                $_SESSION['search'] = $attrezzatureID;
+                redirect('../../dashboard.php?redirect=cercaattrezzature');
+              }
               break;
             default:
               break;
