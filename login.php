@@ -97,7 +97,7 @@
 
           </div>
           <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
-            <img src="img/screen.png" class="style-bounce" style="width:90%"></img>
+            <img src="img/iphone.png" class="style-bounce" style="width:90%"></img>
           </div>
         </div>
         <footer class="mdl-mini-footer" style="background-color:#c0392b">
