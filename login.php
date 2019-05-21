@@ -112,7 +112,7 @@
             </ul> 
           </div>
           <div class="mdl-mini-footer__right-section">
-           <div class="mdl-logo">&copy 2019 myCasermaVVF Anas Araid <br> <i>Dai soccorritori per i soccorritori</i></div>           
+           <div class="mdl-logo" style="cursor:pointer" onclick="window.open('https://asdf1899.github.io', '_blank')">&copy 2019 myCasermaVVF Anas Araid <br> <i>Dai soccorritori per i soccorritori</i></div>           
           </div>
         </footer>
       </main>
