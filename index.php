@@ -84,8 +84,11 @@
                ?>
               <button class="style-button-white" onclick="location.href='#scopri'">SCOPRI DI PIÙ</button>
             </div>
-            <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
-              <img src="img/iphone.png" class="style-bounce" style="width:90%"></img>
+            <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;text-align:center">
+              <img src="img/iphone.png" 
+                   class="style-bounce style-home-image"
+                   onclick="openImage('iphone.png')" 
+                   style="width:50%"></img>
             </div>
           </div>
           <div class="style-arrow animated bounce">
@@ -96,7 +99,10 @@
         <section id="section-2">
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone">
-              <img src="img/macbook.png" class="style-bounce" style="width:90%"></img>
+              <img src="img/macbook.png" 
+                   class="style-bounce style-home-image" 
+                   onclick="openImage('macbook.png')"
+                   style="width:90%"></img>
             </div>
             <div class="mdl-cell mdl-cell--7-col" style="text-align:center">
               <h3 class="style-text-red">Consulta e gestisci le attività in caserma in modo facile e <i>veloce.</i></h3>

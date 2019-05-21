@@ -230,6 +230,23 @@ function alertRemoveFiremanFromSquad(idVigile, idSquadra){
     }
   });
 }
+function openImage(name){
+  var modal = new tingle.modal({
+      closeMethods: ['overlay', 'button', 'escape'],
+      closeLabel: "Chiudi",
+      onOpen: function() {
+        modal.setContent(
+              '<div>'+
+              '<img style ="max-width:100%" src="img/'+name+'"></img>'+
+              '</div>'
+          );
+      },
+      onClose: function() {
+          console.log('modal closed');
+      }
+  });
+  modal.open();
+}
 function privacy(){
   var content = "<div style='text-align:left'><h2>NORMATIVA SULLA PRIVACY</h2>"+
                 "<p><strong>Informativa ai sensi dell'art. 13 del Codice della Privacy</strong></p>"+

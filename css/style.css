@@ -100,6 +100,11 @@ body, h1, h2, h3, h4, h5, h6, p, a, span{
 .style-td{
   text-align: left!important;
 }
+.style-home-image{
+  cursor:pointer;
+}
+
+/* Noty css */
 .noty_layout{
   background-color: #2E4154!important;
   color:white;
