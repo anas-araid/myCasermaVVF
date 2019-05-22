@@ -9,7 +9,7 @@
       try{
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         // error_reporting per togliere il notice quando non trova
-        //error_reporting(0);
+        error_reporting(0);
         // inclusione del file per la connessione al database
         include "app/dbConnection.php";
         include "app/functions.php";
@@ -96,7 +96,10 @@
             </form>
           </div>
           <div class="mdl-cell mdl-cell--5-col mdl-cell--hide-phone" style="background:url('img/abstract.svg');background-repeat:no-repeat;background-size:contain;">
-            <img src="img/screen.png" class="style-bounce" style="width:90%"></img>
+            <img src="img/iphone.png" 
+                 class="style-bounce style-home-image"
+                 onclick="openImage('iphone.png')" 
+                 style="width:50%"></img>
           </div>
         </div>
         <script>

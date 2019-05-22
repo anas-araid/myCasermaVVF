@@ -9,7 +9,7 @@
       try{
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         // error_reporting per togliere il notice quando non trova
-        //error_reporting(0);
+        error_reporting(0);
         // inclusione del file per la connessione al database
         include "app/dbConnection.php";
         include "app/functions.php";
