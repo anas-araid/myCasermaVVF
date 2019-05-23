@@ -89,7 +89,7 @@
     return true;
   }
   function addTurno($date, $idSquadra, $idMezzo, $db_conn){
-    $sql = "INSERT INTO t_turnifestivi (dataTurno, FK_NumeroSquadra, FK_Checklist)
+    $sql = "INSERT INTO t_turniFestivi (dataTurno, FK_NumeroSquadra, FK_Checklist)
             VALUES ('$date', '$idSquadra', '$idMezzo')";
     try {
       $addTurni = mysqli_query($db_conn, $sql);

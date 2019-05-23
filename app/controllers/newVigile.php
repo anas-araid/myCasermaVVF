@@ -24,7 +24,7 @@
           $matricola = text_filter($_POST["matricola"]);
           $idGrado = text_filter($_POST["grado"]);
           $autista = text_filter($_POST["autista"]);
-          $addVigile = addFireman($nome, $cognome, $cellulare, $matricola, $idGrado, $_SESSION['ID'], $autista, null, $db_conn);
+          $addVigile = addFireman($nome, $cognome, $cellulare, $matricola, $idGrado, $_SESSION['ID'], $autista, 0, $db_conn);
           if ($addVigile){
             echo "
             <script>
