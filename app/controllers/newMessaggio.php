@@ -10,6 +10,7 @@
  ?>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../../js/script.js"></script>
     <script src="../../js/sweetalert.js"></script>
     <link type="text/css" rel="stylesheet" href="../../css/style.css" />
