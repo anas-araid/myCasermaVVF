@@ -47,7 +47,7 @@
     if (!is_numeric($ID)){
       return;
     }else{
-      $sql = "UPDATE t_numeroSquadre SET Numero='$nome'
+      $sql = "UPDATE t_numerosquadre SET Numero='$nome'
               WHERE ID='$ID'";
       $updateFireman = mysqli_query($db_conn, $sql);
       if ($updateFireman==null){

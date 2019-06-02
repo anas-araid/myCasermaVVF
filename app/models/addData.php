@@ -63,7 +63,7 @@
     return true;
   }
   function addSquadra($nome, $idCorpo, $db_conn){
-    $sql = "INSERT INTO t_numeroSquadre (Numero, FK_CorpoVVF)
+    $sql = "INSERT INTO t_numerosquadre (Numero, FK_CorpoVVF)
             VALUES ('$nome', '$idCorpo')";
     try {
       $addSquadra = mysqli_query($db_conn, $sql);
