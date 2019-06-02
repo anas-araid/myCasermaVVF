@@ -62,10 +62,15 @@
           $file = $corsi[$i][2];
           $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega restituisce la dimensione del file
           $show='';
+          $pdfName = str_replace(' ', '_', $corso);
+          $fileEncrypt = encrypt_decrypt('encrypt', $file);
+          if ($fileEncrypt == '' or $fileEncrypt == null or !isset($fileEncrypt)){
+            $fileEncrypt = $file;
+          }
           if ($file == ''){
             $show = '<td class="style-td"></td>';
           }else{
-            $show = '<td class="style-td"><a onclick="window.open('."'uploads/".$file."'".', '."'_blank', "."'directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=no,resizable=no,width=600, height=700'".')" style="cursor:pointer;text-decoration:underline">Mostra</a></td>';
+            $show = '<td class="style-td"><a onclick="downloadFile('."'$fileEncrypt', "."'$pdfName'".')" style="cursor:pointer;text-decoration:underline">Scarica</a></td>';
           }
           echo '<tr>
               <td class="style-td">'.$id.'</td>
@@ -89,6 +94,10 @@
 </div>
 
 <script>
+  function downloadFile(file, corso){
+    window.open('app/controllers/downloadfile.php?file='+file+'&name='+corso, '_blank');
+  }
+
   var newCorso = '';
   function newCertificato(id){
     this.newCorso =
