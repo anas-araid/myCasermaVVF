@@ -278,14 +278,14 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
   }
   function getSquadre($ID, $FK_CorpoVVF, $db_conn){
     if ($ID == null){
-      $sql = "SELECT * FROM t_numeroSquadre";
+      $sql = "SELECT * FROM t_numerosquadre";
       $nSquadre = array();
     }else{
-      $sql = "SELECT * FROM t_numeroSquadre WHERE (ID='$ID')";
+      $sql = "SELECT * FROM t_numerosquadre WHERE (ID='$ID')";
       $nSquadre = '';
     }
     if ($FK_CorpoVVF != null){
-      $sql = "SELECT * FROM t_numeroSquadre WHERE (FK_CorpoVVF='$FK_CorpoVVF')";
+      $sql = "SELECT * FROM t_numerosquadre WHERE (FK_CorpoVVF='$FK_CorpoVVF')";
       $nSquadre = array();
     }
     $risultato = mysqli_query($db_conn, $sql);

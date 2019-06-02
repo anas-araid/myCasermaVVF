@@ -105,7 +105,7 @@
     redirect('../../dashboard.php?redirect=mezzi');
   }
   function deleteSquadra($id, $db_conn){
-    $sql = "DELETE FROM t_numeroSquadre WHERE ID='$id'";
+    $sql = "DELETE FROM t_numerosquadre WHERE ID='$id'";
     $deleteQuery = mysqli_query($db_conn, $sql);
     if ($deleteQuery == null){
       die("Errore nella cancellazione della squadra: contattare l'amministratore");
