@@ -5,6 +5,7 @@
   if (isset($_GET['file']) and isset($_GET['name'])){
     $file = text_filter($_GET['file']);    
     $filename = text_filter($_GET['name']).".pdf";
+    $file = encrypt_decrypt('decrypt', $file);
     $path = "../../uploads/$file";
     //header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
     //header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($path)) . ' GMT');

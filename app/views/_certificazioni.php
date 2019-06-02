@@ -62,11 +62,15 @@
           $file = $corsi[$i][2];
           $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega restituisce la dimensione del file
           $show='';
-          $pdfName = str_replace(' ', '_', $corso);;
+          $pdfName = str_replace(' ', '_', $corso);
+          $fileEncrypt = encrypt_decrypt('encrypt', $file);
+          if ($fileEncrypt == '' or $fileEncrypt == null or !isset($fileEncrypt)){
+            $fileEncrypt = $file;
+          }
           if ($file == ''){
             $show = '<td class="style-td"></td>';
           }else{
-            $show = '<td class="style-td"><a onclick="downloadFile('."'$file', "."'$pdfName'".')" style="cursor:pointer;text-decoration:underline">Scarica</a></td>';
+            $show = '<td class="style-td"><a onclick="downloadFile('."'$fileEncrypt', "."'$pdfName'".')" style="cursor:pointer;text-decoration:underline">Scarica</a></td>';
           }
           echo '<tr>
               <td class="style-td">'.$id.'</td>
