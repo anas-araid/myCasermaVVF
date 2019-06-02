@@ -1,53 +1,53 @@
 {
   "SS47": [
     {
-      "nome": "PERGINE VALSUGANA, LOC. SAN CRISTOFORO",
+      "nome": "PERGINE-VALSUGANA,-LOC.-SAN-CRISTOFORO",
       "url": "http://vit.flootta.com/cam/cam39.jpg"
     },
     {
-      "nome": "PERGINE VALSUGANA, LOC. DIR. PADOVA",
+      "nome": "PERGINE-VALSUGANA,-LOC.-DIR.-PADOVA",
       "url": "http://vit.flootta.com/cam/cam69.jpg"
     },
     {
-      "nome": "PERGINE VALSUGANA, LOC. CIRÈ-CIVEZZANO",
+      "nome": "PERGINE-VALSUGANA,-LOC.-CIRÈ-CIVEZZANO",
       "url": "http://vit.flootta.com/cam/cam82.jpg"
     },
     {
-      "nome": "LEVICO TERME, LOC. CAMPIELLO",
+      "nome": "LEVICO-TERME,-LOC.-CAMPIELLO",
       "url": "http://vit.flootta.com/cam/cam43.jpg"
     },
     {
-      "nome": "BORGO VALSUGANA",
+      "nome": "BORGO-VALSUGANA",
       "url": "http://vit.flootta.com/cam/cam37.jpg"
     },
     {
-      "nome": "BORGO VALSUGANA DIR. PADOVA",
+      "nome": "BORGO-VALSUGANA-DIR.-PADOVA",
       "url": "http://vit.flootta.com/cam/cam71.jpg"
     },
     {
-      "nome": "GRIGNO, LOC. GRIGNO OVEST",
+      "nome": "GRIGNO,-LOC.-GRIGNO-OVEST",
       "url": "http://vit.flootta.com/cam/cam53.jpg"
     },
     {
-      "nome": "GRIGNO, LOC. LOCALITÀ MARTINCELLI",
+      "nome": "GRIGNO,-LOC.-LOCALITÀ-MARTINCELLI",
       "url": "http://vit.flootta.com/cam/cam52.jpg"
     }
   ],
   "SS12" : [
     {
-      "nome": "TRENTO, LOC. MATTARELLO SUD",
+      "nome": "TRENTO,-LOC.-MATTARELLO-SUD",
       "url": "http://vit.flootta.com/cam/cam42.jpg"
     },
     {
-      "nome": "TRENTO, LOC. MATTARELLO DIR. TRENTO",
+      "nome": "TRENTO,-LOC.-MATTARELLO-DIR.-TRENTO",
       "url": "http://vit.flootta.com/cam/cam72.jpg"
     },
     {
-      "nome": "TRENTO, LOC. RAVINA CAVALCAVIA",
+      "nome": "TRENTO,-LOC.-RAVINA-CAVALCAVIA",
       "url": "http://vit.flootta.com/cam/cam49.jpg"
     },
     {
-      "nome": "TRENTO, LOC. PIEDICASTELLO SUD",
+      "nome": "TRENTO,-LOC.-PIEDICASTELLO-SUD",
       "url": "http://vit.flootta.com/cam/cam35.jpg"
     },
     {
@@ -55,63 +55,63 @@
       "url": "http://vit.flootta.com/cam/cam47.jpg"
     },
     {
-      "nome": "TRENTO 2",
+      "nome": "TRENTO-2",
       "url": "http://vit.flootta.com/cam/cam34.jpg"
     },
     {
-      "nome": "FAEDO, LOC. CADINO",
+      "nome": "FAEDO,-LOC.-CADINO",
       "url": "http://vit.flootta.com/cam/cam31.jpg"
     }
   ],
   "SS43" : [
     {
-      "nome": "PREDAIA, LOC. TAIO NORD",
+      "nome": "PREDAIA,-LOC.-TAIO-NORD",
       "url": "http://vit.flootta.com/cam/cam95.jpg"
     },
     {
-      "nome": "TAIO, LOC. MOLLARO",
+      "nome": "TAIO,-LOC.-MOLLARO",
       "url": "http://vit.flootta.com/cam/cam30.jpg"
     },
     {
-      "nome": "MEZZOLOMBARDO, LOC. GALLERIA ROCCHETTA",
+      "nome": "MEZZOLOMBARDO,-LOC.-GALLERIA-ROCCHETTA",
       "url": "http://vit.flootta.com/cam/cam2.jpg"
     },
     {
-      "nome": "MEZZOLOMBARDO NORD",
+      "nome": "MEZZOLOMBARDO-NORD",
       "url": "http://vit.flootta.com/cam/cam41.jpg"
     },
     {
-      "nome": "MEZZOLOMBARDO CAMPO SPORTIVO",
+      "nome": "MEZZOLOMBARDO-CAMPO-SPORTIVO",
       "url": "http://vit.flootta.com/cam/cam48.jpg"
     }
   ],
   "SP235" : [
     {
-      "nome": "LAVIS, DIR. TRENTO",
+      "nome": "LAVIS,-DIR.-TRENTO",
       "url": "http://vit.flootta.com/cam/cam70.jpg"
     },
     {
-      "nome": "MEZZOLOMBARDO SUD",
+      "nome": "MEZZOLOMBARDO-SUD",
       "url": "http://vit.flootta.com/cam/cam40.jpg"
     }
   ],
   "SS240" : [
     {
-      "nome": "RIVA DEL GARDA, LOC. LINFANO",
+      "nome": "RIVA-DEL-GARDA,-LOC.-LINFANO",
       "url": "http://vit.flootta.com/cam/cam79.jpg"
     },
     {
-      "nome": "NAGO-TORBOLE, LOC. NAGO",
+      "nome": "NAGO-TORBOLE,-LOC.-NAGO",
       "url": "http://vit.flootta.com/cam/cam68.jpg"
     }
   ],
   "SP79" : [
     {
-      "nome": "CASTELLO TESINO, LOC. PASSO BROCON",
+      "nome": "CASTELLO-TESINO,-LOC.-PASSO-BROCON",
       "url": "http://vit.flootta.com/cam/cam94.jpg"
     },
     {
-      "nome": "CANAL SAN BOVO, LOC. PASSO GOBBERA",
+      "nome": "CANAL-SAN-BOVO,-LOC.-PASSO-GOBBERA",
       "url": "http://vit.flootta.com/cam/cam103.jpg"
     }
   ]

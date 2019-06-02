@@ -44,40 +44,41 @@
     fclose($log);
   }
   function tempFunction($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["Meteo trentino"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra_reperibili"],["La_mia_squadra"],["Questo_weekend"],["I_miei_turni"],["I_miei_corsi"],["Webcam"],["Meteo_trentino"],["I_miei_dati"],["/start"]';
+    $stato = '';
     if (!$firemanData['Reperibile']){
-      $menu = '["Sono reperibile"], '.$menu;
+      $menu = '["Sono_reperibile"],'.$menu;
       $stato = 'non sono reperibile';
     }else{
-      $menu = '["Non sono più reperibile"], '.$menu;
+      $menu = '["Non_sono_più_reperibile"],'.$menu;
       $stato = 'sono reperibile';
     }
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
   }
   
   function menu ($botToken, $chatID, $firemanData){
-    $menu =  '["Mostra reperibili"], ["La mia squadra"], ["Questo weekend"], ["I miei turni"], ["I miei corsi"], ["Webcam"], ["Meteo trentino"], ["I miei dati"], ["/start"]';
+    $menu =  '["Mostra_reperibili"],["La_mia_squadra"],["Questo_weekend"],["I_miei_turni"],["I_miei_corsi"],["Webcam"],["Meteo_trentino"],["I_miei_dati"],["/start"]';
     $stato = '';
     if (!$firemanData['Reperibile']){
-      $menu = '["Sono reperibile"], '.$menu;
+      $menu = '["Sono_reperibile"],'.$menu;
       $stato = 'non sono reperibile';
     }else{
-      $menu = '["Non sono più reperibile"], '.$menu;
+      $menu = '["Non_sono_più_reperibile"],'.$menu;
       $stato = 'sono reperibile';
     }
     sendMsg($botToken, $chatID, 'STATO: '.$stato, $menu);
   }
   function webCamMenu($botToken, $chatID){
-    $menu =  '["/webcam SS47"], ["/webcam SS12"], ["/webcam SS43"], ["/webcam SP235"], ["/webcam SS240"], ["/webcam SP79"], ["/menu"], ["/start"]';
+    $menu =  '["/webcam_SS47"],["/webcam_SS12"],["/webcam_SS43"],["/webcam_SP235"],["/webcam_SS240"],["/webcam_SP79"],["/menu"],["/start"]';
     sendMsg($botToken,$chatID, 'Webcam disponibili solo nel territorio Trentino');
     sendMsg($botToken,$chatID, 'Seleziona il tratto stradale', $menu);
   }
   function menuParser($array){
     $menu = '';
     for ($i=0;$i<count($array);$i++){
-      $menu .= '["/cam '.$array[$i].'"],';
+      $menu .= '["/cam_'.$array[$i].'"],';
     }
-    $menu .= '["Webcam", "/menu"]';
+    $menu .= '["Webcam","/menu"]';
     return $menu;
   }
   function printMyData($firemanData, $db_conn){
@@ -124,13 +125,13 @@
       $sunday = strtotime("next Sunday");
     }
     echo 'Domenica '.date('d-m-Y', $sunday);*/
-  function printMostraSquadraWeekend($FK_CorpoVVF, $db_conn){
+  function printMostraSquadraWeekend($FK_CorpoVVF, $db_conn, $botToken, $chatID){
     $dati = false;
     $currentDate = date('d/m/Y');
     $weekend = array(strtotime("next Saturday"), strtotime("next Sunday"));
     for ($j=0;$j<count($weekend);$j++){
       // restituisce i turni riferiti al prossimo weekend
-      $turni = getTurnoByDate(date('Y/m/d', $weekend[$j]), $FK_CorpoVVF, $db_conn);
+      $turni = getTurnoByDate(date('Y-m-d', $weekend[$j]), $FK_CorpoVVF, $db_conn);
       if (!empty($turni)){
         if ($j==0){
           $dati .= "Questo weekend è disponibile la seguente squadra: \n\n";
@@ -229,7 +230,7 @@
         $dati .= "<b>".$nomeCorso."</b>\n";
         if (isset($file)){
           $server = $_SERVER['SERVER_NAME'];
-          $dir = "https://$server/php/myCasermaVVF/uploads/".$corsi[$i][2];
+          $dir = "https://$server/uploads/".$corsi[$i][2];
           $dati .= "File: <a href='$dir'>Apri documento</a> "."\n";
           //sendDocuments($firemanData['Chat_ID'], $file);
         }
@@ -245,8 +246,8 @@
     if ($json != false){
       $webcamData = json_decode($json, true);
       // $strada è il NomeStrada dopo /webcam tipo SS47 ecc.
-      $strada = substr($text, strpos($text, " ") + 1);
-        // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
+      $strada = substr($text, strpos($text, "_") + 1);
+      // $stradaSelezionata --> [0] => Array ([nome]=>'Pergine', [url]=>'http..')
       $stradaSelezionata = $webcamData[$strada];
       if ($stradaSelezionata != null){
         // $località è un array con all'interno tutte le località relative a $stradaSelezionata
@@ -266,7 +267,7 @@
     $json = getWebcamJson($configFile);
     if ($json != false){
       $webcamData = json_decode($json, true);
-      $localita = substr($text, strpos($text, " ") + 1);
+      $localita = substr($text, strpos($text, "_") + 1);
       // restituisce l'immagine della webcam relativa alla localita
       $url = getWebcamUrlByLocation($webcamData, $localita);
       if ($url != false){
@@ -275,7 +276,7 @@
     }
     return false;
   }
-  function getFile($url){
+  function getFile($url, $botToken, $chatID){
     // il nome del file è il timestamp_nomeFileUrl
     $name = time().'_'.basename($url);
     $file = 'uploads/temp/'.$name;
@@ -292,7 +293,7 @@
     // $server contiene il nome del dominio
     $server = $_SERVER['SERVER_NAME'];
     // url temporaneo su xampp
-    $url = "https://$server/php/myCasermaVVF/".$dir;
+    $url = "https://$server/".$dir;
     return $url;
   }
   function removeFile($fileDir){

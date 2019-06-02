@@ -81,7 +81,7 @@
   $FK_CorpoVVF = $firemanData['FK_CorpoVVF'];
   if (!empty($firemanData)){
     switch ($text) {
-      case "Sono reperibile":
+      case "Sono_reperibile":
         // changeReperibilita ritorna true se è andato a buon fine
         $status = changeReperibilita($firemanData, $db_conn);
         $dati = ($status) ? "Reperibilità aggiornata con successo.\n" : "Errore nell'aggiornamento della reperibilità: contattare l'amministratore\n";
@@ -90,7 +90,7 @@
         $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn); 
         menu($botToken, $chatID, $firemanData);
         break;
-      case "Non sono più reperibile":
+      case "Non_sono_più_reperibile":
         // changeReperibilita ritorna true se è andato a buon fine
         $status = changeReperibilita($firemanData, $db_conn);
         $dati = ($status) ? "Reperibilità aggiornata con successo.\n" : "Errore nell'aggiornamento della reperibilità: contattare l'amministratore\n";
@@ -99,7 +99,7 @@
         $firemanData = getFiremanData(null, null, $chatID, null, null, null, $db_conn);         
         menu($botToken, $chatID, $firemanData);
         break;
-      case "Mostra reperibili":
+      case "Mostra_reperibili":
         $dati = printReperibili($FK_CorpoVVF, $db_conn);
         // se printReperibili() è false, vuol dire che non ci sono reperibili 
         if (!$dati){
@@ -108,7 +108,7 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'La mia squadra':
+      case 'La_mia_squadra':
         $dati = printMostraSquadra($firemanData, $db_conn);
         // se printMostraSquadra() è false, vuol dire che non ci sono squadre associate al vigile         
         if (!$dati){
@@ -117,16 +117,16 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'Questo weekend':
-        $dati = printMostraSquadraWeekend($FK_CorpoVVF, $db_conn);
-        // se printMostraSquadraWeekend() è false, vuol dire che non ci sono squadre associate al vigile         
+      case 'Questo_weekend':
+        $dati = printMostraSquadraWeekend($FK_CorpoVVF, $db_conn, $botToken, $chatID);
+        // se printMostraSquadraWeekend() è false, vuol dire che non ci sono squadre disponibili         
         if (!$dati){
           $dati = 'Nessuna squadra disponibile questo weekend';
         }
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'I miei turni':
+      case 'I_miei_turni':
         // se printTurni() è false, vuoldire che non ci sono turni associati al db
         $dati = printTurni($firemanData, $db_conn);
         if (!$dati){
@@ -135,7 +135,7 @@
         sendMsg($botToken,$chatID, $dati);
         menu($botToken, $chatID, $firemanData);
         break;
-      case 'I miei corsi':
+      case 'I_miei_corsi':
         $dati = printCorsi($firemanData, $db_conn);
         if (!$dati){
           $dati = "Nessun corso disponibile \n";
@@ -146,7 +146,7 @@
       case 'Webcam':
         webCamMenu($botToken, $chatID);
         break;
-      case 'Meteo trentino':
+      case 'Meteo_trentino':
         sendMsg($botToken,$chatID, "Le previsioni del meteo di oggi:", $menu);
         // getAudioFile scarica l'audio del meteo e lo salva temporaneamente sul server
         $fileDir = getFile('http://m.viaggiareintrentino.it/var/vit/storage/video/meteotrentino-notiziar.mp3');
@@ -157,7 +157,7 @@
         // rimuovo il file
         removeFile($fileDir);
         break;
-      case 'I miei dati':
+      case 'I_miei_dati':
         $dati = printMyData($firemanData, $db_conn);
         sendMsg($botToken,$chatID, $dati, null);
         menu($botToken, $chatID, $firemanData);
@@ -183,7 +183,7 @@
           $url = getWebcamUrl('bot/webcam.json', $text);
           if ($url != false){
             // getFile scarica l'immagine e la salva temporaneamente sul server
-            $fileDir = getFile($url);
+            $fileDir = getFile($url, $botToken, $chatID);
             // getFileUrl restituisce l'url dell'immagine temporanea
             $newUrl = getFileUrl($fileDir);
             // invio la photo all'utente

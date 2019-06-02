@@ -339,7 +339,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     return $squadra;
   }
   function getTurnoByDate($date, $FK_CorpoVVF, $db_conn){
-    $sql = "SELECT * FROM t_turniFestivi as turni, t_numerosquadre as squad 
+    $sql = "SELECT * FROM t_turniFestivi as turni, t_numeroSquadre as squad 
             WHERE (turni.FK_NumeroSquadra = squad.ID) and 
                   (squad.FK_CorpoVVF = '$FK_CorpoVVF') and 
                   (turni.dataTurno = '$date')";
@@ -369,7 +369,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     }
     $risultato = mysqli_query($db_conn, $sql);
     if ($risultato == false){
-      die("error getTurni");
+      return array();
     }
     $i=0;
     while($ris = mysqli_fetch_array ($risultato, MYSQLI_ASSOC)){

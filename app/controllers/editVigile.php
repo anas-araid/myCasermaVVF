@@ -26,7 +26,8 @@
           $matricola = text_filter($_POST["matricola"]);
           $idGrado = text_filter($_POST["grado"]);
           $autista = text_filter($_POST["autista"]);
-          $fireman = getFiremanData($id, null, null, null, null, null, $db_conn); 
+          // restituire la reperibilita
+          $fireman = getFiremanData($id, null, null, null, null, null, $db_conn);
           $editVigile = updateFireman($id, $nome, $cognome, $matricola, $cellulare, $idGrado, $_SESSION['ID'], $autista, $fireman['Reperibile'], $db_conn);
           if ($editVigile){
             echo "

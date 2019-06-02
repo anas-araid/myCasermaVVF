@@ -39,6 +39,7 @@
         }
       }
       function sendMessaggio($messaggio, $idCaserma, $db_conn){
+        // $vigili["$i"] = array($ris['ID'], $ris['Nome'], $ris['Cognome'], $ris['Matricola'], $ris['Cellulare'], $ris['Chat_ID'], $ris['FK_Grado'], $ris['FK_CorpoVVF'], $ris['Reperibile'], $ris['Autista']);
         $vigili = getFiremanData(null, null, null, $idCaserma, null, null, $db_conn);
         $api = getApiToken("../../api.key");
         if (!isset($vigili) and isset($api)){
