@@ -95,7 +95,7 @@
 
 <script>
   function downloadFile(file, corso){
-    window.open('app/controllers/downloadfile.php?file='+file+'&name='+corso, '_blank');
+    window.open('app/controllers/downloadFile.php?file='+file+'&name='+corso, '_blank');
   }
 
   var newCorso = '';
