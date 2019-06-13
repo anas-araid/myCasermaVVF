@@ -234,8 +234,14 @@
         $dati .= "<b>".$nomeCorso."</b>\n";
         if (isset($file)){
           $server = $_SERVER['SERVER_NAME'];
-          $dir = "https://$server/uploads/".$corsi[$i][2];
-          $dati .= "File: <a href='$dir'>Apri documento</a> "."\n";
+          $pdfName = str_replace(' ', '_', $nomeCorso).'_'.$firemanData['Nome'].'_'.$firemanData['Cognome'];
+          $fileEncrypt = encrypt_decrypt('encrypt', $file);
+          if ($fileEncrypt == '' or $fileEncrypt == null or !isset($fileEncrypt)){
+            $fileEncrypt = $file;
+          }
+          $dir = "https://$server/app/controllers/downloadFile.php?file=$fileEncrypt&name=$pdfName";
+          //$dir = "https://$server/uploads/".$corsi[$i][2];
+          $dati .= "File: <a href='$dir'>Scarica documento</a> "."\n";
           //sendDocuments($firemanData['Chat_ID'], $file);
         }
       }
