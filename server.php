@@ -2,6 +2,7 @@
   // include libs 
   include 'bot/_layout.php';
   include 'app/dbConnection.php';
+  include 'app/functions.php';
   include 'app/models/getData.php';
   include 'app/models/updateData.php';
   include 'bot/controller.php';
