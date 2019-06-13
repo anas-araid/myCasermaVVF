@@ -62,7 +62,7 @@
           $file = $corsi[$i][2];
           $filename = ($file=='') ? 'Nessun file caricato' : round(filesize('uploads/'.$file) / 1024 / 1024, 1).' MB'; // round 1024 mega restituisce la dimensione del file
           $show='';
-          $pdfName = str_replace(' ', '_', $corso);
+          $pdfName = str_replace(' ', '_', $corso).'_'.$fireman['Nome'].'_'.$fireman['Cognome'];
           $fileEncrypt = encrypt_decrypt('encrypt', $file);
           if ($fileEncrypt == '' or $fileEncrypt == null or !isset($fileEncrypt)){
             $fileEncrypt = $file;
