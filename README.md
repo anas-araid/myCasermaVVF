@@ -53,6 +53,10 @@ Otherwise if you want to create your own test bot
 * Set telegram api webhook
 * https://api.telegram.org/your-bot-token/setWebhook?url=yourWebServerUrl/myCasermaVVF/server.php
 
+### Deploying
+
+Due to Altervista problems with the telegram bot, in order to publish the project, it is necessary to use the 'ALTERVISTA' branch which solves all the problems.
+
 
 ## Built With
 
