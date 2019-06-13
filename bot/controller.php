@@ -200,7 +200,11 @@
   function changeReperibilita($firemanData, $db_conn){
     $firemanID = $firemanData['ID'];
     $currentReperibilita = $firemanData['Reperibile'];
-    $newReperibilita = !$currentReperibilita;
+    if ($currentReperibilita == 0){
+      $newReperibilita = 1;  
+    }else{
+      $newReperibilita = 0;
+    }
     return updateReperibilita($firemanID, $newReperibilita, $db_conn);
   }
   function getApiToken($file){
