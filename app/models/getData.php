@@ -278,14 +278,14 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
   }
   function getSquadre($ID, $FK_CorpoVVF, $db_conn){
     if ($ID == null){
-      $sql = "SELECT * FROM t_numerosquadre";
+      $sql = "SELECT * FROM t_numeroSquadre";
       $nSquadre = array();
     }else{
-      $sql = "SELECT * FROM t_numerosquadre WHERE (ID='$ID')";
+      $sql = "SELECT * FROM t_numeroSquadre WHERE (ID='$ID')";
       $nSquadre = '';
     }
     if ($FK_CorpoVVF != null){
-      $sql = "SELECT * FROM t_numerosquadre WHERE (FK_CorpoVVF='$FK_CorpoVVF')";
+      $sql = "SELECT * FROM t_numeroSquadre WHERE (FK_CorpoVVF='$FK_CorpoVVF')";
       $nSquadre = array();
     }
     $risultato = mysqli_query($db_conn, $sql);
@@ -339,7 +339,7 @@ function getFiremanData($ID, $phone, $chatId, $idCaserma, $reperibile, $autista,
     return $squadra;
   }
   function getTurnoByDate($date, $FK_CorpoVVF, $db_conn){
-    $sql = "SELECT * FROM t_turniFestivi as turni, t_numerosquadre as squad 
+    $sql = "SELECT * FROM t_turniFestivi as turni, t_numeroSquadre as squad 
             WHERE (turni.FK_NumeroSquadra = squad.ID) and 
                   (squad.FK_CorpoVVF = '$FK_CorpoVVF') and 
                   (turni.dataTurno = '$date')";
