@@ -55,7 +55,7 @@ Otherwise if you want to create your own test bot
 
 ### Deploying
 
-Due to Altervista problems with the telegram bot, in order to publish the project, it is necessary to use the 'ALTERVISTA' branch which solves all the problems.
+Due to Altervista problems with the telegram bot, in order to publish the project, it is necessary to use the 'master' branch which solves all the problems. The 'local' branch contains the original project files.
 
 ## Built With
 
