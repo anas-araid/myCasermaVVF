@@ -121,7 +121,7 @@
     redirect('../../dashboard.php?redirect=attrezzature');
   }
   function deleteTurno($id, $idSquadra, $db_conn){
-    $sql = "DELETE FROM t_turnifestivi WHERE ID='$id'";
+    $sql = "DELETE FROM t_turniFestivi WHERE ID='$id'";
     $deleteQuery = mysqli_query($db_conn, $sql);
     if ($deleteQuery == null){
       die("Errore nella cancellazione del turno: contattare l'amministratore");

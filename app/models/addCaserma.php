@@ -25,7 +25,7 @@
           if ($addCaserma == false){
             echo "
             <script>
-              flatAlert('Errore nell\'aggiunta del corpo', 'Controlla bene i dati immessi, e se il corpo inserito e\' gia stato configurato', 'error', '../config.php');
+              flatAlert('Errore nell\'aggiunta del corpo', 'Controlla bene i dati immessi, e se il corpo inserito e\' gia stato configurato in precedenza', 'error', '../../config.php');
             </script>";
             return;
           }
