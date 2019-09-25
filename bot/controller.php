@@ -55,7 +55,7 @@
     }
     sendMsg($botToken,$chatID, 'Funzionalità non ancora disponibile', $menu);
   }
-  
+
   function menu ($botToken, $chatID, $firemanData){
     $menu =  '["Mostra_reperibili"],["La_mia_squadra"],["Questo_weekend"],["I_miei_turni"],["I_miei_corsi"],["Webcam"],["Meteo_trentino"],["I_miei_dati"],["/start"]';
     $stato = '';
@@ -94,7 +94,7 @@
       $listaIdVigili = getVigiliBySquadra(null, $squadra['ID'], $db_conn);
       $dati = '<b>SQUADRA: '.$squadra['Numero']."</b>\n";
       for ($i=0;$i<count($listaIdVigili);$i++){
-        $dati.="______________________________________________\n\n";
+        $dati.="__________________________\n\n";
         $vigile = getFiremanData($listaIdVigili[$i], null, null, null, null, null, $db_conn);
         $autista = ($vigile['Autista'] == 1) ? "autista" : "" ;
         $grado = getGrado($vigile['FK_Grado'], $db_conn);
@@ -104,7 +104,7 @@
           $dati .= '<i>Cell:</i> '.$vigile['Cellulare']."\n";
         }
       }
-      $dati.="______________________________________________\n\n";
+      $dati.="__________________________\n\n";
     }else{
       $dati = false;
     }
@@ -140,34 +140,34 @@
         }
         for ($i=0;$i<count($turni);$i++){
           $currentShift = $turni[$i];
-          $dati .="______________________________________________\n\n";
+          $dati .="__________________________\n\n";
           $date = date('d-m-Y', strtotime($currentShift[1]));
           $dati .= "<i>Data:</i><b> $date </b>\n";
           $mezzo = getMezzi($currentShift[3], null, $db_conn);
           if (!empty($mezzo)){
             $dati .= "<i>Checklist:</i> <b>$mezzo</b>\n";
           }else{
-            $dati .= "<i>Checklist: Nessun Mezzo</i>\n";        
+            $dati .= "<i>Checklist: Nessun Mezzo</i>\n";
           }
         }
-        $dati.="______________________________________________\n\n";
+        $dati.="__________________________\n\n";
       }
     }
-    return $dati;    
+    return $dati;
   }
   function printReperibili($FK_CorpoVVF, $db_conn){
     $reperibili = getReperibili($FK_CorpoVVF, true, $db_conn);
     if (!empty($reperibili)){
       $dati = "<b>VIGILI DISPONIBILI:</b> \n";
       for ($i=0;$i<count($reperibili);$i++){
-        $dati.="______________________________________________\n\n";
+        $dati.="__________________________\n\n";
         $fireman = getFiremanData($reperibili[$i][0], null, null, null, null, null, $db_conn);
         $autista = ($fireman['Autista'] == 1) ? "autista" : "" ;
         $grado = getGrado($fireman['FK_Grado'], $db_conn);
         $dati .= '<i>'.$grado.' '.$autista.': </i><b>'.$fireman['Nome'].' '.$fireman['Cognome']."</b> \n";
         $dati .= '<i>Cell:</i> '.$fireman['Cellulare']."\n";
       }
-      $dati.="______________________________________________\n\n";
+      $dati.="__________________________\n\n";
     }else{
       $dati = false;
     }
@@ -181,17 +181,17 @@
       $dati ="<b>TURNI:</b> \n";
       for ($i=0;$i<count($turni);$i++){
         $currentShift = $turni[$i];
-        $dati .="______________________________________________\n\n";
+        $dati .="__________________________\n\n";
         $date = date('d-m-Y', strtotime($currentShift[1]));
         $dati .= "<i>Data:</i><b> $date </b>\n";
         $mezzo = getMezzi($currentShift[3], null, $db_conn);
         if (!empty($mezzo)){
           $dati .= "<i>Checklist:</i> <b>$mezzo</b>\n";
         }else{
-          $dati .= "<i>Checklist: Nessun Mezzo</i>\n";        
+          $dati .= "<i>Checklist: Nessun Mezzo</i>\n";
         }
       }
-      $dati.="______________________________________________\n\n";
+      $dati.="__________________________\n\n";
     }else{
       $dati = false;
     }
@@ -201,7 +201,7 @@
     $firemanID = $firemanData['ID'];
     $currentReperibilita = $firemanData['Reperibile'];
     if ($currentReperibilita == 0){
-      $newReperibilita = 1;  
+      $newReperibilita = 1;
     }else{
       $newReperibilita = 0;
     }
@@ -228,7 +228,7 @@
     if (!empty($corsi)){
       $dati ="<b>I MIEI CORSI:</b> \n";
       for ($i=0; $i < count($corsi); $i++){
-        $dati .="______________________________________________\n\n";
+        $dati .="__________________________\n\n";
         $nomeCorso = $corsi[$i][1];
         $file = $corsi[$i][2];
         $dati .= "<b>".$nomeCorso."</b>\n";
@@ -245,7 +245,7 @@
           //sendDocuments($firemanData['Chat_ID'], $file);
         }
       }
-      $dati .="______________________________________________\n";
+      $dati .="__________________________\n";
       return $dati;
     }else{
       return false;
