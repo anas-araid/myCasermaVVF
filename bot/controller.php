@@ -18,10 +18,9 @@
     $sendAudio = "https://api.telegram.org/".$botToken."/sendAudio?chat_id=".$chatID."&audio=".$url;
     return file_get_contents($sendAudio);
   }
-  function sendDocuments($chatID, $file){
-    $botToken = "bot"."712299362:AAF5hmPddEfZNc0giZMLscjfQiQVi1y4UyE";
+  function sendDocuments($botToken, $chatID, $file){
     $server = $_SERVER['SERVER_NAME'];
-    $dir = "https://$server/php/myCasermaVVF/uploads/".$file;
+    $dir = "https://$server/uploads/".$file;
     $doc = "https://api.telegram.org/".$botToken."/sendDocument?chat_id=".$chatID."&document=".$dir;
     return file_get_contents($doc);
   }
@@ -242,7 +241,6 @@
           $dir = "https://$server/app/controllers/downloadFile.php?file=$fileEncrypt&name=$pdfName";
           //$dir = "https://$server/uploads/".$corsi[$i][2];
           $dati .= "File: <a href='$dir'>Scarica documento</a> "."\n";
-          //sendDocuments($firemanData['Chat_ID'], $file);
         }
       }
       $dati .="__________________________\n";
